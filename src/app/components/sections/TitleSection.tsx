@@ -42,7 +42,7 @@ export default function TitleSection() {
               ? 'translate-y-0' 
               : 'translate-y-8'
           }`}>
-            <h1 className="text-[clamp(1.5rem,4.5vw,2.75rem)] md:text-[clamp(1.75rem,5.5vw,3.5rem)] lg:text-[clamp(2rem,6.5vw,4.5rem)] font-bold mb-6 text-mdb-blue font-inter-extrabold leading-tight">
+            <h1 className="text-[clamp(1.5rem,4.5vw,2.75rem)] md:text-[clamp(1.75rem,5.5vw,3.5rem)] lg:text-[clamp(2rem,6.5vw,4.5rem)] mb-6 text-mdb-blue font-inter-extrabold leading-tight">
               We are MDB.
             </h1>
             <p className="text-[clamp(0.85rem,2.2vw,1.05rem)] md:text-[clamp(0.875rem,2.5vw,1.125rem)] lg:text-[clamp(1rem,3vw,1.25rem)] mb-8 text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
