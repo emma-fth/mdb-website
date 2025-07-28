@@ -6,6 +6,15 @@ export default function PurpAndComm() {
   const [isVisible, setIsVisible] = useState(false)
   const [counters, setCounters] = useState({ semesters: 0, projects: 0, members: 0 })
   const sectionRef = useRef<HTMLElement>(null)
+  
+  // Individual section visibility states
+  const [purposeVisible, setPurposeVisible] = useState(false)
+  const [statsVisible, setStatsVisible] = useState(false)
+  const [communityVisible, setCommunityVisible] = useState(false)
+  
+  const purposeRef = useRef<HTMLDivElement>(null)
+  const statsRef = useRef<HTMLDivElement>(null)
+  const communityRef = useRef<HTMLDivElement>(null)
 
   // Intersection Observer for animation trigger
   useEffect(() => {
@@ -23,6 +32,46 @@ export default function PurpAndComm() {
     }
 
     return () => observer.disconnect()
+  }, [])
+
+  // Individual section observers
+  useEffect(() => {
+    const purposeObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setPurposeVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    const statsObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    const communityObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCommunityVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (purposeRef.current) purposeObserver.observe(purposeRef.current)
+    if (statsRef.current) statsObserver.observe(statsRef.current)
+    if (communityRef.current) communityObserver.observe(communityRef.current)
+
+    return () => {
+      purposeObserver.disconnect()
+      statsObserver.disconnect()
+      communityObserver.disconnect()
+    }
   }, [])
 
   // Counter animation
@@ -64,8 +113,12 @@ export default function PurpAndComm() {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         
         {/* Our Purpose Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="order-2 lg:order-1">
+        <div ref={purposeRef} className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${
+            purposeVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-12'
+          }`}>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-mdb-blue">
               Our Purpose
             </h2>
@@ -73,7 +126,11 @@ export default function PurpAndComm() {
               To foster a diverse and welcoming community driven by learning software development and building real-world applications, leaving members with bonds and memories highlighting all aspects of the college experience and lasting beyond the club.
             </p>
           </div>
-          <div className="order-1 lg:order-2">
+          <div className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
+            purposeVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 translate-x-12'
+          }`}>
             <Image
               src="/images/mdb8.jpg"
               alt="MDB Community at the beach"
@@ -85,7 +142,7 @@ export default function PurpAndComm() {
         </div>
 
         {/* Stats Section */}
-        <div className="relative py-16 mb-20">
+        <div ref={statsRef} className="relative py-16 mb-20">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className={`absolute top-10 left-10 w-32 h-32 bg-orange-300 rounded-full opacity-20 transition-all duration-1000 ${isVisible ? 'scale-100 rotate-45' : 'scale-0 rotate-0'}`}></div>
@@ -94,7 +151,11 @@ export default function PurpAndComm() {
             <div className={`absolute bottom-20 right-1/3 w-16 h-16 bg-yellow-300 rounded-full opacity-20 transition-all duration-1000 delay-700 ${isVisible ? 'scale-100 -rotate-90' : 'scale-0 rotate-0'}`}></div>
           </div>
 
-          <div className="relative grid md:grid-cols-3 gap-8 text-center">
+          <div className={`relative grid md:grid-cols-3 gap-8 text-center transition-all duration-1000 ease-out ${
+            statsVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-12'
+          }`}>
             {/* Semesters */}
             <div className="relative">
               <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
@@ -126,8 +187,12 @@ export default function PurpAndComm() {
         </div>
 
         {/* Our Community Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="order-1 lg:order-1">
+        <div ref={communityRef} className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className={`order-1 lg:order-1 transition-all duration-1000 ease-out ${
+            communityVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-12'
+          }`}>
             <Image
               src="/images/mdb-hawaii.jpg"
               alt="MDB Community gathering"
@@ -136,7 +201,11 @@ export default function PurpAndComm() {
               className="w-full h-auto rounded-2xl shadow-lg hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center"
             />
           </div>
-          <div className="order-2 lg:order-2">
+          <div className={`order-2 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
+            communityVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 translate-x-12'
+          }`}>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-mdb-blue">
               Our Community
             </h2>
