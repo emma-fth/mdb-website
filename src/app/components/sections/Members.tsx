@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import MemberDB from './MemberDB'
 
 interface Member {
   name: string
@@ -102,26 +102,21 @@ const members: Member[] = [
 
 export default function Members() {
   return (
-    <section className="py-16 bg-gradient-to-b from-[#D1DFF2] to-white">
+    <section className="py-16 bg-gradient-to-b from-white to-[#D1DFF2]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">Members</h2>
+          <h2 className="text-4xl font-raleway-bold text-blue-900 mb-4">Members</h2>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {members.map((member, index) => (
-            <div key={index} className="text-center">
-              <div className="relative w-24 h-24 mx-auto mb-3 overflow-hidden rounded-lg">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-1 text-sm">{member.name}</h3>
-              <p className="text-xs text-gray-600">{member.title}</p>
-            </div>
+            <MemberDB
+              key={index}
+              name={member.name}
+              title={member.title}
+              image={member.image}
+              size="small"
+            />
           ))}
         </div>
       </div>

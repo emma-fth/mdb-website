@@ -119,7 +119,7 @@ export default function PurpAndComm() {
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 -translate-x-12'
           }`}>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-mdb-blue">
+            <h2 className="text-4xl lg:text-5xl font-raleway-bold mb-6 text-mdb-blue">
               Our Purpose
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
@@ -206,7 +206,7 @@ export default function PurpAndComm() {
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 translate-x-12'
           }`}>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-mdb-blue">
+            <h2 className="text-4xl lg:text-5xl font-raleway-bold mb-6 text-mdb-blue">
               Our Community
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">

@@ -80,7 +80,7 @@ export default function TitleSection() {
               ? 'translate-y-0' 
               : 'translate-y-8'
           }`}>
-            <h1 className="text-[clamp(1.5rem,4.5vw,2.75rem)] md:text-[clamp(1.75rem,5.5vw,3.5rem)] lg:text-[clamp(2rem,6.5vw,4.5rem)] mb-6 text-mdb-blue font-inter-extrabold leading-tight">
+            <h1 className="text-[clamp(1.5rem,4.5vw,2.75rem)] md:text-[clamp(1.75rem,5.5vw,3.5rem)] lg:text-[clamp(2rem,6.5vw,4.5rem)] mb-6 text-mdb-blue font-raleway-bold leading-tight">
               We are{' '}
               <span className="inline-block">
                 {currentText}

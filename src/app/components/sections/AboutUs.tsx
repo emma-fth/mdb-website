@@ -31,7 +31,7 @@ export default function AboutUs() {
 
           {/* About Us Content */}
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8">About Us</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-raleway-bold text-blue-900 mb-8">About Us</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               Mobile Developers of Berkeley is a dynamic tech club at UC Berkeley, founded in 2015, 
               dedicated to mobile/full-stack development and fostering a vibrant community. We bring together 

@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import MemberDB from './MemberDB'
 
 interface ExecMember {
   name: string
@@ -49,23 +49,18 @@ export default function Exec() {
     <section className="py-16 bg-gradient-to-b from-white to-[#D1DFF2]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">Exec</h2>
+          <h2 className="text-4xl font-raleway-bold text-blue-900 mb-4">Leadership</h2>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {execMembers.map((member, index) => (
-            <div key={index} className="text-center">
-              <div className="relative w-32 h-32 mx-auto mb-4 overflow-hidden rounded-lg">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-1">{member.name}</h3>
-              <p className="text-sm text-gray-600">{member.title}</p>
-            </div>
+            <MemberDB
+              key={index}
+              name={member.name}
+              title={member.title}
+              image={member.image}
+              size="large"
+            />
           ))}
         </div>
       </div>

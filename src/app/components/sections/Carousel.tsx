@@ -204,7 +204,7 @@ export default function Carousel() {
     <section className="w-screen bg-gradient-to-b from-mdb-light-blue to-white py-16 relative left-1/2 -translate-x-1/2 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue to-white z-0"></div>
       <div className="mb-16 relative z-10">
-        <h2 className="text-5xl font-bold text-center text-mdb-blue">
+        <h2 className="text-5xl font-raleway-bold text-center text-mdb-blue">
           MD{currentText}
           <span className="animate-pulse text-mdb-blue">|</span>
         </h2>

@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 w-full sm:w-auto">
             {/* Pages Section */}
             <div className="text-center sm:text-left">
-              <h4 className="text-base sm:text-lg font-bold text-mdb-blue mb-3 sm:mb-4">Pages</h4>
+              <h4 className="text-base sm:text-lg font-raleway-bold text-mdb-blue mb-3 sm:mb-4">Pages</h4>
               <div className="space-y-1 sm:space-y-2">
                 <Link 
                   href="/" 
@@ -66,7 +66,7 @@ export default function Footer() {
 
             {/* Contact Section */}
             <div className="text-center sm:text-left">
-              <h4 className="text-base sm:text-lg font-bold text-mdb-blue mb-3 sm:mb-4">Contact</h4>
+              <h4 className="text-base sm:text-lg font-raleway-bold text-mdb-blue mb-3 sm:mb-4">Contact</h4>
               <div className="space-y-1 sm:space-y-2">
                 <Link 
                   href="/contact" 
