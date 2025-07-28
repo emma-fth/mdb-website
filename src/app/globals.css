@@ -59,6 +59,34 @@ a {
 }
 
 @layer components {
+  /* Fade In Up Animation */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Fade In Right Animation */
+  .animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  @keyframes fadeInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   /* Raleway Font Utilities */
   .font-raleway-light {
     font-family: 'Raleway', sans-serif;

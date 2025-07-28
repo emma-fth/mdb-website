@@ -76,7 +76,7 @@ export default function Footer() {
                 </Link>
                 <a 
                   href="mailto:contact@mdb.berkeley.edu" 
-                  className="block text-gray-700 hover:text-mdb-blue transition-all duration-200 text-sm sm:text-base hover:scale-110"
+                  className="block text-gray-700 hover:text-mdb-blue transition-colors duration-200 text-sm sm:text-base"
                 >
                   Email
                 </a>
