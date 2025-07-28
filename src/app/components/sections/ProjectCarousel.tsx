@@ -61,14 +61,14 @@ export default function ProjectCarousel() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className={`grid md:grid-cols-3 gap-8 transition-all duration-[1500ms] ease-out ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
+            isVisible
+              ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-12'
           }`}>
             {projectPhases.map((phase, index) => (
-              <div 
-                key={index} 
-                className="bg-white/40 backdrop-blur-xl backdrop-saturate-150 border border-white/20 rounded-xl shadow-lg p-8 hover:shadow-xl hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center flex flex-col h-full"
+              <div
+                key={index}
+                className="bg-white/40 backdrop-blur-xl backdrop-saturate-150 border border-white/20 rounded-xl shadow-lg p-8 hover:shadow-xl hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center flex flex-col h-full hover:bg-mdb-gold/40 hover:border-mdb-gold/30"
               >
                 <div className="text-6xl mb-6 text-center">{phase.icon}</div>
                 <h3 className="text-2xl font-raleway-bold text-gray-800 mb-4 text-center">

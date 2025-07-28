@@ -127,6 +127,7 @@ module.exports = {
            orange: '#f97316',
            pink: '#ec4899',
            'light-blue': '#D1DFF2',
+           gold: '#FEBD10',
          }
       },
     },
