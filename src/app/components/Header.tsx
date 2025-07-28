@@ -26,29 +26,29 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8">
+          <ul className="hidden md:flex space-x-6">
             <li>
-              <Link href="/about" className="hover:text-mdb-blue/80 transition-colors">
+              <Link href="/about" className="block px-3 py-2 hover:text-mdb-blue/80 hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/projects" className="hover:text-mdb-blue/80 transition-colors">
+              <Link href="/projects" className="block px-3 py-2 hover:text-mdb-blue/80 hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center">
                 Projects
               </Link>
             </li>
             <li>
-              <Link href="/training-program" className="hover:text-mdb-blue/80 transition-colors">
+              <Link href="/training-program" className="block px-3 py-2 hover:text-mdb-blue/80 hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center">
                 Training Program
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-mdb-blue/80 transition-colors">
+              <Link href="/contact" className="block px-3 py-2 hover:text-mdb-blue/80 hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center">
                 Contact
               </Link>
             </li>
             <li>
-              <Link href="/apply" className="hover:text-mdb-blue/80 transition-colors">
+              <Link href="/apply" className="block px-4 py-2 bg-mdb-blue text-white rounded-xl hover:bg-mdb-blue/80 hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center">
                 Apply
               </Link>
             </li>
@@ -57,22 +57,22 @@ export default function Header() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 relative"
             aria-label="Toggle mobile menu"
           >
             <span 
-              className={`block w-6 h-0.5 bg-mdb-blue transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+              className={`block w-6 h-0.5 bg-mdb-blue transition-all duration-300 transform origin-center ${
+                isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-2'
               }`}
             ></span>
             <span 
               className={`block w-6 h-0.5 bg-mdb-blue transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : ''
+                isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
               }`}
             ></span>
             <span 
-              className={`block w-6 h-0.5 bg-mdb-blue transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              className={`block w-6 h-0.5 bg-mdb-blue transition-all duration-300 transform origin-center ${
+                isMobileMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'
               }`}
             ></span>
           </button>
@@ -84,53 +84,53 @@ export default function Header() {
             ? 'max-h-96 opacity-100 mt-4' 
             : 'max-h-0 opacity-0 overflow-hidden'
         }`}>
-          <ul className="flex flex-col space-y-4 py-4 bg-white/10 backdrop-blur-sm rounded-lg px-4">
-            <li>
-              <Link 
-                href="/about" 
-                className="block hover:text-mdb-blue/80 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="/projects" 
-                className="block hover:text-mdb-blue/80 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="/training-program" 
-                className="block hover:text-mdb-blue/80 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Training Program
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="/contact" 
-                className="block hover:text-mdb-blue/80 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="/apply" 
-                className="block hover:text-mdb-blue/80 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Apply
-              </Link>
-            </li>
-          </ul>
+                     <ul className="flex flex-col space-y-4 py-4 bg-white/10 backdrop-blur-sm rounded-lg px-4 text-center">
+             <li>
+               <Link 
+                 href="/about" 
+                 className="block hover:text-mdb-blue/80 hover:scale-105 hover:translate-x-2 transition-all duration-300 transform py-2"
+                 onClick={() => setIsMobileMenuOpen(false)}
+               >
+                 About
+               </Link>
+             </li>
+             <li>
+               <Link 
+                 href="/projects" 
+                 className="block hover:text-mdb-blue/80 hover:scale-105 hover:translate-x-2 transition-all duration-300 transform py-2"
+                 onClick={() => setIsMobileMenuOpen(false)}
+               >
+                 Projects
+               </Link>
+             </li>
+             <li>
+               <Link 
+                 href="/training-program" 
+                 className="block hover:text-mdb-blue/80 hover:scale-105 hover:translate-x-2 transition-all duration-300 transform py-2"
+                 onClick={() => setIsMobileMenuOpen(false)}
+               >
+                 Training Program
+               </Link>
+             </li>
+             <li>
+               <Link 
+                 href="/contact" 
+                 className="block hover:text-mdb-blue/80 hover:scale-105 hover:translate-x-2 transition-all duration-300 transform py-2"
+                 onClick={() => setIsMobileMenuOpen(false)}
+               >
+                 Contact
+               </Link>
+             </li>
+             <li>
+               <Link 
+                 href="/apply" 
+                 className="block px-4 py-2 bg-mdb-blue text-white rounded-xl hover:bg-mdb-blue/80 hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center text-center"
+                 onClick={() => setIsMobileMenuOpen(false)}
+               >
+                 Apply
+               </Link>
+             </li>
+           </ul>
         </div>
       </nav>
     </header>
