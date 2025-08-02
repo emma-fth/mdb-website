@@ -10,7 +10,7 @@ export default function TitleSection() {
   const [isDeleting, setIsDeleting] = useState(false)
   const [typeSpeed, setTypeSpeed] = useState(100)
 
-  const words = ['MDB.', 'a Community.', 'Chillers.', 'a Network.', 'Tight-knit.', 'Tuff.', 'Diverse.', 'Creators.', 'MDBesties.', 'Developers.', 'Brainrotted.', 'Family.']
+  const words = ['MDB.', 'a Community.', 'Chillers.', 'a Network.', 'Tight-knit.', 'Diverse.', 'Creators.', 'MDBesties.', 'Developers.', 'Brainrotted.', 'Family.']
 
   useEffect(() => {
     // Trigger animation on next frame to prevent flash

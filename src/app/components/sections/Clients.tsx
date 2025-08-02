@@ -21,7 +21,7 @@ interface ClientsProps {
 
 export default function Clients({ client, className = '' }: ClientsProps) {
   return (
-    <div className={`bg-white/40 backdrop-blur-xl backdrop-saturate-150 border border-white/20 rounded-xl shadow-lg p-8 hover:shadow-xl hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center hover:bg-mdb-gold/40 hover:border-mdb-gold/30 ${className}`}>
+    <div className={`glass-card p-8 ${className}`}>
       {/* Header with Logo and App Info */}
       <div className="flex items-start justify-between mb-6">
         <div className="flex items-center space-x-4">

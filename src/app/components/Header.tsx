@@ -17,7 +17,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="hover:opacity-80 transition-opacity">
             <Image
-              src="/images/mdb-logo-simple.png"
+              src="/logos/mdb_3.svg"
               alt="MDB Website"
               width={120}
               height={40}

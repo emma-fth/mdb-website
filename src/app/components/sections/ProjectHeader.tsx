@@ -9,6 +9,10 @@ export default function ProjectHeader() {
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-patua-one text-blue-900 mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             PROJECTS
           </h1>
+          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            Discover innovative mobile applications built by our talented developers. From ideation to deployment, 
+            our projects showcase real-world problem-solving and cutting-edge mobile development technologies.
+          </p>
         </div>
       </div>
     </section>

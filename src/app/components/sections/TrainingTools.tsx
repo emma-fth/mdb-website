@@ -65,7 +65,7 @@ export default function TrainingTools() {
             {tools.map((tool, index) => (
               <div 
                 key={index} 
-                className="bg-white/40 backdrop-blur-xl backdrop-saturate-150 border border-white/20 rounded-lg p-4 text-center shadow-md hover:shadow-lg hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center group hover:bg-mdb-gold/40 hover:border-mdb-gold/30"
+                className="glass-card p-4 text-center"
               >
                 <div className="text-3xl mb-2">{tool.logo}</div>
                 <div className="font-semibold text-gray-800 text-sm">{tool.name}</div>
