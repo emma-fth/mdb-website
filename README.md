@@ -2,6 +2,12 @@
 
 A modern, responsive website for the Mobile Developers of Berkeley (MDB) student organization at UC Berkeley. Built with Next.js 14, React 18, TypeScript, and Tailwind CSS.
 
+## 🎨 Interactive Documentation
+
+**📖 [View Styled HTML Version](README.html)** - Experience the documentation with the same beautiful styling as the MDB website!
+
+---
+
 ## 🚀 Features
 
 - **Next.js 14** with App Router for modern routing

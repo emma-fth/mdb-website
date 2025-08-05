@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDB Website - Mobile Developers of Berkeley</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom MDB Colors */
+        :root {
+            --color-mdb-blue: #253C7D;
+            --color-mdb-purple: #8b5cf6;
+            --color-mdb-teal: #14b8a6;
+            --color-mdb-light-blue: #D1DFF2;
+            --color-mdb-gold: #FEBD10;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background-color: #D1DFF2;
+            color: #1e293b;
+        }
+        
+        .mdb-glass {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .mdb-glass-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .mdb-glass-hover:hover {
+            transform: scale(1.05) translateX(4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mdb-glass-lg {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .text-responsive-xs { font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem); line-height: 1.5; }
+        .text-responsive-sm { font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1rem); line-height: 1.5; }
+        .text-responsive-base { font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); line-height: 1.6; }
+        .text-responsive-lg { font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem); line-height: 1.6; }
+        .text-responsive-xl { font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); line-height: 1.5; }
+        .text-responsive-2xl { font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem); line-height: 1.4; }
+        .text-responsive-3xl { font-size: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem); line-height: 1.3; }
+        .text-responsive-4xl { font-size: clamp(2.25rem, 1.8rem + 2.25vw, 3rem); line-height: 1.2; }
+        .text-responsive-5xl { font-size: clamp(3rem, 2.25rem + 3.75vw, 4rem); line-height: 1.1; }
+        .text-responsive-6xl { font-size: clamp(3.75rem, 2.75rem + 5vw, 5rem); line-height: 1; }
+        
+        .font-patua-one {
+            font-family: 'Patua One', cursive;
+            font-weight: 400;
+        }
+        
+        .font-raleway-light {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        .font-raleway-normal {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+        }
+        
+        .font-raleway-medium {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+        }
+        
+        .font-raleway-semibold {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+        }
+        
+        .font-raleway-bold {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+        
+        .font-raleway-extrabold {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+        
+        .font-inter-thin {
+            font-family: 'Inter', sans-serif;
+            font-weight: 100;
+        }
+        
+        .font-inter-light {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+        }
+        
+        .font-inter-normal {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+        
+        .font-inter-medium {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        
+        .font-inter-semibold {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+        
+        .font-inter-bold {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .font-inter-extrabold {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+        
+        .font-inter-black {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #253C7D, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(37, 60, 125, 0.3), transparent);
+            margin: 3rem 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/40">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg"></div>
+                    <h1 class="text-xl font-raleway-bold text-gray-800">MDB Website</h1>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 transition-colors font-inter-medium">Features</a>
+                    <a href="#structure" class="text-gray-600 hover:text-blue-600 transition-colors font-inter-medium">Structure</a>
+                    <a href="#pages" class="text-gray-600 hover:text-blue-600 transition-colors font-inter-medium">Pages</a>
+                    <a href="#getting-started" class="text-gray-600 hover:text-blue-600 transition-colors font-inter-medium">Getting Started</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-16">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-16">
+            <div class="text-center animate-fade-in-up">
+                <h1 class="text-responsive-6xl font-raleway-extrabold text-gray-800 mb-6">
+                    MDB Website
+                </h1>
+                <p class="text-responsive-xl text-gray-600 mb-8 max-w-4xl mx-auto">
+                    A modern, responsive website for the Mobile Developers of Berkeley (MDB) student organization at UC Berkeley. Built with Next.js 14, React 18, TypeScript, and Tailwind CSS.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#getting-started" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-inter-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </a>
+                    <a href="https://github.com" class="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-inter-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🚀 Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card animate-fade-in-up">
+                    <div class="text-3xl mb-4">⚛️</div>
+                    <h3 class="text-xl font-raleway-semibold mb-3">Next.js 14</h3>
+                    <p class="text-gray-600">React framework with App Router for modern routing and optimal performance.</p>
+                </div>
+                <div class="feature-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="text-3xl mb-4">🔷</div>
+                    <h3 class="text-xl font-raleway-semibold mb-3">React 18</h3>
+                    <p class="text-gray-600">UI library with TypeScript for type safety and better developer experience.</p>
+                </div>
+                <div class="feature-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="text-3xl mb-4">🎨</div>
+                    <h3 class="text-xl font-raleway-semibold mb-3">Tailwind CSS</h3>
+                    <p class="text-gray-600">Utility-first CSS framework with custom MDB branding and responsive design.</p>
+                </div>
+                <div class="feature-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="text-3xl mb-4">📱</div>
+                    <h3 class="text-xl font-raleway-semibold mb-3">Mobile-First</h3>
+                    <p class="text-gray-600">Responsive design optimized for all devices with smooth animations.</p>
+                </div>
+                <div class="feature-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="text-3xl mb-4">🔍</div>
+                    <h3 class="text-xl font-raleway-semibold mb-3">SEO Optimized</h3>
+                    <p class="text-gray-600">Proper metadata, favicons, and semantic HTML for search engine optimization.</p>
+                </div>
+                <div class="feature-card animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="text-3xl mb-4">🎬</div>
+                    <h3 class="text-xl font-raleway-semibold mb-3">Rich Media</h3>
+                    <p class="text-gray-600">Support for images, videos, SVGs, and interactive components like Calendly.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Project Structure Section -->
+        <section id="structure" class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">📁 Project Structure</h2>
+            <div class="mdb-glass-lg p-8 animate-fade-in-up">
+                <div class="code-block text-sm">
+<pre><code>src/
+└── app/
+    ├── layout.tsx                    # Root layout with Header & Footer
+    ├── page.tsx                      # Home page (/)
+    ├── globals.css                   # Global styles with Tailwind
+    ├── about/
+    │   └── page.tsx                  # About page (/about)
+    ├── projects/
+    │   └── page.tsx                  # Projects page (/projects)
+    ├── training-program/
+    │   └── page.tsx                  # Training program page (/training-program)
+    ├── apply/
+    │   ├── page.tsx                  # Apply page (/apply)
+    │   └── components/
+    │       ├── Calendly.tsx          # Calendly integration
+    │       └── Flyer.tsx             # Application flyer
+    ├── contact/
+    │   └── page.tsx                  # Contact page (/contact)
+    └── components/
+        ├── Header.tsx                # Navigation header
+        ├── Footer.tsx                # Site footer
+        └── sections/                 # Page-specific components
+            ├── TitleSection.tsx      # Home hero section
+            ├── PurpAndComm.tsx       # Purpose & community
+            ├── Carousel.tsx          # Image carousel
+            ├── Destinations.tsx      # Travel destinations
+            ├── AboutUs.tsx           # About section
+            ├── AboutCarousel.tsx     # About page carousel
+            ├── Exec.tsx              # Executive team
+            ├── ProjectManagers.tsx   # Project managers
+            ├── Members.tsx           # Member showcase
+            ├── ProjectHeader.tsx     # Projects page header
+            ├── ProjectCarousel.tsx   # Project showcase
+            ├── ProjectClients.tsx    # Client logos
+            ├── TrainingHeader.tsx    # Training page header
+            ├── TrainingCurriculum.tsx # Curriculum details
+            ├── TrainingStaff.tsx     # Training staff
+            └── TrainingTools.tsx     # Development tools</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Pages Section -->
+        <section id="pages" class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🌐 Pages</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="mdb-glass p-6 animate-fade-in-up">
+                    <div class="text-2xl mb-4">🏠</div>
+                    <h3 class="text-lg font-raleway-semibold mb-2">Home (/)</h3>
+                    <p class="text-gray-600 text-sm">Landing page with hero section, purpose & community, carousel, and destinations.</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="text-2xl mb-4">ℹ️</div>
+                    <h3 class="text-lg font-raleway-semibold mb-2">About (/about)</h3>
+                    <p class="text-gray-600 text-sm">Organization story, executive team, project managers, and member showcase.</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="text-2xl mb-4">💼</div>
+                    <h3 class="text-lg font-raleway-semibold mb-2">Projects (/projects)</h3>
+                    <p class="text-gray-600 text-sm">Project showcase, client partnerships, and portfolio.</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="text-2xl mb-4">🎓</div>
+                    <h3 class="text-lg font-raleway-semibold mb-2">Training Program (/training-program)</h3>
+                    <p class="text-gray-600 text-sm">Curriculum, staff, and development tools.</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="text-2xl mb-4">📝</div>
+                    <h3 class="text-lg font-raleway-semibold mb-2">Apply (/apply)</h3>
+                    <p class="text-gray-600 text-sm">Application process with Calendly integration.</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="text-2xl mb-4">📞</div>
+                    <h3 class="text-lg font-raleway-semibold mb-2">Contact (/contact)</h3>
+                    <p class="text-gray-600 text-sm">Contact information and business details.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Design System Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🎨 Design System</h2>
+            <div class="mdb-glass-lg p-8 animate-fade-in-up">
+                <p class="text-responsive-lg text-gray-700 mb-6">The website uses a custom color palette with MDB branding:</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-600"></div>
+                            <span class="font-inter-medium">MDB Light Blue - Primary background color</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
+                            <span class="font-inter-medium">Custom gradients - From light blue to white</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-300"></div>
+                            <span class="font-inter-medium">Responsive typography - Optimized for all screen sizes</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-purple-500"></div>
+                            <span class="font-inter-medium">Interactive elements - Hover effects and smooth transitions</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-raleway-semibold text-lg mb-3">Fonts Used:</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><span class="font-raleway-semibold">Raleway</span> - Headings and titles</li>
+                            <li><span class="font-inter-medium">Inter</span> - Body text and UI elements</li>
+                            <li><span class="font-patua-one">Patua One</span> - Special accents</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Getting Started Section -->
+        <section id="getting-started" class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🚀 Getting Started</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="mdb-glass p-6 animate-fade-in-up">
+                    <h3 class="text-xl font-raleway-semibold mb-4">1. Install dependencies:</h3>
+                    <div class="code-block">
+                        <code>npm install</code>
+                    </div>
+                </div>
+                
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h3 class="text-xl font-raleway-semibold mb-4">2. Run development server:</h3>
+                    <div class="code-block">
+                        <code>npm run dev</code>
+                    </div>
+                </div>
+                
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-raleway-semibold mb-4">3. Open in browser:</h3>
+                    <p class="text-gray-600 mb-2">Visit <a href="http://localhost:3000" class="text-blue-600 hover:underline">http://localhost:3000</a></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Available Scripts Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">📝 Available Scripts</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="mdb-glass p-6 animate-fade-in-up">
+                    <h3 class="font-raleway-semibold mb-2">Development</h3>
+                    <div class="code-block text-sm">
+                        <code>npm run dev</code>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Start development server</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h3 class="font-raleway-semibold mb-2">Production Build</h3>
+                    <div class="code-block text-sm">
+                        <code>npm run build</code>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Build for production</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h3 class="font-raleway-semibold mb-2">Production Server</h3>
+                    <div class="code-block text-sm">
+                        <code>npm run start</code>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Start production server</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <h3 class="font-raleway-semibold mb-2">Code Quality</h3>
+                    <div class="code-block text-sm">
+                        <code>npm run lint</code>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Run ESLint</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Tech Stack Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🛠️ Tech Stack</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="mdb-glass p-6 animate-fade-in-up">
+                    <h3 class="font-raleway-semibold mb-2">Next.js 14</h3>
+                    <p class="text-gray-600 text-sm">React framework with App Router</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h3 class="font-raleway-semibold mb-2">React 18</h3>
+                    <p class="text-gray-600 text-sm">UI library with modern features</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h3 class="font-raleway-semibold mb-2">TypeScript</h3>
+                    <p class="text-gray-600 text-sm">Type safety and better developer experience</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <h3 class="font-raleway-semibold mb-2">Tailwind CSS</h3>
+                    <p class="text-gray-600 text-sm">Utility-first CSS framework</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <h3 class="font-raleway-semibold mb-2">PostCSS</h3>
+                    <p class="text-gray-600 text-sm">CSS processing and optimization</p>
+                </div>
+                <div class="mdb-glass p-6 animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <h3 class="font-raleway-semibold mb-2">ESLint</h3>
+                    <p class="text-gray-600 text-sm">Code linting and quality assurance</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Assets Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">📁 Assets</h2>
+            <div class="mdb-glass-lg p-8 animate-fade-in-up">
+                <p class="text-responsive-lg text-gray-700 mb-6">The website includes various media assets:</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🖼️</div>
+                            <span class="font-inter-medium">Images - Team photos, events, logos, and promotional materials</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🎥</div>
+                            <span class="font-inter-medium">Videos - Event recordings and promotional content</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🎨</div>
+                            <span class="font-inter-medium">SVGs - Icons and graphics</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🏢</div>
+                            <span class="font-inter-medium">Logos - Partner and client logos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Deployment Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🚀 Deployment</h2>
+            <div class="mdb-glass-lg p-8 animate-fade-in-up">
+                <p class="text-responsive-lg text-gray-700 mb-6">Deploy easily on:</p>
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                            <span class="font-inter-medium">Vercel (recommended for Next.js)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                            <span class="font-inter-medium">Netlify</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                            <span class="font-inter-medium">AWS</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                            <span class="font-inter-medium">Any Node.js platform</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4">
+                    <h4 class="font-raleway-semibold mb-2">For Vercel:</h4>
+                    <div class="code-block text-sm">
+                        <code>npm install -g vercel<br>vercel</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Contributing Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-responsive-4xl font-raleway-bold text-center text-gray-800 mb-12">🤝 Contributing</h2>
+            <div class="mdb-glass-lg p-8 animate-fade-in-up text-center">
+                <p class="text-responsive-lg text-gray-700 mb-6">
+                    This is the official website for Mobile Developers of Berkeley. For contributions, please contact the MDB executive team.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="mailto:contact@mdb.com" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-inter-semibold hover:shadow-lg transition-all duration-300">
+                        Contact MDB
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 backdrop-blur-md border-t border-white/40 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600 font-inter-medium">
+                Licensed under the MIT License - see <a href="LICENSE" class="text-blue-600 hover:underline">LICENSE</a> file for details.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 
