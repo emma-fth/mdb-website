@@ -1,4 +1,4 @@
-import MemberDB from './MemberDB'
+import MemberDB from '../../components/MemberDB'
 
 interface TrainingStaffMember {
   name: string

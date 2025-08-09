@@ -21,10 +21,10 @@ export default function ProjectClients() {
           </p>
         </div>
         
-        <div className={`max-w-7xl mx-auto transition-all duration-1000 ease-out transform ${
+        <div className={`max-w-7xl mx-auto animate-fade-up ${
           isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-8'
+            ? 'animate-fade-up-visible' 
+            : 'animate-fade-up-enter'
         }`}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {clientProjects.map((client, index) => (
@@ -37,10 +37,10 @@ export default function ProjectClients() {
         </div>
 
         {/* Call to Action */}
-        <div className={`text-center mt-8 sm:mt-12 md:mt-16 transition-all duration-1000 ease-out delay-500 ${
+        <div className={`text-center mt-8 sm:mt-12 md:mt-16 animate-fade-up-delay-500 ${
           isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-8'
+            ? 'animate-fade-up-visible' 
+            : 'animate-fade-up-enter'
         }`}>
           <div className="mdb-glass-lg p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-4 sm:mb-6">
