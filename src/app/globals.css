@@ -296,7 +296,7 @@ a {
     }
     
     .animate-fade-up-delay-500 {
-      @apply transition-all duration-500 ease-out delay-250;
+      @apply transition-all duration-500 ease-out delay-200;
     }
   }
 
@@ -342,4 +342,4 @@ a {
       opacity: 1;
     }
   }
-} 
+}

@@ -2,7 +2,6 @@
 import { useRef, useEffect } from 'react'
 import { useTypingAnimation } from '../hooks/useTypingAnimation'
 import { useAnimationPreferences } from '../hooks/useAnimationPreferences'
-import OptimizedImage from './OptimizedImage'
 
 export default function Carousel() {
   const carouselRef = useRef<HTMLDivElement>(null)
@@ -241,13 +240,25 @@ export default function Carousel() {
                       }}
                     />
                   ) : (
-                    <OptimizedImage
+                    <img
                       src={mediaItem.src}
                       alt={`MDB Community Photo ${index + 1}`}
-                      fill
-                      className="object-cover rounded-2xl"
-                      sizes="400px"
-                      priority={index < 6} // Prioritize first 6 images
+                      className="w-full h-full object-cover rounded-2xl"
+                      onError={(e) => {
+                        console.error('Image failed to load:', mediaItem.src, e)
+                        const imgElement = e.target as HTMLImageElement
+                        imgElement.style.display = 'none'
+                        const parent = imgElement.parentElement
+                        if (parent) {
+                          const fallback = document.createElement('div')
+                          fallback.className = 'w-full h-full bg-gray-200 rounded-2xl flex items-center justify-center'
+                          fallback.innerHTML = '<span class="text-gray-500">Image unavailable</span>'
+                          parent.appendChild(fallback)
+                        }
+                      }}
+                      onLoad={() => {
+                        console.log('Image loaded successfully:', mediaItem.src)
+                      }}
                     />
                   )}
                 </div>
@@ -313,13 +324,25 @@ export default function Carousel() {
                       }}
                     />
                   ) : (
-                    <OptimizedImage
+                    <img
                       src={mediaItem.src}
                       alt={`MDB Community Photo ${index + 1}`}
-                      fill
-                      className="object-cover rounded-2xl"
-                      sizes="400px"
-                      priority={false} // Don't prioritize second strip
+                      className="w-full h-full object-cover rounded-2xl"
+                      onError={(e) => {
+                        console.error('Image failed to load:', mediaItem.src, e)
+                        const imgElement = e.target as HTMLImageElement
+                        imgElement.style.display = 'none'
+                        const parent = imgElement.parentElement
+                        if (parent) {
+                          const fallback = document.createElement('div')
+                          fallback.className = 'w-full h-full bg-gray-200 rounded-2xl flex items-center justify-center'
+                          fallback.innerHTML = '<span class="text-gray-500">Image unavailable</span>'
+                          parent.appendChild(fallback)
+                        }
+                      }}
+                      onLoad={() => {
+                        console.log('Image loaded successfully:', mediaItem.src)
+                      }}
                     />
                   )}
                 </div>
@@ -385,13 +408,25 @@ export default function Carousel() {
                       }}
                     />
                   ) : (
-                    <OptimizedImage
+                    <img
                       src={mediaItem.src}
                       alt={`MDB Community Photo ${index + 1}`}
-                      fill
-                      className="object-cover rounded-2xl"
-                      sizes="400px"
-                      priority={false} // Don't prioritize third strip
+                      className="w-full h-full object-cover rounded-2xl"
+                      onError={(e) => {
+                        console.error('Image failed to load:', mediaItem.src, e)
+                        const imgElement = e.target as HTMLImageElement
+                        imgElement.style.display = 'none'
+                        const parent = imgElement.parentElement
+                        if (parent) {
+                          const fallback = document.createElement('div')
+                          fallback.className = 'w-full h-full bg-gray-200 rounded-2xl flex items-center justify-center'
+                          fallback.innerHTML = '<span class="text-gray-500">Image unavailable</span>'
+                          parent.appendChild(fallback)
+                        }
+                      }}
+                      onLoad={() => {
+                        console.log('Image loaded successfully:', mediaItem.src)
+                      }}
                     />
                   )}
                 </div>

@@ -52,7 +52,7 @@ export default function OptimizedImage({
           setIsLoading(false)
           setHasError(true)
         }}
-        quality={85}
+        unoptimized={true}
       />
     </div>
   )
