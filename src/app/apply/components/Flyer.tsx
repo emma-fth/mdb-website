@@ -2,9 +2,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useAnimationPreferences } from '../../hooks/useAnimationPreferences'
 
 export default function Flyer() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const { shouldReduceAnimations } = useAnimationPreferences()
 
   useEffect(() => {
     // Trigger animation on next frame to prevent flash
@@ -15,13 +17,16 @@ export default function Flyer() {
     return () => cancelAnimationFrame(timer)
   }, [])
 
+  const transitionDuration = shouldReduceAnimations ? 'duration-500' : 'duration-1000'
+  const delay = shouldReduceAnimations ? 'delay-150' : 'delay-300'
+
   return (
     <section className="min-h-screen w-screen bg-gradient-to-b from-mdb-light-blue to-white flex items-center -mt-20 relative mb-0 py-8 md:py-12 lg:py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue to-white z-0"></div>
       <div className="w-full px-4 py-8 pt-20 md:pt-24 lg:pt-28 relative z-10">
-        <div className={`max-w-7xl mx-auto transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`max-w-7xl mx-auto transition-opacity ${shouldReduceAnimations ? 'duration-300' : 'duration-500'} ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
           {/* Header */}
-          <div className={`text-center mb-12 transition-all duration-1000 ease-out delay-300 ${
+          <div className={`text-center mb-12 transition-all ${transitionDuration} ease-out ${delay} ${
             isLoaded 
               ? 'translate-y-0' 
               : 'translate-y-8'
@@ -36,7 +41,7 @@ export default function Flyer() {
           </div>
 
           {/* Large Image */}
-          <div className={`relative mb-12 transition-all duration-1000 ease-out delay-300 ${
+          <div className={`relative mb-12 transition-all ${transitionDuration} ease-out ${delay} ${
             isLoaded 
               ? 'translate-y-0' 
               : 'translate-y-8'
@@ -55,7 +60,7 @@ export default function Flyer() {
           </div>
 
           {/* Recruitment Information */}
-          <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 transition-all duration-1000 ease-out delay-500 ${
+          <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 transition-all ${transitionDuration} ease-out ${delay} ${
             isLoaded 
               ? 'translate-y-0' 
               : 'translate-y-8'
@@ -89,7 +94,7 @@ export default function Flyer() {
           </div>
 
           {/* Requirements */}
-          <div className={`mdb-glass-lg p-8 mb-12 transition-all duration-1000 ease-out delay-700 ${
+          <div className={`mdb-glass-lg p-8 mb-12 transition-all ${transitionDuration} ease-out ${delay} ${
             isLoaded 
               ? 'translate-y-0' 
               : 'translate-y-8'
@@ -158,7 +163,7 @@ export default function Flyer() {
           </div>
 
           {/* Apply Button */}
-          <div className={`text-center transition-all duration-1000 ease-out delay-900 ${
+          <div className={`text-center transition-all ${transitionDuration} ease-out ${delay} ${
             isLoaded 
               ? 'translate-y-0' 
               : 'translate-y-8'

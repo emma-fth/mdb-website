@@ -2,8 +2,8 @@ import { Member } from '../types/members'
 
 export const members: Member[] = [
   {
-    name: "Sample Member",
-    title: "Developer",
-    image: "/logos/mdb_4.svg"
+    name: "Placeholder Member",
+    title: "Member",
+    image: "/logos/mdb_5.png"
   }
 ]

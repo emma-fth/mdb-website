@@ -7,9 +7,9 @@ interface TrainingStaffMember {
 }
 
 const trainingStaff: TrainingStaffMember[] = [
-  { name: "Amol Budhiraja", title: "VP of Education", image: "/images/amol.jpg" },
-  { name: "Satvik Muddana", title: "Mentor", image: "/images/satvik.jpg" },
-  { name: "Mohammed Zeidan", title: "Mentor", image: "/images/mohammed.jpg" }
+  { name: "Amol Budhiraja", title: "VP of Education", image: "/images/mdb-logo.png" },
+  { name: "Satvik Muddana", title: "Mentor", image: "/images/mdb-logo.png" },
+  { name: "Mohammed Zeidan", title: "Mentor", image: "/images/mdb-logo.png" }
 ]
 
 export default function TrainingStaff() {

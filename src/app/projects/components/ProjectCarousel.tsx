@@ -1,6 +1,6 @@
 'use client'
-import { useRef } from 'react'
 import { useSectionAnimation } from '../../hooks/useIntersectionObserver'
+import { useAnimationPreferences } from '../../hooks/useAnimationPreferences'
 
 interface ProjectPhase {
   icon: string
@@ -28,13 +28,16 @@ const projectPhases: ProjectPhase[] = [
 
 export default function ProjectCarousel() {
   const { isVisible, elementRef: sectionRef } = useSectionAnimation<HTMLElement>()
+  const { shouldReduceAnimations } = useAnimationPreferences()
+
+  const transitionDuration = shouldReduceAnimations ? 'duration-700' : 'duration-[1500ms]'
 
   return (
     <section ref={sectionRef} className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-white to-[#D1DFF2]">
       <div className="container mx-auto px-3 sm:px-4">
         {/* Mobile/Tablet Layout - Stacked Wide Cards */}
         <div className="max-w-4xl mx-auto lg:hidden">
-          <div className={`space-y-6 sm:space-y-8 transition-all duration-[1500ms] ease-out ${
+          <div className={`space-y-6 sm:space-y-8 transition-all ${transitionDuration} ease-out ${
             isVisible
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-12'
@@ -60,7 +63,7 @@ export default function ProjectCarousel() {
 
         {/* Desktop Layout - Square Grid */}
         <div className="max-w-6xl mx-auto hidden lg:block">
-          <div className={`grid grid-cols-3 gap-8 transition-all duration-[1500ms] ease-out ${
+          <div className={`grid grid-cols-3 gap-8 transition-all ${transitionDuration} ease-out ${
             isVisible
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-12'

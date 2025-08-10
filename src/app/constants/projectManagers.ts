@@ -2,8 +2,8 @@ import { ProjectManager } from '../types/members'
 
 export const projectManagers: ProjectManager[] = [
   {
-    name: "Sample Project Manager",
+    name: "Placeholder Member",
     title: "Project Manager",
-    image: "/logos/mdb_4.svg"
+    image: "/logos/mdb_5.png"
   }
 ]
