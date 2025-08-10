@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { ExecMember, ProjectManager, Member } from '../app/types/members'
+import { ExecMember, ProjectManager, Member, CarouselItem } from '../app/types/members'
 
 // Secure approach: Fetch credentials from server-side API
 let supabaseClient: any = null
@@ -200,6 +200,59 @@ export const uploadImage = async (file: File) => {
     return data
   } catch (error) {
     console.error('Error in uploadImage function:', error)
+    throw error
+  }
+}
+
+// Video upload function
+export const uploadVideo = async (file: File) => {
+  try {
+    // Validate file
+    if (!file) {
+      throw new Error('No file provided')
+    }
+    
+    // Check file size (limit to 10MB for consistency with UI)
+    if (file.size > 10 * 1024 * 1024) {
+      throw new Error('File size must be less than 10MB')
+    }
+    
+    // Check file type
+    if (!file.type.startsWith('video/')) {
+      throw new Error('File must be a video')
+    }
+    
+    // Validate file name
+    if (!file.name || file.name.trim().length === 0) {
+      throw new Error('File must have a valid name')
+    }
+    
+    const supabase = await getSupabaseClient()
+    
+    // Generate unique filename
+    const timestamp = Date.now()
+    const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_')
+    const filename = `${timestamp}-${sanitizedName}`
+    
+    console.log('Uploading video:', { originalName: file.name, filename, size: file.size, type: file.type })
+    
+    const { data, error } = await supabase.storage
+      .from('videos')
+      .upload(filename, file)
+    
+    if (error) {
+      console.error('Supabase upload error:', error)
+      throw error
+    }
+    
+    if (!data) {
+      throw new Error('No data returned from upload')
+    }
+    
+    console.log('Video uploaded successfully:', data.path)
+    return data
+  } catch (error) {
+    console.error('Error in uploadVideo function:', error)
     throw error
   }
 }
@@ -754,6 +807,148 @@ export const deleteMember = async (id: string) => {
     return true
   } catch (error) {
     console.error('Failed to delete member:', error)
+    throw error
+  }
+}
+
+// Carousel management functions
+export const getCarouselItems = async () => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('carousel_items')
+      .select('*')
+      .order('strip', { ascending: true })
+      .order('order', { ascending: true })
+    
+    if (error) throw error
+    
+    return data || []
+  } catch (error) {
+    console.error('Failed to fetch carousel items:', error)
+    throw error
+  }
+}
+
+export const createCarouselItem = async (item: Omit<CarouselItem, 'id' | 'created_at' | 'updated_at'>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    // Validate required fields
+    if (!item.caption?.trim() || !item.src?.trim() || !item.type || !item.strip || !item.order) {
+      throw new Error('Caption, source, type, strip, and order are required')
+    }
+    
+    const { data, error } = await supabase
+      .from('carousel_items')
+      .insert([{
+        type: item.type,
+        src: item.src.trim(),
+        caption: item.caption.trim(),
+        strip: item.strip,
+        order: item.order,
+        image_path: item.image_path || null,
+        video_path: item.video_path || null
+      }])
+      .select()
+    
+    if (error) {
+      console.error('Supabase error creating carousel item:', error)
+      throw error
+    }
+    
+    if (!data || data.length === 0) {
+      throw new Error('No data returned from database insert')
+    }
+    
+    return data[0]
+  } catch (error) {
+    console.error('Failed to create carousel item:', error)
+    throw error
+  }
+}
+
+export const updateCarouselItem = async (id: string, updates: Partial<CarouselItem>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    // Validate that we have at least one field to update
+    if (!updates.caption && !updates.src && !updates.type && !updates.strip && !updates.order && !updates.image_path && !updates.video_path) {
+      throw new Error('At least one field must be provided for update')
+    }
+    
+    // Clean up the updates object
+    const cleanUpdates: any = {}
+    if (updates.caption) cleanUpdates.caption = updates.caption.trim()
+    if (updates.src) cleanUpdates.src = updates.src.trim()
+    if (updates.type) cleanUpdates.type = updates.type
+    if (updates.strip) cleanUpdates.strip = updates.strip
+    if (updates.order) cleanUpdates.order = updates.order
+    if (updates.image_path !== undefined) cleanUpdates.image_path = updates.image_path
+    if (updates.video_path !== undefined) cleanUpdates.video_path = updates.video_path
+    
+    const { data, error } = await supabase
+      .from('carousel_items')
+      .update(cleanUpdates)
+      .eq('id', id)
+      .select()
+    
+    if (error) {
+      console.error('Supabase error updating carousel item:', error)
+      throw error
+    }
+    
+    if (!data || data.length === 0) {
+      throw new Error('No data returned from database update')
+    }
+    
+    return data[0]
+  } catch (error) {
+    console.error('Failed to update carousel item:', error)
+    throw error
+  }
+}
+
+export const deleteCarouselItem = async (id: string) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { error } = await supabase
+      .from('carousel_items')
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Failed to delete carousel item:', error)
+    throw error
+  }
+}
+
+export const reorderCarouselItems = async (strip: number, newOrder: { id: string, order: number }[]) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    // Update each item's order
+    const updatePromises = newOrder.map(({ id, order }) =>
+      supabase
+        .from('carousel_items')
+        .update({ order })
+        .eq('id', id)
+    )
+    
+    const results = await Promise.all(updatePromises)
+    
+    // Check for errors
+    for (const result of results) {
+      if (result.error) throw result.error
+    }
+    
+    return true
+  } catch (error) {
+    console.error('Failed to reorder carousel items:', error)
     throw error
   }
 }

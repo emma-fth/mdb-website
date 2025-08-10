@@ -5,9 +5,12 @@ import { uploadImage, getImageUrl, deleteImage, listAllImages, getBatchImageUrls
 import { useAuth } from '../hooks/useAuth'
 import { useRouter } from 'next/navigation'
 import { useMembers } from '../hooks/useMembers'
-import { ExecMember, ProjectManager, Member } from '../types/members'
+import { useCarousel } from '../hooks/useCarousel'
+import { ExecMember, ProjectManager, Member, CarouselItem } from '../types/members'
 import AddMemberModal from './components/AddMemberModal'
 import EditMemberModal from './components/EditMemberModal'
+import AddCarouselItemModal from './components/AddCarouselItemModal'
+import EditCarouselItemModal from './components/EditCarouselItemModal'
 
 export default function AdminDashboardPage() {
   const [uploading, setUploading] = useState(false)
@@ -16,9 +19,12 @@ export default function AdminDashboardPage() {
   const [error, setError] = useState<string>('')
   const [successMessage, setSuccessMessage] = useState<string>('')
   const [imageCache, setImageCache] = useState<Map<string, string>>(new Map())
-  const [activeTab, setActiveTab] = useState<'images' | 'members'>('images')
+  const [carouselImageCache, setCarouselImageCache] = useState<Map<string, string>>(new Map())
+  const [activeTab, setActiveTab] = useState<'images' | 'members' | 'carousel'>('images')
   const [showAddMember, setShowAddMember] = useState(false)
   const [editingMember, setEditingMember] = useState<{type: 'exec' | 'pm' | 'member', member: any} | null>(null)
+  const [showAddCarouselItem, setShowAddCarouselItem] = useState(false)
+  const [editingCarouselItem, setEditingCarouselItem] = useState<{ type: 'carousel', item: CarouselItem } | null>(null)
   const { user, loading: authLoading, isAuthenticated } = useAuth()
   const router = useRouter()
   const { 
@@ -37,6 +43,64 @@ export default function AdminDashboardPage() {
     removeProjectManager,
     removeMember
   } = useMembers()
+  const {
+    carouselItems,
+    loading: carouselLoading,
+    loadCarouselItems,
+    addCarouselItem,
+    updateCarouselItemById,
+    removeCarouselItem,
+    getItemsByStrip
+  } = useCarousel()
+
+  const loadCarouselImages = useCallback(async () => {
+    try {
+      if (carouselItems.length === 0) return
+      
+      // Extract unique image paths from carousel items
+      const imagePaths = carouselItems
+        .filter(item => item.type === 'image' && item.image_path)
+        .map(item => item.image_path!)
+        .filter((path, index, arr) => arr.indexOf(path) === index) // Remove duplicates
+      
+      if (imagePaths.length === 0) return
+      
+      console.log(`Loading ${imagePaths.length} carousel images...`)
+      
+      // Use batch URL generation for carousel images
+      const urls = await getBatchImageUrls(imagePaths)
+      
+      // Update carousel image cache
+      const newCarouselCache = new Map()
+      imagePaths.forEach((path, index) => {
+        newCarouselCache.set(path, urls[index])
+      })
+      setCarouselImageCache(newCarouselCache)
+      
+      console.log(`✅ Loaded ${urls.length} carousel image URLs`)
+      
+    } catch (error) {
+      console.error('Failed to load carousel images:', error)
+      setError(`Failed to load carousel images: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }, [carouselItems])
+
+  const getCarouselImageUrl = useCallback(async (item: CarouselItem): Promise<string> => {
+    if (item.type === 'video') {
+      const supabase = await getSupabaseClient()
+      const { data } = supabase.storage
+        .from('videos')
+        .getPublicUrl(item.video_path || '')
+      return data.publicUrl
+    }
+    
+    // For images, try to get from cache first
+    if (item.image_path && carouselImageCache.has(item.image_path)) {
+      return carouselImageCache.get(item.image_path)!
+    }
+    
+    return item.src
+  }, [carouselImageCache])
 
   useEffect(() => {
     // Redirect to login if not authenticated
@@ -48,8 +112,16 @@ export default function AdminDashboardPage() {
     // Load existing images when authenticated
     if (!authLoading && isAuthenticated) {
       loadExistingImages(false) // Don't show performance metrics on initial load
+      loadCarouselItems() // Load carousel items
     }
   }, [isAuthenticated, authLoading, router])
+
+  // Load carousel images when carousel items change
+  useEffect(() => {
+    if (carouselItems.length > 0) {
+      loadCarouselImages()
+    }
+  }, [carouselItems, loadCarouselImages])
 
   const loadExistingImages = useCallback(async (showPerformance = true) => {
     try {
@@ -353,6 +425,76 @@ export default function AdminDashboardPage() {
     }
   }
 
+  // Carousel management functions
+  const handleAddCarouselItem = async (itemData: {
+    type: 'image' | 'video'
+    src: string
+    caption: string
+    strip: 1 | 2 | 3
+    order: number
+    mediaFile: File
+  }) => {
+    try {
+      setError('')
+      
+      // Create carousel item data with proper path handling
+      const carouselItemData = {
+        type: itemData.type,
+        src: itemData.src,
+        caption: itemData.caption,
+        strip: itemData.strip,
+        order: itemData.order,
+        image_path: itemData.type === 'image' ? itemData.src : null,
+        video_path: itemData.type === 'video' ? itemData.src : null
+      }
+      
+      await addCarouselItem(carouselItemData)
+      setShowAddCarouselItem(false)
+      setSuccessMessage(`Successfully added carousel item to strip ${itemData.strip}`)
+      setTimeout(() => setSuccessMessage(''), 3000)
+      
+      // Refresh carousel items
+      await loadCarouselItems()
+    } catch (error) {
+      console.error('Error adding carousel item:', error)
+      setError(`Failed to add carousel item: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
+  const handleUpdateCarouselItem = async (id: string, updates: Partial<CarouselItem> & { newMediaFile?: File }) => {
+    try {
+      setError('')
+      
+      // Clean up the updates object
+      const cleanUpdates = { ...updates }
+      delete (cleanUpdates as any).newMediaFile
+      
+      await updateCarouselItemById(id, cleanUpdates)
+      setEditingCarouselItem(null)
+      setSuccessMessage('Successfully updated carousel item')
+      setTimeout(() => setSuccessMessage(''), 3000)
+      
+      // Refresh carousel items
+      await loadCarouselItems()
+    } catch (error) {
+      console.error('Error updating carousel item:', error)
+      setError(`Failed to update carousel item: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
+  const handleDeleteCarouselItem = async (id: string) => {
+    try {
+      await removeCarouselItem(id)
+      setSuccessMessage('Successfully deleted carousel item')
+      setTimeout(() => setSuccessMessage(''), 3000)
+      
+      // Refresh carousel items
+      await loadCarouselItems()
+    } catch (error) {
+      setError(`Failed to delete carousel item: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
   // Show loading state while checking authentication
   if (authLoading) {
     return (
@@ -415,6 +557,16 @@ export default function AdminDashboardPage() {
               }`}
             >
               Member Management
+            </button>
+            <button
+              onClick={() => setActiveTab('carousel')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'carousel'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Carousel Management
             </button>
           </div>
         </div>
@@ -695,6 +847,215 @@ export default function AdminDashboardPage() {
           </>
         )}
 
+        {/* Carousel Management Tab */}
+        {activeTab === 'carousel' && (
+          <>
+            {/* Add Carousel Item Section */}
+            <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">Carousel Management</h2>
+                <div className="flex gap-2">
+                  <button
+                    onClick={loadCarouselItems}
+                    disabled={carouselLoading}
+                    className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors disabled:opacity-50"
+                  >
+                    {carouselLoading ? 'Loading...' : 'Refresh'}
+                  </button>
+                  <button
+                    onClick={loadCarouselImages}
+                    disabled={carouselLoading}
+                    className="px-4 py-2 bg-mdb-blue text-white rounded hover:bg-mdb-blue/90 transition-colors disabled:opacity-50"
+                  >
+                    Refresh Images
+                  </button>
+                  <button
+                    onClick={() => setShowAddCarouselItem(true)}
+                    className="px-4 py-2 bg-mdb-blue text-white rounded hover:bg-mdb-blue/90 transition-colors"
+                  >
+                    Add Carousel Item
+                  </button>
+                </div>
+              </div>
+
+              {/* Carousel Strips */}
+              {carouselLoading ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-mdb-blue mx-auto mb-2"></div>
+                  <p className="text-gray-600">Loading carousel items...</p>
+                </div>
+              ) : carouselImageCache.size === 0 && carouselItems.some(item => item.type === 'image') ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-mdb-blue mx-auto mb-2"></div>
+                  <p className="text-gray-600">Loading carousel images...</p>
+                  <p className="text-sm text-gray-500 mt-2">Converting storage paths to display URLs...</p>
+                </div>
+              ) : (
+                <>
+                  {/* Strip 1 - Top (Right to Left) */}
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold mb-4 text-mdb-blue">Top Strip (Right to Left)</h3>
+                    {getItemsByStrip(1).length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {getItemsByStrip(1).map((item) => (
+                          <div key={item.id} className="bg-gray-50 rounded-lg p-4 border">
+                            <div className="mb-3">
+                              {item.type === 'image' ? (
+                                <img
+                                  src={item.image_path ? carouselImageCache.get(item.image_path) || item.src : item.src}
+                                  alt={item.caption}
+                                  className="w-full h-32 object-cover rounded"
+                                />
+                              ) : (
+                                <video
+                                  key={item.id}
+                                  src={`${process.env.SUPABASE_URL}/storage/v1/object/public/videos/${item.video_path}`}
+                                  className="w-full h-32 object-cover rounded"
+                                  autoPlay
+                                  loop
+                                  muted
+                                  playsInline
+                                />
+                              )}
+                            </div>
+                            <div className="mb-3">
+                              <h4 className="font-semibold text-gray-900 text-sm">{item.caption}</h4>
+                              <p className="text-xs text-gray-500">Order: {item.order}</p>
+                              <p className="text-xs text-gray-500">Type: {item.type}</p>
+                            </div>
+                            <div className="flex space-x-2">
+                              <button
+                                onClick={() => setEditingCarouselItem({ type: 'carousel', item })}
+                                className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleDeleteCarouselItem(item.id!)}
+                                className="px-2 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 text-center py-8">No items in top strip yet</p>
+                    )}
+                  </div>
+
+                  {/* Strip 2 - Middle (Left to Right) */}
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold mb-4 text-mdb-blue">Middle Strip (Left to Right)</h3>
+                    {getItemsByStrip(2).length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {getItemsByStrip(2).map((item) => (
+                          <div key={item.id} className="bg-gray-50 rounded-lg p-4 border">
+                            <div className="mb-3">
+                              {item.type === 'image' ? (
+                                <img
+                                  src={item.image_path ? carouselImageCache.get(item.image_path) || item.src : item.src}
+                                  alt={item.caption}
+                                  className="w-full h-32 object-cover rounded"
+                                />
+                              ) : (
+                                <video
+                                  key={item.id}
+                                  src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/videos/${item.video_path}`}
+                                  className="w-full h-32 object-cover rounded"
+                                  autoPlay
+                                  loop
+                                  muted
+                                  playsInline
+                                />
+                              )}
+                            </div>
+                            <div className="mb-3">
+                              <h4 className="font-semibold text-gray-900 text-sm">{item.caption}</h4>
+                              <p className="text-xs text-gray-500">Order: {item.order}</p>
+                              <p className="text-xs text-gray-500">Type: {item.type}</p>
+                            </div>
+                            <div className="flex space-x-2">
+                              <button
+                                onClick={() => setEditingCarouselItem({ type: 'carousel', item })}
+                                className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleDeleteCarouselItem(item.id!)}
+                                className="px-2 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 text-center py-8">No items in middle strip yet</p>
+                    )}
+                  </div>
+
+                  {/* Strip 3 - Bottom (Right to Left) */}
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold mb-4 text-mdb-blue">Bottom Strip (Right to Left)</h3>
+                    {getItemsByStrip(3).length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {getItemsByStrip(3).map((item) => (
+                          <div key={item.id} className="bg-gray-50 rounded-lg p-4 border">
+                            <div className="mb-3">
+                              {item.type === 'image' ? (
+                                <img
+                                  src={item.image_path ? carouselImageCache.get(item.image_path) || item.src : item.src}
+                                  alt={item.caption}
+                                  className="w-full h-32 object-cover rounded"
+                                />
+                              ) : (
+                                <video
+                                  key={item.id}
+                                  src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/videos/${item.video_path}`}
+                                  className="w-full h-32 object-cover rounded"
+                                  autoPlay
+                                  loop
+                                  muted
+                                  playsInline
+                                />
+                              )}
+                            </div>
+                            <div className="mb-3">
+                              <h4 className="font-semibold text-gray-900 text-sm">{item.caption}</h4>
+                              <p className="text-xs text-gray-500">Order: {item.order}</p>
+                              <p className="text-xs text-gray-500">Type: {item.type}</p>
+                            </div>
+                            <div className="flex space-x-2">
+                              <button
+                                onClick={() => setEditingCarouselItem({ type: 'carousel', item })}
+                                className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleDeleteCarouselItem(item.id!)}
+                                className="px-2 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 text-center py-8">No items in bottom strip yet</p>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        )}
+
         {/* Status Check */}
         <div className="border rounded-lg p-4 bg-gray-50">
           <h2 className="text-xl font-semibold mb-4">System Status</h2>
@@ -722,6 +1083,14 @@ export default function AdminDashboardPage() {
             <div className="flex items-center">
               <span className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
               <span className="text-sm">Performance: Optimized</span>
+            </div>
+            <div className="flex items-center">
+              <span className="w-3 h-3 bg-indigo-500 rounded-full mr-2"></span>
+              <span className="text-sm">{carouselItems.length} Carousel Items</span>
+            </div>
+            <div className="flex items-center">
+              <span className="w-3 h-3 bg-pink-500 rounded-full mr-2"></span>
+              <span className="text-sm">Carousel Cache: {carouselImageCache.size} URLs</span>
             </div>
           </div>
         </div>
@@ -753,6 +1122,21 @@ export default function AdminDashboardPage() {
           onClose={() => setEditingMember(null)}
           onSubmit={handleUpdateMember}
           member={editingMember}
+        />
+
+        {/* Add Carousel Item Modal */}
+        <AddCarouselItemModal
+          isOpen={showAddCarouselItem}
+          onClose={() => setShowAddCarouselItem(false)}
+          onSubmit={handleAddCarouselItem}
+        />
+
+        {/* Edit Carousel Item Modal */}
+        <EditCarouselItemModal
+          isOpen={!!editingCarouselItem}
+          onClose={() => setEditingCarouselItem(null)}
+          onSubmit={handleUpdateCarouselItem}
+          item={editingCarouselItem}
         />
       </div>
     </div>
