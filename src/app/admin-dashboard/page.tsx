@@ -4,6 +4,10 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { uploadImage, getImageUrl, deleteImage, listAllImages, getBatchImageUrls } from '../../utils/supabase'
 import { useAuth } from '../hooks/useAuth'
 import { useRouter } from 'next/navigation'
+import { useMembers } from '../hooks/useMembers'
+import { ExecMember, ProjectManager, Member } from '../types/members'
+import AddMemberModal from './components/AddMemberModal'
+import EditMemberModal from './components/EditMemberModal'
 
 export default function AdminDashboardPage() {
   const [uploading, setUploading] = useState(false)
@@ -12,8 +16,27 @@ export default function AdminDashboardPage() {
   const [error, setError] = useState<string>('')
   const [successMessage, setSuccessMessage] = useState<string>('')
   const [imageCache, setImageCache] = useState<Map<string, string>>(new Map())
+  const [activeTab, setActiveTab] = useState<'images' | 'members'>('images')
+  const [showAddMember, setShowAddMember] = useState(false)
+  const [editingMember, setEditingMember] = useState<{type: 'exec' | 'pm' | 'member', member: any} | null>(null)
   const { user, loading: authLoading, isAuthenticated } = useAuth()
   const router = useRouter()
+  const { 
+    execMembers, 
+    projectManagers, 
+    members, 
+    loading: membersLoading,
+    loadAllMembers,
+    addExecMember,
+    addProjectManager,
+    addMember,
+    updateExecMemberById,
+    updateProjectManagerById,
+    updateMemberById,
+    removeExecMember,
+    removeProjectManager,
+    removeMember
+  } = useMembers()
 
   useEffect(() => {
     // Redirect to login if not authenticated
@@ -179,6 +202,62 @@ export default function AdminDashboardPage() {
     }
   }
 
+  const handleAddMember = async (memberData: { name: string; title: string; image: string; image_path?: string }, type: 'exec' | 'pm' | 'member') => {
+    try {
+      if (type === 'exec') {
+        await addExecMember(memberData)
+      } else if (type === 'pm') {
+        await addProjectManager(memberData)
+      } else {
+        await addMember(memberData)
+      }
+      setShowAddMember(false)
+      setSuccessMessage(`Successfully added ${memberData.name}`)
+      setTimeout(() => setSuccessMessage(''), 3000)
+      // Refresh members list to show the new member
+      await loadAllMembers()
+    } catch (error) {
+      setError(`Failed to add member: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
+  const handleUpdateMember = async (id: string, updates: Partial<ExecMember | ProjectManager | Member>, type: 'exec' | 'pm' | 'member') => {
+    try {
+      if (type === 'exec') {
+        await updateExecMemberById(id, updates)
+      } else if (type === 'pm') {
+        await updateProjectManagerById(id, updates)
+      } else {
+        await updateMemberById(id, updates)
+      }
+      setEditingMember(null)
+      setSuccessMessage(`Successfully updated member`)
+      setTimeout(() => setSuccessMessage(''), 3000)
+      // Refresh members list to show the updated member
+      await loadAllMembers()
+    } catch (error) {
+      setError(`Failed to update member: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
+  const handleDeleteMember = async (id: string, type: 'exec' | 'pm' | 'member') => {
+    try {
+      if (type === 'exec') {
+        await removeExecMember(id)
+      } else if (type === 'pm') {
+        await removeProjectManager(id)
+      } else {
+        await removeMember(id)
+      }
+      setSuccessMessage(`Successfully deleted member`)
+      setTimeout(() => setSuccessMessage(''), 3000)
+      // Refresh members list to show the updated list
+      await loadAllMembers()
+    } catch (error) {
+      setError(`Failed to delete member: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
   // Show loading state while checking authentication
   if (authLoading) {
     return (
@@ -201,131 +280,324 @@ export default function AdminDashboardPage() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-                      <div className="flex justify-between items-center mb-4">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">MDB Admin Dashboard</h1>
-                <p className="text-gray-600">Manage website images and content</p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-gray-600">Logged in as:</p>
-                <p className="font-medium text-gray-900">{user?.email}</p>
-                <button
-                  onClick={signOut}
-                  className="mt-2 px-4 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
-                >
-                  Sign Out
-                </button>
-              </div>
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">MDB Admin Dashboard</h1>
+              <p className="text-gray-600">Manage website images and content</p>
             </div>
+            <div className="text-right">
+              <p className="text-sm text-gray-600">Logged in as:</p>
+              <p className="font-medium text-gray-900">{user?.email}</p>
+              <button
+                onClick={signOut}
+                className="mt-2 px-4 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Upload Section */}
+        {/* Tab Navigation */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Upload Images</h2>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-mdb-blue transition-colors">
-            <div className="mb-4">
-              <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileUpload}
-              disabled={uploading}
-              className="hidden"
-              id="file-upload"
-              multiple
-            />
-            <label
-              htmlFor="file-upload"
-              className="cursor-pointer inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-mdb-blue hover:bg-mdb-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+          <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+            <button
+              onClick={() => setActiveTab('images')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'images'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              {uploading ? 'Uploading...' : 'Choose Images to Upload'}
-            </label>
-            <p className="mt-2 text-sm text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            {uploading && (
-              <div className="mt-4">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-mdb-blue mx-auto"></div>
-                <p className="text-gray-600 mt-2">Processing image...</p>
-              </div>
-            )}
+              Image Management
+            </button>
+            <button
+              onClick={() => setActiveTab('members')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'members'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Member Management
+            </button>
           </div>
         </div>
 
-        {/* Images Display */}
-        {loadingImages ? (
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-mdb-blue mx-auto mb-4"></div>
-              <p className="text-gray-600">Loading existing images...</p>
-              <p className="text-sm text-gray-500 mt-2">This should be much faster now! 🚀</p>
-            </div>
-          </div>
-        ) : uploadedImages.length > 0 ? (
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">Manage Images ({uploadedImages.length})</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => loadExistingImages(true)}
-                  disabled={loadingImages}
-                  className="px-4 py-2 bg-mdb-blue text-white rounded hover:bg-mdb-blue/90 transition-colors disabled:opacity-50"
+        {/* Image Management Tab */}
+        {activeTab === 'images' && (
+          <>
+            {/* Upload Section */}
+            <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+              <h2 className="text-xl font-semibold mb-4">Upload Images</h2>
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-mdb-blue transition-colors">
+                <div className="mb-4">
+                  <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  disabled={uploading}
+                  className="hidden"
+                  id="file-upload"
+                  multiple
+                />
+                <label
+                  htmlFor="file-upload"
+                  className="cursor-pointer inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-mdb-blue hover:bg-mdb-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
-                  {loadingImages ? 'Loading...' : 'Refresh'}
-                </button>
-                <button
-                  onClick={clearAllImages}
-                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-                >
-                  Clear All Images
-                </button>
+                  {uploading ? 'Uploading...' : 'Choose Images to Upload'}
+                </label>
+                <p className="mt-2 text-sm text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                {uploading && (
+                  <div className="mt-4">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-mdb-blue mx-auto"></div>
+                    <p className="text-gray-600 mt-2">Processing image...</p>
+                  </div>
+                )}
               </div>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {uploadedImages.map((image, index) => (
-                <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="relative group">
-                    <img
-                      src={image.url}
-                      alt={image.name}
-                      className="w-full h-40 object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
-                      <button
-                        onClick={() => removeImage(image.path)}
-                        className="opacity-0 group-hover:opacity-100 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-red-700 transition-all duration-200 transform scale-90 group-hover:scale-100"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                  <div className="p-3">
-                    <p className="text-sm text-gray-800 font-medium mb-1 truncate" title={image.name}>
-                      {image.name}
-                    </p>
-                    <p className="text-xs text-gray-500 font-mono truncate" title={image.path}>
-                      {image.path}
-                    </p>
+
+            {/* Images Display */}
+            {loadingImages ? (
+              <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <div className="text-center py-12">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-mdb-blue mx-auto mb-4"></div>
+                  <p className="text-gray-600">Loading existing images...</p>
+                  <p className="text-sm text-gray-500 mt-2">This should be much faster now! 🚀</p>
+                </div>
+              </div>
+            ) : uploadedImages.length > 0 ? (
+              <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-semibold">Manage Images ({uploadedImages.length})</h2>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => loadExistingImages(true)}
+                      disabled={loadingImages}
+                      className="px-4 py-2 bg-mdb-blue text-white rounded hover:bg-mdb-blue/90 transition-colors disabled:opacity-50"
+                    >
+                      {loadingImages ? 'Loading...' : 'Refresh'}
+                    </button>
+                    <button
+                      onClick={clearAllImages}
+                      className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+                    >
+                      Clear All Images
+                    </button>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <div className="text-center py-12">
-              <div className="mb-4">
-                <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                  {uploadedImages.map((image, index) => (
+                    <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                      <div className="relative group">
+                        <img
+                          src={image.url}
+                          alt={image.name}
+                          className="w-full h-40 object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+                          <button
+                            onClick={() => removeImage(image.path)}
+                            className="opacity-0 group-hover:opacity-100 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-red-700 transition-all duration-200 transform scale-90 group-hover:scale-100"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      <div className="p-3">
+                        <p className="text-sm text-gray-800 font-medium mb-1 truncate" title={image.name}>
+                          {image.name}
+                        </p>
+                        <p className="text-xs text-gray-500 font-mono truncate" title={image.path}>
+                          {image.path}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No images yet</h3>
-              <p className="text-gray-500">Upload your first image to get started</p>
+            ) : (
+              <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <div className="text-center py-12">
+                  <div className="mb-4">
+                    <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                      <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">No images yet</h3>
+                  <p className="text-gray-500">Upload your first image to get started</p>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Member Management Tab */}
+        {activeTab === 'members' && (
+          <>
+            {/* Add Member Section */}
+            <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">Member Management</h2>
+                <div className="flex gap-2">
+                  <button
+                    onClick={loadAllMembers}
+                    disabled={membersLoading}
+                    className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors disabled:opacity-50"
+                  >
+                    {membersLoading ? 'Loading...' : 'Refresh'}
+                  </button>
+                  <button
+                    onClick={() => setShowAddMember(true)}
+                    className="px-4 py-2 bg-mdb-blue text-white rounded hover:bg-mdb-blue/90 transition-colors"
+                  >
+                    Add New Member
+                  </button>
+                </div>
+              </div>
+
+              {/* Executive Members */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4 text-mdb-blue">Executive Members</h3>
+                {membersLoading ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-mdb-blue mx-auto mb-2"></div>
+                    <p className="text-gray-600">Loading...</p>
+                  </div>
+                ) : execMembers.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {execMembers.map((member) => (
+                      <div key={member.id} className="bg-gray-50 rounded-lg p-4 border">
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-16 h-16 rounded-full object-cover"
+                          />
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-gray-900">{member.name}</h4>
+                            <p className="text-sm text-gray-600">{member.title}</p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => setEditingMember({ type: 'exec', member })}
+                              className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeleteMember(member.id!, 'exec')}
+                              className="px-2 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-gray-500 text-center py-8">No executive members yet</p>
+                )}
+              </div>
+
+              {/* Project Managers */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4 text-mdb-blue">Project Managers</h3>
+                {membersLoading ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-mdb-blue mx-auto mb-2"></div>
+                    <p className="text-gray-600">Loading...</p>
+                  </div>
+                ) : projectManagers.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projectManagers.map((member) => (
+                      <div key={member.id} className="bg-gray-50 rounded-lg p-4 border">
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-16 h-16 rounded-full object-cover"
+                          />
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-gray-900">{member.name}</h4>
+                            <p className="text-sm text-gray-600">{member.title}</p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => setEditingMember({ type: 'pm', member })}
+                              className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeleteMember(member.id!, 'pm')}
+                              className="px-2 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-gray-500 text-center py-8">No project managers yet</p>
+                )}
+              </div>
+
+              {/* General Members */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4 text-mdb-blue">General Members</h3>
+                {membersLoading ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-mdb-blue mx-auto mb-2"></div>
+                    <p className="text-gray-600">Loading...</p>
+                  </div>
+                ) : members.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {members.map((member) => (
+                      <div key={member.id} className="bg-gray-50 rounded-lg p-4 border">
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-16 h-16 rounded-full object-cover"
+                          />
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-gray-900">{member.name}</h4>
+                            <p className="text-sm text-gray-600">{member.title}</p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => setEditingMember({ type: 'member', member })}
+                              className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeleteMember(member.id!, 'member')}
+                              className="px-2 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-gray-500 text-center py-8">No general members yet</p>
+                )}
+              </div>
             </div>
-          </div>
+          </>
         )}
 
         {/* Status Check */}
@@ -372,6 +644,21 @@ export default function AdminDashboardPage() {
             <strong>Error:</strong> {error}
           </div>
         )}
+
+        {/* Add Member Modal */}
+        <AddMemberModal
+          isOpen={showAddMember}
+          onClose={() => setShowAddMember(false)}
+          onSubmit={handleAddMember}
+        />
+
+        {/* Edit Member Modal */}
+        <EditMemberModal
+          isOpen={!!editingMember}
+          onClose={() => setEditingMember(null)}
+          onSubmit={handleUpdateMember}
+          member={editingMember}
+        />
       </div>
     </div>
   )

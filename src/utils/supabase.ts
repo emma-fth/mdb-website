@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { ExecMember, ProjectManager, Member } from '../app/types/members'
 
 // Secure approach: Fetch credentials from server-side API
 let supabaseClient: any = null
@@ -257,6 +258,241 @@ export const deleteImage = async (path: string) => {
     return true
   } catch (error) {
     console.error('Error in deleteImage function:', error)
+    throw error
+  }
+}
+
+// Member management functions
+export const getExecMembers = async () => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('exec_members')
+      .select('*')
+      .order('created_at', { ascending: true })
+    
+    if (error) throw error
+    
+    // Convert image_path to full URLs
+    const membersWithUrls = await Promise.all(
+      data.map(async (member: any) => ({
+        ...member,
+        image: member.image_path ? await getImageUrl(member.image_path) : member.image
+      }))
+    )
+    
+    return membersWithUrls
+  } catch (error) {
+    console.error('Failed to fetch exec members:', error)
+    throw error
+  }
+}
+
+export const getProjectManagers = async () => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('project_managers')
+      .select('*')
+      .order('created_at', { ascending: true })
+    
+    if (error) throw error
+    
+    // Convert image_path to full URLs
+    const membersWithUrls = await Promise.all(
+      data.map(async (member: any) => ({
+        ...member,
+        image: member.image_path ? await getImageUrl(member.image_path) : member.image
+      }))
+    )
+    
+    return membersWithUrls
+  } catch (error) {
+    console.error('Failed to fetch project managers:', error)
+    throw error
+  }
+}
+
+export const getMembers = async () => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('members')
+      .select('*')
+      .order('created_at', { ascending: true })
+    
+    if (error) throw error
+    
+    // Convert image_path to full URLs
+    const membersWithUrls = await Promise.all(
+      data.map(async (member: any) => ({
+        ...member,
+        image: member.image_path ? await getImageUrl(member.image_path) : member.image
+      }))
+    )
+    
+    return membersWithUrls
+  } catch (error) {
+    console.error('Failed to fetch members:', error)
+    throw error
+  }
+}
+
+export const createExecMember = async (member: Omit<ExecMember, 'id' | 'created_at' | 'updated_at'>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('exec_members')
+      .insert([member])
+      .select()
+    
+    if (error) throw error
+    return data[0]
+  } catch (error) {
+    console.error('Failed to create exec member:', error)
+    throw error
+  }
+}
+
+export const createProjectManager = async (member: Omit<ProjectManager, 'id' | 'created_at' | 'updated_at'>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('project_managers')
+      .insert([member])
+      .select()
+    
+    if (error) throw error
+    return data[0]
+  } catch (error) {
+    console.error('Failed to create project manager:', error)
+    throw error
+    }
+}
+
+export const createMember = async (member: Omit<Member, 'id' | 'created_at' | 'updated_at'>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('members')
+      .insert([member])
+      .select()
+    
+    if (error) throw error
+    return data[0]
+  } catch (error) {
+    console.error('Failed to create member:', error)
+    throw error
+  }
+}
+
+export const updateExecMember = async (id: string, updates: Partial<ExecMember>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('exec_members')
+      .update(updates)
+      .eq('id', id)
+      .select()
+    
+    if (error) throw error
+    return data[0]
+  } catch (error) {
+    console.error('Failed to update exec member:', error)
+    throw error
+  }
+}
+
+export const updateProjectManager = async (id: string, updates: Partial<ProjectManager>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('project_managers')
+      .update(updates)
+      .eq('id', id)
+      .select()
+    
+    if (error) throw error
+    return data[0]
+  } catch (error) {
+    console.error('Failed to update project manager:', error)
+    throw error
+  }
+}
+
+export const updateMember = async (id: string, updates: Partial<Member>) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { data, error } = await supabase
+      .from('members')
+      .update(updates)
+      .eq('id', id)
+      .select()
+    
+    if (error) throw error
+    return data[0]
+  } catch (error) {
+    console.error('Failed to update member:', error)
+    throw error
+  }
+}
+
+export const deleteExecMember = async (id: string) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { error } = await supabase
+      .from('exec_members')
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Failed to delete exec member:', error)
+    throw error
+  }
+}
+
+export const deleteProjectManager = async (id: string) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { error } = await supabase
+      .from('project_managers')
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Failed to delete project manager:', error)
+    throw error
+  }
+}
+
+export const deleteMember = async (id: string) => {
+  try {
+    const supabase = await getSupabaseClient()
+    
+    const { error } = await supabase
+      .from('members')
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  } catch (error) {
+    console.error('Failed to delete member:', error)
     throw error
   }
 }
