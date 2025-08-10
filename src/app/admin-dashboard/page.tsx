@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import { uploadImage, getImageUrl, deleteImage, listAllImages, getBatchImageUrls, safeDeleteOldImage, validateImageAccess, getSupabaseClient } from '../../utils/supabase'
 import { useAuth } from '../hooks/useAuth'
 import { useRouter } from 'next/navigation'
@@ -642,11 +643,12 @@ export default function AdminDashboardPage() {
                   {uploadedImages.map((image, index) => (
                     <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                       <div className="relative group">
-                        <img
+                        <Image
                           src={image.url}
                           alt={image.name}
+                          width={400}
+                          height={160}
                           className="w-full h-40 object-cover"
-                          loading="lazy"
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
                           <button
@@ -722,9 +724,11 @@ export default function AdminDashboardPage() {
                     {execMembers.map((member) => (
                       <div key={member.id} className="bg-gray-50 rounded-lg p-4 border">
                         <div className="flex items-center space-x-3">
-                          <img
+                          <Image
                             src={member.image}
                             alt={member.name}
+                            width={64}
+                            height={64}
                             className="w-16 h-16 rounded-full object-cover"
                           />
                           <div className="flex-1">
@@ -767,9 +771,11 @@ export default function AdminDashboardPage() {
                     {projectManagers.map((member) => (
                       <div key={member.id} className="bg-gray-50 rounded-lg p-4 border">
                         <div className="flex items-center space-x-3">
-                          <img
+                          <Image
                             src={member.image}
                             alt={member.name}
+                            width={64}
+                            height={64}
                             className="w-16 h-16 rounded-full object-cover"
                           />
                           <div className="flex-1">
@@ -812,9 +818,11 @@ export default function AdminDashboardPage() {
                     {members.map((member) => (
                       <div key={member.id} className="bg-gray-50 rounded-lg p-4 border">
                         <div className="flex items-center space-x-3">
-                          <img
+                          <Image
                             src={member.image}
                             alt={member.name}
+                            width={64}
+                            height={64}
                             className="w-16 h-16 rounded-full object-cover"
                           />
                           <div className="flex-1">
@@ -901,9 +909,11 @@ export default function AdminDashboardPage() {
                           <div key={item.id} className="bg-gray-50 rounded-lg p-4 border">
                             <div className="mb-3">
                               {item.type === 'image' ? (
-                                <img
+                                <Image
                                   src={item.image_path ? carouselImageCache.get(item.image_path) || item.src : item.src}
                                   alt={item.caption}
+                                  width={400}
+                                  height={128}
                                   className="w-full h-32 object-cover rounded"
                                 />
                               ) : (
@@ -954,9 +964,11 @@ export default function AdminDashboardPage() {
                           <div key={item.id} className="bg-gray-50 rounded-lg p-4 border">
                             <div className="mb-3">
                               {item.type === 'image' ? (
-                                <img
+                                <Image
                                   src={item.image_path ? carouselImageCache.get(item.image_path) || item.src : item.src}
                                   alt={item.caption}
+                                  width={400}
+                                  height={128}
                                   className="w-full h-32 object-cover rounded"
                                 />
                               ) : (
@@ -1007,9 +1019,11 @@ export default function AdminDashboardPage() {
                           <div key={item.id} className="bg-gray-50 rounded-lg p-4 border">
                             <div className="mb-3">
                               {item.type === 'image' ? (
-                                <img
+                                <Image
                                   src={item.image_path ? carouselImageCache.get(item.image_path) || item.src : item.src}
                                   alt={item.caption}
+                                  width={400}
+                                  height={128}
                                   className="w-full h-32 object-cover rounded"
                                 />
                               ) : (

@@ -235,7 +235,7 @@ export default function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberM
                     </svg>
                   </div>
                   <h4 className="text-lg font-medium text-gray-900 mb-2">Fill out the form to see preview</h4>
-                  <p className="text-gray-500">Enter the member's name, title, and upload an image to see how they'll appear on the website.</p>
+                  <p className="text-gray-500">Enter the member&apos;s name, title, and upload an image to see how they&apos;ll appear on the website.</p>
                 </div>
               )}
             </div>

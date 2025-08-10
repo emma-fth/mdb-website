@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { CarouselItem } from '../../types/members'
 import { uploadImage, uploadVideo } from '../../../utils/supabase'
 
@@ -195,9 +196,11 @@ export default function EditCarouselItemModal({ isOpen, onClose, onSubmit, item 
             </label>
             <div className="border border-gray-300 rounded-md p-3 bg-gray-50">
               {type === 'image' ? (
-                <img 
+                <Image 
                   src={item.item.image_path || item.item.src} 
                   alt="Current media" 
+                  width={400}
+                  height={128}
                   className="w-full h-32 object-cover rounded"
                 />
               ) : (
