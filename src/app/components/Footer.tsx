@@ -1,7 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuth } from '../hooks/useAuth'
 
 export default function Footer() {
+  const { isAuthenticated, user } = useAuth()
+
   return (
     <footer className="w-full bg-mdb-light-blue/80 backdrop-blur-md border-t border-mdb-light-blue shadow-lg py-8 md:py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -11,7 +16,7 @@ export default function Footer() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <div className="flex items-center mb-4">
               <Image
-                src="/logos/mdb_4.svg"
+                src="/logos/mdb_5.png"
                 alt="MDB Logo"
                 width={80}
                 height={80}
@@ -80,6 +85,24 @@ export default function Footer() {
                 >
                   Email
                 </a>
+              </div>
+            </div>
+
+            {/* Admin Section */}
+            <div className="text-center sm:text-left">
+              <h4 className="text-base sm:text-lg font-raleway-bold text-mdb-blue mb-3 sm:mb-4">Admin</h4>
+              <div className="space-y-1 sm:space-y-2">
+                <Link 
+                  href="/admin-login" 
+                  className="block text-gray-700 hover:text-mdb-blue transition-all duration-200 text-sm sm:text-base hover:scale-110"
+                >
+                  {isAuthenticated ? 'Dashboard' : 'Log in'}
+                </Link>
+                {isAuthenticated && (
+                  <div className="text-xs text-green-600 font-medium">
+                    ✓ {user?.email}
+                  </div>
+                )}
               </div>
             </div>
           </div>

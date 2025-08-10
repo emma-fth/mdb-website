@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useAnimationLoad } from '../hooks/useAnimationLoad'
+import { submitContactForm } from '../../utils/supabase'
 
 export default function Contact() {
   const { isLoaded } = useAnimationLoad()
@@ -10,11 +11,32 @@ export default function Contact() {
     subject: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({ type: null, message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
+    
+    try {
+      await submitContactForm(formData)
+      setSubmitStatus({ 
+        type: 'success', 
+        message: 'Thank you! Your message has been sent successfully.' 
+      })
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      setSubmitStatus({ 
+        type: 'error', 
+        message: error instanceof Error ? error.message : 'Failed to send message. Please try again.' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -112,12 +134,24 @@ export default function Contact() {
             
             <button
               type="submit"
-              className="w-full bg-mdb-blue text-white px-8 py-4 rounded-xl font-raleway-semibold text-lg hover:bg-mdb-gold hover:text-mdb-blue hover:scale-105 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
+              disabled={isSubmitting}
+              className="w-full bg-mdb-blue text-white px-8 py-4 rounded-xl font-raleway-semibold text-lg hover:bg-mdb-gold hover:text-mdb-blue hover:scale-105 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              Send Message
-              <span className="ml-2 text-xl">→</span>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+              <span className="ml-2 text-xl">{isSubmitting ? '⏳' : '→'}</span>
             </button>
           </form>
+
+          {/* Status Messages */}
+          {submitStatus.type && (
+            <div className={`mt-4 p-4 rounded-lg ${
+              submitStatus.type === 'success' 
+                ? 'bg-green-100 border border-green-400 text-green-700' 
+                : 'bg-red-100 border border-red-400 text-red-700'
+            }`}>
+              {submitStatus.message}
+            </div>
+          )}
 
           {/* Contact Info */}
           <div className="mt-8 pt-6 border-t border-white/30">
