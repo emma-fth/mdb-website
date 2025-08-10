@@ -6,31 +6,33 @@ import { ExecMember, ProjectManager, Member } from '../../types/members'
 interface AddMemberModalProps {
   isOpen: boolean
   onClose: () => void
-  onSubmit: (memberData: { name: string; title: string; image: string; image_path?: string }, type: 'exec' | 'pm' | 'member') => Promise<void>
+  onSubmit: (memberData: { name: string; title: string; imageFile: File }, type: 'exec' | 'pm' | 'member') => Promise<void>
 }
 
 export default function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     title: '',
-    image: '',
-    image_path: ''
+    imageFile: null as File | null
   })
   const [memberType, setMemberType] = useState<'exec' | 'pm' | 'member'>('member')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [previewUrl, setPreviewUrl] = useState<string>('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formData.name.trim() || !formData.title.trim() || !formData.image.trim()) {
+    if (!formData.name.trim() || !formData.title.trim() || !formData.imageFile) {
       return
     }
 
     setIsSubmitting(true)
     try {
-      await onSubmit(formData, memberType)
+      // TypeScript knows imageFile is not null here due to the check above
+      await onSubmit({ ...formData, imageFile: formData.imageFile! }, memberType)
       // Reset form
-      setFormData({ name: '', title: '', image: '', image_path: '' })
+      setFormData({ name: '', title: '', imageFile: null })
       setMemberType('member')
+      setPreviewUrl('')
     } catch (error) {
       // Error handling is done in the parent component
     } finally {
@@ -43,6 +45,26 @@ export default function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberM
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setFormData(prev => ({ ...prev, imageFile: file }))
+      
+      // Create preview URL
+      const url = URL.createObjectURL(file)
+      setPreviewUrl(url)
+    }
+  }
+
+  const handleClose = () => {
+    // Clean up preview URL
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl)
+    }
+    setPreviewUrl('')
+    onClose()
+  }
+
   if (!isOpen) return null
 
   return (
@@ -52,7 +74,7 @@ export default function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberM
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold text-gray-900">Add New Member</h2>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="text-gray-400 hover:text-gray-600 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,57 +160,60 @@ export default function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberM
               />
             </div>
 
-            {/* Image URL Field */}
+            {/* Image Upload Field */}
             <div>
-              <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
-                Image URL *
+              <label htmlFor="imageFile" className="block text-sm font-medium text-gray-700 mb-2">
+                Profile Image *
               </label>
-              <input
-                type="url"
-                id="image"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mdb-blue focus:border-mdb-blue"
-                placeholder="https://example.com/image.jpg"
-                required
-              />
-              <p className="text-xs text-gray-500 mt-1">
-                Enter a direct link to the member's profile image
-              </p>
-            </div>
-
-            {/* Image Path Field (Optional) */}
-            <div>
-              <label htmlFor="image_path" className="block text-sm font-medium text-gray-700 mb-2">
-                Image Path (Optional)
-              </label>
-              <input
-                type="text"
-                id="image_path"
-                name="image_path"
-                value={formData.image_path}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mdb-blue focus:border-mdb-blue"
-                placeholder="e.g., members/john-doe.jpg"
-              />
-              <p className="text-xs text-gray-500 mt-1">
-                Optional: Supabase storage path for the image
-              </p>
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-mdb-blue transition-colors">
+                <input
+                  type="file"
+                  id="imageFile"
+                  name="imageFile"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
+                  required
+                />
+                <label
+                  htmlFor="imageFile"
+                  className="cursor-pointer inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-mdb-blue hover:bg-mdb-blue/90 transition-colors"
+                >
+                  Choose Image File
+                </label>
+                <p className="mt-2 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+              </div>
+              
+              {/* Image Preview */}
+              {previewUrl && (
+                <div className="mt-3">
+                  <p className="text-sm text-gray-700 mb-2">Preview:</p>
+                  <div className="relative w-24 h-24 mx-auto">
+                    <img
+                      src={previewUrl}
+                      alt="Preview"
+                      className="w-full h-full object-cover rounded-full border-2 border-gray-200"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 text-center mt-1">
+                    {formData.imageFile?.name}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Action Buttons */}
             <div className="flex space-x-3 pt-4">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleClose}
                 className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                disabled={isSubmitting || !formData.name.trim() || !formData.title.trim() || !formData.image.trim()}
+                disabled={isSubmitting || !formData.name.trim() || !formData.title.trim() || !formData.imageFile}
                 className="flex-1 px-4 py-2 bg-mdb-blue text-white rounded-md hover:bg-mdb-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isSubmitting ? 'Adding...' : 'Add Member'}

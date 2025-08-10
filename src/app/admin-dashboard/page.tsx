@@ -202,18 +202,32 @@ export default function AdminDashboardPage() {
     }
   }
 
-  const handleAddMember = async (memberData: { name: string; title: string; image: string; image_path?: string }, type: 'exec' | 'pm' | 'member') => {
+  const handleAddMember = async (memberData: { name: string; title: string; imageFile: File }, type: 'exec' | 'pm' | 'member') => {
     try {
-      if (type === 'exec') {
-        await addExecMember(memberData)
-      } else if (type === 'pm') {
-        await addProjectManager(memberData)
-      } else {
-        await addMember(memberData)
+      // First upload the image to Supabase storage
+      const uploadResult = await uploadImage(memberData.imageFile)
+      
+      // Create member data with the storage path
+      const memberDataForDB = {
+        name: memberData.name,
+        title: memberData.title,
+        image: '', // This will be populated by the backend when fetching
+        image_path: uploadResult.path // Store the storage path reference
       }
+      
+      // Add member to the appropriate table
+      if (type === 'exec') {
+        await addExecMember(memberDataForDB)
+      } else if (type === 'pm') {
+        await addProjectManager(memberDataForDB)
+      } else {
+        await addMember(memberDataForDB)
+      }
+      
       setShowAddMember(false)
-      setSuccessMessage(`Successfully added ${memberData.name}`)
+      setSuccessMessage(`Successfully added ${memberData.name} with image uploaded`)
       setTimeout(() => setSuccessMessage(''), 3000)
+      
       // Refresh members list to show the new member
       await loadAllMembers()
     } catch (error) {
@@ -221,18 +235,35 @@ export default function AdminDashboardPage() {
     }
   }
 
-  const handleUpdateMember = async (id: string, updates: Partial<ExecMember | ProjectManager | Member>, type: 'exec' | 'pm' | 'member') => {
+  const handleUpdateMember = async (id: string, updates: Partial<ExecMember | ProjectManager | Member> & { newImageFile?: File }, type: 'exec' | 'pm' | 'member') => {
     try {
-      if (type === 'exec') {
-        await updateExecMemberById(id, updates)
-      } else if (type === 'pm') {
-        await updateProjectManagerById(id, updates)
-      } else {
-        await updateMemberById(id, updates)
+      let finalUpdates = { ...updates }
+      
+      // If there's a new image file, upload it first
+      if (updates.newImageFile) {
+        const uploadResult = await uploadImage(updates.newImageFile)
+        
+        // Update the image_path with the new storage path
+        finalUpdates.image_path = uploadResult.path
+        finalUpdates.image = '' // This will be populated by the backend when fetching
+        
+        // Remove the newImageFile from updates since it's not part of the database schema
+        delete (finalUpdates as any).newImageFile
       }
+      
+      // Update the member in the appropriate table
+      if (type === 'exec') {
+        await updateExecMemberById(id, finalUpdates)
+      } else if (type === 'pm') {
+        await updateProjectManagerById(id, finalUpdates)
+      } else {
+        await updateMemberById(id, finalUpdates)
+      }
+      
       setEditingMember(null)
-      setSuccessMessage(`Successfully updated member`)
+      setSuccessMessage(`Successfully updated member${updates.newImageFile ? ' with new image' : ''}`)
       setTimeout(() => setSuccessMessage(''), 3000)
+      
       // Refresh members list to show the updated member
       await loadAllMembers()
     } catch (error) {
