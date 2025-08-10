@@ -143,6 +143,23 @@ module.exports = {
         '.mdb-glass-lg': {
           '@apply bg-white/30 backdrop-blur-md rounded-2xl shadow-xl border border-white/40': {},
         },
+        // Mobile animation reductions
+        '.mdb-glass-hover-mobile': {
+          '@apply hover:scale-102 hover:translate-x-0.5 transition-all duration-200 transform hover:drop-shadow-md origin-center': {},
+        },
+        // Reduced motion utilities
+        '.motion-safe:animate-fade-up': {
+          '@apply transition-all duration-1000 ease-out': {},
+        },
+        '.motion-safe:animate-fade-up-mobile': {
+          '@apply transition-all duration-500 ease-out': {},
+        },
+        '.motion-reduce:animate-fade-up': {
+          '@apply transition-none opacity-100 transform-none': {},
+        },
+        '.motion-reduce:animate-fade-up-mobile': {
+          '@apply transition-none opacity-100 transform-none': {},
+        },
       }
       addUtilities(newUtilities)
     }

@@ -152,7 +152,7 @@ export default function PurpAndComm() {
               : 'opacity-0 -translate-x-12'
           }`}>
             <Image
-              src="/images/mdb-hawaii.jpg"
+              src="/images/mdb-hawaii.JPG"
               alt="MDB Community gathering"
               width={600}
               height={400}
