@@ -172,6 +172,7 @@ export default function Header() {
                     }
                   }}
                   onClick={() => handleClick(item.key)}
+                  data-testid={`nav-item-${item.key}`}
                   className={`block px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:drop-shadow-lg origin-center relative text-center min-w-[80px] ${
                     activeItem === item.key 
                       ? item.key === 'apply' ? 'text-mdb-blue font-semibold' : 'text-white'
@@ -186,6 +187,7 @@ export default function Header() {
 
           {/* Mobile Hamburger Button */}
           <button
+            data-testid="mobile-menu-button"
             onClick={toggleMobileMenu}
             className="md:hidden flex flex-col justify-center items-center w-8 h-8 relative"
             aria-label="Toggle mobile menu"
@@ -209,15 +211,19 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen 
-            ? 'max-h-96 opacity-100 mt-4' 
-            : 'max-h-0 opacity-0 overflow-hidden'
-        }`}>
+        <div 
+          data-testid="mobile-menu"
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen 
+              ? 'max-h-96 opacity-100 mt-4' 
+              : 'max-h-0 opacity-0 overflow-hidden'
+          }`}
+        >
           <ul className="flex flex-col space-y-4 py-4 mdb-glass backdrop-blur-sm rounded-lg px-4 text-center">
             <li>
               <Link 
                 href="/about" 
+                data-testid="mobile-nav-about"
                 className="block hover:text-mdb-blue/80 hover:scale-105 hover:translate-x-2 transition-all duration-300 transform py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

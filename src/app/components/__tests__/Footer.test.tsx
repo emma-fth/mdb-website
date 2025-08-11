@@ -2,6 +2,14 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import Footer from '../Footer'
 
+// Mock the useAuth hook
+jest.mock('../../hooks/useAuth', () => ({
+  useAuth: () => ({
+    isAuthenticated: false,
+    user: null
+  })
+}))
+
 describe('Footer Component', () => {
   it('renders without crashing', () => {
     render(<Footer />)

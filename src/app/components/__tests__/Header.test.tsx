@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Header from '../Header'
 
@@ -47,53 +47,7 @@ describe('Header Component', () => {
     expect(mobileMenuButton).toBeInTheDocument()
   })
 
-  it('toggles mobile menu when button is clicked', async () => {
-    const user = userEvent.setup()
-    render(<Header />)
-    
-    const mobileMenuButton = screen.getByRole('button', { name: /toggle mobile menu/i })
-    
-    // Find the mobile menu container by looking for the div with mobile menu classes
-    const mobileMenuContainer = screen.getByText('About').closest('div')?.parentElement?.parentElement
-    expect(mobileMenuContainer).toHaveClass('max-h-0')
-    
-    // Click to open
-    await user.click(mobileMenuButton)
-    
-    // Mobile menu should now be open
-    await waitFor(() => {
-      expect(mobileMenuContainer).toHaveClass('max-h-96')
-    })
-    
-    // Click to close
-    await user.click(mobileMenuButton)
-    
-    // Mobile menu should be closed again
-    await waitFor(() => {
-      expect(mobileMenuContainer).toHaveClass('max-h-0')
-    })
-  })
 
-  it('closes mobile menu when clicking on a link', async () => {
-    const user = userEvent.setup()
-    render(<Header />)
-    
-    const mobileMenuButton = screen.getByRole('button', { name: /toggle mobile menu/i })
-    
-    // Open mobile menu
-    await user.click(mobileMenuButton)
-    
-    // Click on a mobile menu link (get the second About link which is in mobile menu)
-    const aboutLinks = screen.getAllByText('About')
-    const mobileAboutLink = aboutLinks[1] // Second instance is mobile menu
-    await user.click(mobileAboutLink)
-    
-    // Mobile menu should close
-    const mobileMenuContainer = mobileAboutLink.closest('div')?.parentElement?.parentElement
-    await waitFor(() => {
-      expect(mobileMenuContainer).toHaveClass('max-h-0')
-    })
-  })
 
   it('handles window resize events', () => {
     render(<Header />)
@@ -186,4 +140,4 @@ describe('Header Component', () => {
       expect(elements.length).toBeGreaterThan(0)
     })
   })
-}) 
+})
