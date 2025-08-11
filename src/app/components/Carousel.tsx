@@ -9,7 +9,7 @@ export default function Carousel() {
   const carouselRef3 = useRef<HTMLDivElement>(null)
   
   const { currentText } = useTypingAnimation({
-    words: ['B', 'B', 'B'],
+    words: ['Baddies.', 'Boomers.', 'Bots.', 'Bruzz.', 'Ballers.', 'Beasts.', 'Baddies.', 'Boomers.', 'Bots.', 'Bruzz.', 'Ballers.', 'Beasts.'],
     typeSpeed: 150,
     deleteSpeed: 100,
     pauseDuration: 2000,

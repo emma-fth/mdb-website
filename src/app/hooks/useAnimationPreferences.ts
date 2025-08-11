@@ -4,13 +4,15 @@ interface AnimationPreferences {
   isMobile: boolean
   prefersReducedMotion: boolean
   shouldReduceAnimations: boolean
+  shouldReduceMobileAnimations: boolean
 }
 
 export function useAnimationPreferences(): AnimationPreferences {
   const [preferences, setPreferences] = useState<AnimationPreferences>({
     isMobile: false,
     prefersReducedMotion: false,
-    shouldReduceAnimations: false
+    shouldReduceAnimations: false,
+    shouldReduceMobileAnimations: false
   })
 
   useEffect(() => {
@@ -21,13 +23,14 @@ export function useAnimationPreferences(): AnimationPreferences {
       // Check if user prefers reduced motion
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       
-      // Determine if animations should be reduced
+      // Reduce animations on mobile (except carousel) or if user prefers reduced motion
       const shouldReduceAnimations = isMobile || prefersReducedMotion
       
       setPreferences({
         isMobile,
         prefersReducedMotion,
-        shouldReduceAnimations
+        shouldReduceAnimations,
+        shouldReduceMobileAnimations: isMobile
       })
     }
 
@@ -54,7 +57,7 @@ export function useAnimationPreferences(): AnimationPreferences {
 
 // Convenience hook for conditional animation classes
 export function useConditionalAnimation() {
-  const { shouldReduceAnimations } = useAnimationPreferences()
+  const { shouldReduceAnimations, shouldReduceMobileAnimations } = useAnimationPreferences()
   
   const getAnimationClass = (desktopClass: string, mobileClass: string = '') => {
     if (shouldReduceAnimations) {
@@ -79,6 +82,7 @@ export function useConditionalAnimation() {
   
   return {
     shouldReduceAnimations,
+    shouldReduceMobileAnimations,
     getAnimationClass,
     getTransitionDuration,
     getAnimationDelay
