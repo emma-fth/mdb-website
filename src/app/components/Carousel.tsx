@@ -1,7 +1,13 @@
 'use client'
 import { useRef, useEffect } from 'react'
 import { useTypingAnimation } from '../hooks/useTypingAnimation'
-import { useAnimationPreferences } from '../hooks/useAnimationPreferences'
+import { 
+  CAROUSEL_ITEMS, 
+  getCarouselStrip1, 
+  getCarouselStrip2, 
+  getCarouselStrip3,
+  CAROUSEL_CONFIG 
+} from '../constants/carousel'
 
 export default function Carousel() {
   const carouselRef = useRef<HTMLDivElement>(null)
@@ -16,100 +22,15 @@ export default function Carousel() {
     loop: true
   })
 
-  const { shouldReduceAnimations } = useAnimationPreferences()
-
-  // First carousel media and captions (top strip) - mixed images and videos
-  const media1 = [
-    { type: 'image', src: "/images/lafayette5.jpg" },
-    { type: 'image', src: "/images/edan-goat.JPEG" },
-    { type: 'video', src: "/videos/mdb-video.MP4" },
-    { type: 'image', src: "/images/table1.JPEG" },
-    { type: 'image', src: "/images/mdb-ride.jpg" },
-    { type: 'image', src: "/images/car2.JPEG" },
-    { type: 'image', src: "/images/stpat.JPEG" },
-    { type: 'image', src: "/images/wnc.jpg" },
-    { type: 'image', src: "/images/noah-goat.JPEG" },
-    { type: 'image', src: "/images/jefflineage5.jpg" },
-    { type: 'image', src: "/images/newbies.JPEG" }
-  ]
-
-  const captions1 = [
-    "Lafayette Square Contract Team",
-    "PM Edan planning out our W against Codebase",
-    "MDB Picnic at the Glade",
-    "MDB Banquet Dinner",
-    "Riding the Superman at Six Flags",
-    "MDB in Hawaii, Kevin's Car",
-    "St. Patty's Day!",
-    "Wine and Cheese Night!",
-    "Noah our beloved 2024-2025 President",
-    "Jeff's Lineage - MDB Legacy",
-    "Newbie Hike!"
-  ]
-
-  // Second carousel media and captions (middle strip) - mixed images and videos
-  const media2 = [
-    { type: 'image', src: "/images/mdb-goats.JPEG" },
-    { type: 'video', src: "/videos/mdb-goal.MP4" },
-    { type: 'image', src: "/images/8ball.JPEG" },
-    { type: 'image', src: "/images/wbn1.JPEG" },
-    { type: 'image', src: "/images/circuit7.jpg" },
-    { type: 'image', src: "/images/table3.JPEG" },
-    { type: 'image', src: "/images/mdb-hawaii.JPG" },
-    { type: 'image', src: "/images/car1.JPEG" },
-    { type: 'image', src: "/images/mdb5 2.jpg" },
-    { type: 'image', src: "/images/pms2.jpg" },
-    { type: 'image', src: "/images/6flags-selfie.jpg" }
-  ]
-
-  const captions2 = [
-    "MDB LShip GOATs.",
-    "GOOOOOOOOOOOOOOOOOOOOOL",
-    "8-Ball, Jai taking the L against Riana",
-    "Welcome Back Night (Chryssa, Morrell, Elisa, Sarah)",
-    "Circuit Contract Team",
-    "MDB Banquet Dinner",
-    "MDB HAWAII RETREAT SPRING 2025",
-    "MDB in Hawaii, Preston's Car",
-    "Mobile Developers of Berkeley",
-    "Project Manager Team Spring 2025",
-    "MDB Selfie @The Joker"
-  ]
-
-  // Third carousel media and captions (bottom strip) - mixed images and videos
-  const media3 = [
-    { type: 'video', src: "/videos/gitlit.mp4" },
-    { type: 'image', src: "/images/soccer-w.jpg" },
-    { type: 'image', src: "/images/tp-over.jpg" },
-    { type: 'image', src: "/images/wbn2.JPEG" },
-    { type: 'image', src: "/images/sur7.jpg" },
-    { type: 'image', src: "/images/mdb-newnite.JPG" },
-    { type: 'image', src: "/images/mdb-6flags.jpeg" },
-    { type: 'image', src: "/images/car3.JPEG" },
-    { type: 'image', src: "/images/edan-pair.jpg" },
-    { type: 'image', src: "/images/table2.JPEG" }
-  ]
-
-  const captions3 = [
-    "Git Lit? Got Lit.",
-    "MDB supporting our IM Soccer Team",
-    "TP Instructor MO ending the semester with a bang",
-    "Welcome Back Night (Cathryn, Angie, Val, Renata, Emma, Danica)",
-    "Sur Contract Team",
-    "Newbie Night <3",
-    "MDB @Six Flags",
-    "MDB in Hawaii, Mike's Car",
-    "Edan and his Little Alp",
-    "MDB Banquet Dinner"
-  ]
+  // Get carousel data from constants
+  const strip1Items = getCarouselStrip1()
+  const strip2Items = getCarouselStrip2()
+  const strip3Items = getCarouselStrip3()
 
   // Duplicate media and captions for seamless infinite scroll
-  const duplicatedMedia1 = [...media1, ...media1, ...media1]
-  const duplicatedCaptions1 = [...captions1, ...captions1, ...captions1]
-  const duplicatedMedia2 = [...media2, ...media2, ...media2]
-  const duplicatedCaptions2 = [...captions2, ...captions2, ...captions2]
-  const duplicatedMedia3 = [...media3, ...media3, ...media3]
-  const duplicatedCaptions3 = [...captions3, ...captions3, ...captions3]
+  const duplicatedStrip1 = [...strip1Items, ...strip1Items, ...strip1Items]
+  const duplicatedStrip2 = [...strip2Items, ...strip2Items, ...strip2Items]
+  const duplicatedStrip3 = [...strip3Items, ...strip3Items, ...strip3Items]
 
   useEffect(() => {
     const carousel1 = carouselRef.current
@@ -119,12 +40,14 @@ export default function Carousel() {
 
     let animationId: number
     let lastTime = 0
-    // Reduce animation speed on mobile for better performance
-    const speed = shouldReduceAnimations ? 30 : 60 // pixels per second
+    
+    // Enable carousel animation on all devices, but adjust speed for mobile
+    const isMobile = window.innerWidth <= 768
+    const speed = isMobile ? 40 : 60 // Slightly slower on mobile for better performance
     const imageWidth = 432 // 400px width + 32px margin (mx-4 = 16px each side)
     
     // Use the same cycle length for all carousels to keep them synchronized
-    const maxItems = Math.max(media1.length, media2.length, media3.length)
+    const maxItems = Math.max(strip1Items.length, strip2Items.length, strip3Items.length)
     const cycleWidth = imageWidth * maxItems
     
     let translateX1 = 0
@@ -165,17 +88,15 @@ export default function Carousel() {
       animationId = requestAnimationFrame(animate)
     }
 
-    // Only start animation if animations are not reduced
-    if (!shouldReduceAnimations) {
-      animationId = requestAnimationFrame(animate)
-    }
+    // Always start carousel animation (enabled on all devices)
+    animationId = requestAnimationFrame(animate)
 
     return () => {
       if (animationId) {
         cancelAnimationFrame(animationId)
       }
     }
-  }, [media1.length, media2.length, media3.length, shouldReduceAnimations])
+  }, [strip1Items.length, strip2Items.length, strip3Items.length])
 
   return (
     <section className="w-screen bg-gradient-to-b from-mdb-light-blue to-white py-8 sm:py-12 md:py-16 relative left-1/2 -translate-x-1/2 overflow-hidden">
@@ -183,7 +104,7 @@ export default function Carousel() {
       <div className="mb-8 sm:mb-12 md:mb-16 relative z-10">
         <h2 className="text-5xl font-raleway-bold text-center text-mdb-blue">
           MD{currentText}
-          <span className={`${shouldReduceAnimations ? 'animate-pulse-slow' : 'animate-pulse'} text-mdb-blue`}>|</span>
+          <span className="animate-pulse text-mdb-blue">|</span>
         </h2>
       </div>
       
@@ -199,20 +120,18 @@ export default function Carousel() {
               willChange: 'transform' // Optimize for animations
             }}
           >
-            {duplicatedMedia1.map((mediaItem: any, index: number) => (
+            {duplicatedStrip1.map((item, index) => (
               <div 
                 key={index} 
-                className={`group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] relative mx-2 sm:mx-3 md:mx-4 transition-all transform origin-center mt-6 ${
-                  shouldReduceAnimations 
-                    ? 'hover:scale-105 hover:translate-x-0.5 duration-200 hover:drop-shadow-md' 
-                    : 'hover:scale-110 hover:translate-x-1 duration-300 hover:drop-shadow-xl'
-                }`}
+                className="group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] relative mx-2 sm:mx-3 md:mx-4 mt-6
+                  lg:transition-all lg:transform lg:origin-center lg:duration-200
+                  lg:hover:scale-105 lg:hover:translate-x-0.5 lg:hover:drop-shadow-md"
               >
                 {/* Media container */}
-                <div className="relative w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[300px]">
-                  {mediaItem.type === 'video' ? (
+                <div className="relative lg:w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[250px]">
+                  {item.type === 'video' ? (
                     <video
-                      src={mediaItem.src}
+                      src={item.src}
                       autoPlay
                       muted
                       loop
@@ -220,7 +139,7 @@ export default function Carousel() {
                       preload="metadata"
                       className="w-full h-full object-cover rounded-2xl"
                       onError={(e) => {
-                        console.error('Video failed to load:', mediaItem.src, e)
+                        console.error('Video failed to load:', item.src, e)
                         // Fallback to showing a placeholder or error message
                         const videoElement = e.target as HTMLVideoElement
                         videoElement.style.display = 'none'
@@ -233,19 +152,19 @@ export default function Carousel() {
                         }
                       }}
                       onLoadStart={() => {
-                        console.log('Video loading started:', mediaItem.src)
+                        console.log('Video loading started:', item.src)
                       }}
                       onCanPlay={() => {
-                        console.log('Video can play:', mediaItem.src)
+                        console.log('Video can play:', item.src)
                       }}
                     />
                   ) : (
                     <img
-                      src={mediaItem.src}
+                      src={item.src}
                       alt={`MDB Community Photo ${index + 1}`}
                       className="w-full h-full object-cover rounded-2xl"
                       onError={(e) => {
-                        console.error('Image failed to load:', mediaItem.src, e)
+                        console.error('Image failed to load:', item.src, e)
                         const imgElement = e.target as HTMLImageElement
                         imgElement.style.display = 'none'
                         const parent = imgElement.parentElement
@@ -257,18 +176,18 @@ export default function Carousel() {
                         }
                       }}
                       onLoad={() => {
-                        console.log('Image loaded successfully:', mediaItem.src)
+                        console.log('Image loaded successfully:', item.src)
                       }}
                     />
                   )}
                 </div>
                 {/* Caption card - slides out from underneath */}
-                <div className={`absolute top-[171px] sm:top-[191px] md:top-[221px] lg:top-[271px] left-0 right-0 bg-mdb-blue text-white text-sm px-4 py-3 rounded-b-2xl shadow-lg transform -translate-y-4 opacity-0 group-hover:translate-y-4 group-hover:opacity-100 z-10 text-center ${
-                  shouldReduceAnimations 
-                    ? 'transition-all duration-200 ease-out' 
-                    : 'transition-all duration-300 ease-out'
-                }`}>
-                  {duplicatedCaptions1[index]}
+                <div className="absolute top-[171px] sm:top-[191px] md:top-[221px] lg:top-[220px] left-0 right-0 bg-mdb-blue text-white text-sm px-4 py-3 rounded-b-2xl shadow-lg z-10 text-center
+                  transition-all duration-200 ease-out
+                  md:transform md:-translate-y-4 md:opacity-0 md:group-hover:translate-y-4 md:group-hover:opacity-100
+                  transform-none opacity-100
+                ">
+                  {item.caption}
                 </div>
               </div>
             ))}
@@ -283,20 +202,18 @@ export default function Carousel() {
               willChange: 'transform' // Optimize for animations
             }}
           >
-            {duplicatedMedia2.map((mediaItem: any, index: number) => (
+            {duplicatedStrip2.map((item, index) => (
               <div 
                 key={`second-${index}`} 
-                className={`group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] relative mx-2 sm:mx-3 md:mx-4 transition-all transform origin-center mt-6 ${
-                  shouldReduceAnimations 
-                    ? 'hover:scale-105 hover:translate-x-0.5 duration-200 hover:drop-shadow-md' 
-                    : 'hover:scale-110 hover:translate-x-1 duration-300 hover:drop-shadow-xl'
-                }`}
+                className="group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] relative mx-2 sm:mx-3 md:mx-4 mt-6
+                  lg:transition-all lg:transform lg:origin-center lg:duration-200
+                  lg:hover:scale-105 lg:hover:translate-x-0.5 lg:hover:drop-shadow-md"
               >
                 {/* Media container */}
-                <div className="relative w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[300px]">
-                  {mediaItem.type === 'video' ? (
+                <div className="relative lg:w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[250px]">
+                  {item.type === 'video' ? (
                     <video
-                      src={mediaItem.src}
+                      src={item.src}
                       autoPlay
                       muted
                       loop
@@ -304,7 +221,7 @@ export default function Carousel() {
                       preload="metadata"
                       className="w-full h-full object-cover rounded-2xl"
                       onError={(e) => {
-                        console.error('Video failed to load:', mediaItem.src, e)
+                        console.error('Video failed to load:', item.src, e)
                         // Fallback to showing a placeholder or error message
                         const videoElement = e.target as HTMLVideoElement
                         videoElement.style.display = 'none'
@@ -317,19 +234,19 @@ export default function Carousel() {
                         }
                       }}
                       onLoadStart={() => {
-                        console.log('Video loading started:', mediaItem.src)
+                        console.log('Video loading started:', item.src)
                       }}
                       onCanPlay={() => {
-                        console.log('Video can play:', mediaItem.src)
+                        console.log('Video can play:', item.src)
                       }}
                     />
                   ) : (
                     <img
-                      src={mediaItem.src}
+                      src={item.src}
                       alt={`MDB Community Photo ${index + 1}`}
                       className="w-full h-full object-cover rounded-2xl"
                       onError={(e) => {
-                        console.error('Image failed to load:', mediaItem.src, e)
+                        console.error('Image failed to load:', item.src, e)
                         const imgElement = e.target as HTMLImageElement
                         imgElement.style.display = 'none'
                         const parent = imgElement.parentElement
@@ -341,18 +258,18 @@ export default function Carousel() {
                         }
                       }}
                       onLoad={() => {
-                        console.log('Image loaded successfully:', mediaItem.src)
+                        console.log('Image loaded successfully:', item.src)
                       }}
                     />
                   )}
                 </div>
                 {/* Caption card - slides out from underneath */}
-                <div className={`absolute top-[171px] sm:top-[191px] md:top-[221px] lg:top-[271px] left-0 right-0 bg-mdb-blue text-white text-sm px-4 py-3 rounded-b-2xl shadow-lg transform -translate-y-4 opacity-0 group-hover:translate-y-4 group-hover:opacity-100 z-10 text-center ${
-                  shouldReduceAnimations 
-                    ? 'transition-all duration-200 ease-out' 
-                    : 'transition-all duration-300 ease-out'
-                }`}>
-                  {duplicatedCaptions2[index]}
+                <div className="absolute top-[171px] sm:top-[191px] md:top-[221px] lg:top-[220px] left-0 right-0 bg-mdb-blue text-white text-sm px-4 py-3 rounded-b-2xl shadow-lg z-10 text-center
+                  transition-all duration-200 ease-out
+                  md:transform md:-translate-y-4 md:opacity-0 md:group-hover:translate-y-4 md:group-hover:opacity-100
+                  transform-none opacity-100
+                ">
+                  {item.caption}
                 </div>
               </div>
             ))}
@@ -367,20 +284,18 @@ export default function Carousel() {
               willChange: 'transform' // Optimize for animations
             }}
           >
-            {duplicatedMedia3.map((mediaItem: any, index: number) => (
+            {duplicatedStrip3.map((item, index) => (
               <div 
                 key={`third-${index}`} 
-                className={`group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] relative mx-2 sm:mx-3 md:mx-4 transition-all transform origin-center mt-6 ${
-                  shouldReduceAnimations 
-                    ? 'hover:scale-105 hover:translate-x-0.5 duration-200 hover:drop-shadow-md' 
-                    : 'hover:scale-110 hover:translate-x-1 duration-300 hover:drop-shadow-xl'
-                }`}
+                className="group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] relative mx-2 sm:mx-3 md:mx-4 mt-6
+                  lg:transition-all lg:transform lg:origin-center lg:duration-200
+                  lg:hover:scale-105 lg:hover:translate-x-0.5 lg:hover:drop-shadow-md"
               >
                 {/* Media container */}
-                <div className="relative w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[300px]">
-                  {mediaItem.type === 'video' ? (
+                <div className="relative lg:w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[250px]">
+                  {item.type === 'video' ? (
                     <video
-                      src={mediaItem.src}
+                      src={item.src}
                       autoPlay
                       muted
                       loop
@@ -388,7 +303,7 @@ export default function Carousel() {
                       preload="metadata"
                       className="w-full h-full object-cover rounded-2xl"
                       onError={(e) => {
-                        console.error('Video failed to load:', mediaItem.src, e)
+                        console.error('Video failed to load:', item.src, e)
                         // Fallback to showing a placeholder or error message
                         const videoElement = e.target as HTMLVideoElement
                         videoElement.style.display = 'none'
@@ -401,19 +316,19 @@ export default function Carousel() {
                         }
                       }}
                       onLoadStart={() => {
-                        console.log('Video loading started:', mediaItem.src)
+                        console.log('Video loading started:', item.src)
                       }}
                       onCanPlay={() => {
-                        console.log('Video can play:', mediaItem.src)
+                        console.log('Video can play:', item.src)
                       }}
                     />
                   ) : (
                     <img
-                      src={mediaItem.src}
+                      src={item.src}
                       alt={`MDB Community Photo ${index + 1}`}
                       className="w-full h-full object-cover rounded-2xl"
                       onError={(e) => {
-                        console.error('Image failed to load:', mediaItem.src, e)
+                        console.error('Image failed to load:', item.src, e)
                         const imgElement = e.target as HTMLImageElement
                         imgElement.style.display = 'none'
                         const parent = imgElement.parentElement
@@ -425,18 +340,18 @@ export default function Carousel() {
                         }
                       }}
                       onLoad={() => {
-                        console.log('Image loaded successfully:', mediaItem.src)
+                        console.log('Image loaded successfully:', item.src)
                       }}
                     />
                   )}
                 </div>
                 {/* Caption card - slides out from underneath */}
-                <div className={`absolute top-[171px] sm:top-[191px] md:top-[221px] lg:top-[271px] left-0 right-0 bg-mdb-blue text-white text-sm px-4 py-3 rounded-b-2xl shadow-lg transform -translate-y-4 opacity-0 group-hover:translate-y-4 group-hover:opacity-100 z-10 text-center ${
-                  shouldReduceAnimations 
-                    ? 'transition-all duration-200 ease-out' 
-                    : 'transition-all duration-300 ease-out'
-                }`}>
-                  {duplicatedCaptions3[index]}
+                <div className="absolute top-[171px] sm:top-[191px] md:top-[221px] lg:top-[220px] left-0 right-0 bg-mdb-blue text-white text-sm px-4 py-3 rounded-b-2xl shadow-lg z-10 text-center
+                  transition-all duration-200 ease-out
+                  md:transform md:-translate-y-4 md:opacity-0 md:group-hover:translate-y-4 md:group-hover:opacity-100
+                  transform-none opacity-100
+                ">
+                  {item.caption}
                 </div>
               </div>
             ))}
