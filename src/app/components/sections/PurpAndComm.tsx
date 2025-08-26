@@ -39,7 +39,7 @@ export default function PurpAndComm() {
       const steps = 60
       const stepDuration = duration / steps
       
-      const targets = { semesters: 8, projects: 29, members: 42 }
+  const targets = { semesters: 20, projects: 30, members: 50 }
       const increments = {
         semesters: targets.semesters / steps,
         projects: targets.projects / steps,

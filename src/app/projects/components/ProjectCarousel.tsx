@@ -10,9 +10,9 @@ interface ProjectPhase {
 
 const projectPhases: ProjectPhase[] = [
   {
-    icon: "📱",
-    title: "Ideation",
-    description: "At the beginning of the semester, DevCore comes together to brainstorm fields, pain points, target audiences, and overall issues that can be best addressed with an innovative tech solution."
+    icon: "💼",
+    title: "Entrepreneurship",
+    description: "Our projects solve real-world problems with innovative tech solutions. Our teams seek constant user feedback and rapidly iterate upon our work to create the most polished products possible."
   },
   {
     icon: "🔧",
@@ -20,9 +20,9 @@ const projectPhases: ProjectPhase[] = [
     description: "Teams reach tangible development benchmarks as part of the Agile framework in the process of completing their project, and have regular standups to the rest of the org."
   },
   {
-    icon: "💼",
-    title: "Entrepreneurship",
-    description: "Our projects solve real-world problems with innovative tech solutions. Our teams seek constant user feedback and rapidly iterate upon our work to create the most polished products possible."
+    icon: "🚀",
+    title: "Launch",
+    description: "Teams present and launch their final products, sharing their journey and results with the organization and broader community."
   }
 ]
 
