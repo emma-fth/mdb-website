@@ -9,57 +9,59 @@ export interface Client extends BaseMember {
   date: string
   pms: string[]
   screenshots: string[]
+  disableViewProject?: boolean
 }
 
 export const clientProjects: Client[] = [
   {
-    name: "Joy",
-    title: "AI Wellness Platform",
-    link: "https://joy-app.com",
-    type: "AI Wellness Platform",
-    image: "/images/joy-logo.png",
-    description: "At MDB, we brought the vision of Joy to reality, an innovative AI wellness platform. Utilizing cutting-edge AI, Joy analyzes emotions through voice, offering users personalized wellness practices.",
-    techStack: ["Python", "React Native", "AI/ML"],
-    purpose: "Mental Health Apps",
-    date: "Spring 2024",
-    pms: ["Amol", "Aldrin"],
-    screenshots: [
-      "/images/joy-screenshot1.png",
-      "/images/joy-screenshot2.png",
-      "/images/joy-screenshot3.png"
+    name: "Circuit",
+    title: "Online Speed Dating Site",
+    link: "https://circuitspeeddating.com", // Add actual link if available
+    type: "Online Speed Dating Site",
+    image: "/images/circuit-logo.png", // Update with actual logo path if available
+    description: "A full-stack web platform for virtual and in-person speed dating events. Built with React, Firebase, and Stripe, the site includes advanced matching algorithms, automated event management, and secure payment processing.",
+    techStack: ["React", "Firebase", "Tailwind/CSS", "Stripe"],
+    purpose: "Online Speed Dating",
+    date: "Fall 2025",
+    pms: ["Sodbayar, Mike"],
+  screenshots: [
+      "/screenshots/circuit1.png",
+      "/screenshots/circuit2.png",
+      "/screenshots/circuit3.png"
     ]
   },
   {
-    name: "EduTech",
-    title: "Learning Management System",
-    link: "https://edutech-app.com",
-    type: "Learning Management System",
-    image: "/images/edutech-logo.png",
-    description: "A comprehensive online learning platform that revolutionizes how students and educators interact with educational content through interactive courses and real-time assessments.",
-    techStack: ["React", "Node.js", "MongoDB"],
-    purpose: "Education Technology",
-    date: "Fall 2023",
-    pms: ["Sarah", "Mike"],
+    name: "Lafayette Square",
+    title: "Internal Analytics App",
+    link: "",
+    type: "Internal Analytics App",
+    image: "/images/lafayette-logo.png", // Update with actual logo path if available
+    description: "An internal tool for analyzing demographic and financial data to support impact investment decisions. Our MDB team built the web app using React, Firebase, and PyTorch, with interactive dashboards, custom reporting, and rich data visualizations. This project challenged members to work with complex datasets, create intuitive UI/UX, and deliver meaningful insights to a real client.",
+    techStack: ["React Native", "Pytorch", "Firebase"],
+    purpose: "Community Impact Investment",
+    date: "Spring 2025",
+    pms: ["Lara", "Edan"],
     screenshots: [
-      "/images/edutech-screenshot1.png",
-      "/images/edutech-screenshot2.png"
-    ]
+      "/screenshots/ls1.png",
+      "/screenshots/ls2.png"
+    ],
+    disableViewProject: true
   },
   {
-    name: "HealthConnect",
-    title: "Healthcare Portal",
-    link: "https://healthconnect-app.com",
-    type: "Healthcare Portal",
-    image: "/images/healthconnect-logo.png",
-    description: "Secure patient management system with advanced appointment scheduling and comprehensive medical records management for healthcare providers.",
-    techStack: ["Vue.js", "Python", "PostgreSQL"],
-    purpose: "Healthcare Solutions",
-    date: "Spring 2023",
-    pms: ["Emma", "David"],
+    name: "SUR",
+    title: "RV Rental App",
+    link: "",
+    type: "RV Rental App",
+    image: "/images/sur-logo.png", // Update with actual logo path if available
+    description: "An iOS marketplace where users can rent RVs and off-road vehicles directly from owners. Our MDB team designed and developed the app using Swift and Firebase, building features like real-time search, booking, and payment integration. Our developers got hands-on experience with mobile development, backend integration, and shipping a production-ready product.",
+    techStack: ["Swift", "Supabase", "Firebase"],
+    purpose: "Accessible vehicle rentals",
+    date: "Fall 2025",
+    pms: ["Subham"],
     screenshots: [
-      "/images/healthconnect-screenshot1.png",
-      "/images/healthconnect-screenshot2.png",
-      "/images/healthconnect-screenshot3.png"
-    ]
-  }
+      "/screenshots/sur1.png"
+    ],
+    disableViewProject: true
+  },
+  // HealthConnect project removed
 ]
