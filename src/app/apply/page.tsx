@@ -23,7 +23,7 @@ export default function Apply() {
               frameBorder="0" 
               onMouseWheel="" 
               width="100%" 
-              height="533" 
+              height="1100" 
               style={{ background: 'transparent', border: '1px solid #ccc' }}
             />
           </div>
