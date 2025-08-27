@@ -5,7 +5,7 @@ export default function Apply() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-mdb-light-blue to-white">
       <Flyer />
-      <div className="w-full px-4 py-8 relative z-10">
+      <div className="w-full px-4 py-8 relative z-10 bg-gradient-to-t from-mdb-light-blue to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-raleway-bold text-mdb-blue mb-4">
@@ -16,7 +16,7 @@ export default function Apply() {
             </p> */}
           </div>
           
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <div className="mdb-glass rounded-2xl shadow-2xl overflow-hidden">
             <iframe 
               className="airtable-embed" 
               src="https://airtable.com/embed/appq3RmOWy9QA681J/shrUKa4jqpHS5BruB" 
