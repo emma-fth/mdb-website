@@ -24,3 +24,5 @@ export default function TrainingProgram() {
     </div>
   )
 }
+
+// Adding to vercel for deployment
