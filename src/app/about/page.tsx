@@ -11,9 +11,9 @@ export default function About() {
       <AboutUs />
       <AboutCarousel />
       <Carousel />
-      {/* <Exec /> */}
+      <Exec />
       {/* <ProjectManagers /> */}
-      {/* <Members /> */}
+      <Members />
     </div>
   )
 } 
