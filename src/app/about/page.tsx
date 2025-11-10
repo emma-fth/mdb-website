@@ -12,7 +12,7 @@ export default function About() {
       <AboutCarousel />
       <Carousel />
       <Exec />
-      {/* <ProjectManagers /> */}
+      <ProjectManagers />
       <Members />
     </div>
   )

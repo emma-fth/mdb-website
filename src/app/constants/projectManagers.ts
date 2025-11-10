@@ -1,9 +1,8 @@
 import { ProjectManager } from '../types/members'
 
 export const projectManagers: ProjectManager[] = [
-  {
-    name: "Placeholder Member",
-    title: "Project Manager",
-    image: "/logos/mdb_5.png"
-  }
+  { name: "Dylan Dang", title: "Project Manager", image: "/project-managers/dylan.png" },
+  { name: "Landy Manzanero", title: "Project Manager", image: "/project-managers/landy.jpeg" },
+  { name: "Lara Chieppe", title: "Project Manager", image: "/project-managers/lara.jpg" },
+  { name: "Sophia Clancy", title: "Project Manager", image: "/project-managers/sophia.jpg" }
 ]

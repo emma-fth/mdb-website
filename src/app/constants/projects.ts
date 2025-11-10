@@ -63,5 +63,61 @@ export const clientProjects: Client[] = [
     ],
     disableViewProject: true
   },
+  {
+    name: "Salamati",
+    title: "Mobile Health & Education Platform",
+    link: "https://play.google.com/store/apps/details?id=com.aldrin0n9.salamati",
+    type: "Women's Safety & Empowerment App",
+    image: "/images/salamati-logo.png",
+    description: "A mobile health platform built for Safe Path Prosperity (NGO) empowering women in Afghanistan. Our MDB team developed the app using React Native, Supabase, and Twilio, building features like a multilingual resource library (English/Dari), authenticated user roles, a secure community chatroom with moderation, a healthcare provider directory, and an integrated ordering system for local pickup. This project challenged members to work with sensitive data, implement robust security measures, and deliver a platform with real social impact.",
+    techStack: ["React Native", "Supabase", "Twilio"],
+    purpose: "Women's Safety & Empowerment",
+    date: "Spring 2024",
+    pms: ["Aldrin"],
+    screenshots: [
+      "/screenshots/salamati1.png",
+      "/screenshots/salamati2.png",
+      "/screenshots/salamati4.png",
+      "/screenshots/salamati3.png",
+      "/screenshots/salamati5.png"
+    ]
+  },
+  {
+    name: "Joy",
+    title: "AI Wellness Platform",
+    link: "https://apps.apple.com/vn/app/joy-ai-wellness-platform/id1618609385?platform=iphone",
+    type: "AI Wellness Platform",
+    image: "/images/joy-logo.png",
+    description: "An AI-powered wellness application built for Koer A.I., Inc that helps users track mental health practices and emotions. Our MDB team designed and developed the app using React Native, PyTorch, Firebase, and Stripe, implementing features like audio playback with transcripts, AI-driven recommendations, subscription management, and analytics dashboards. Our developers gained hands-on experience with AI integration, payment processing, and scalable app development.",
+    techStack: ["React Native", "PyTorch", "Firebase", "Stripe"],
+    purpose: "Mental Health & Wellness",
+    date: "N/A",
+    pms: ["N/A"],
+    screenshots: [
+      "/screenshots/joy1.png",
+      "/screenshots/joy2.png",
+      "/screenshots/joy3.png",
+      "/screenshots/joy4.png"
+    ]
+  },
+  {
+    name: "GreekLine",
+    title: "Greek Life Safety Platform",
+    link: "",
+    type: "Greek Life Safety Platform",
+    image: "/images/greekline-logo.png",
+    description: "A safety platform built for Bearline, LLC to help Greek organizations create safer communities. Our MDB team built the app using React Native, Supabase, and Twilio, developing features like anonymous hotlines with automatic phone number generation, organization management tools, role-based access controls, and secure messaging. The project involved rigorous quality assurance before successful App Store deployment, giving members production-ready development experience.",
+    techStack: ["React Native", "Supabase", "Twilio"],
+    purpose: "Greek Life Safety & Reporting",
+    date: "Fall 2023",
+    pms: ["Amol"],
+    screenshots: [
+      "/screenshots/greekline1.png",
+      "/screenshots/greekline2.png",
+      "/screenshots/greekline3.png",
+      "/screenshots/greekline4.png",
+      "/screenshots/greekline5.png",
+    ]
+  },
   // HealthConnect project removed
 ]
