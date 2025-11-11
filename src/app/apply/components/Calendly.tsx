@@ -14,6 +14,7 @@ interface CoffeeChatMember {
 
 export default function Calendly() {
   // Array of members for coffee chats with additional information
+  // minor commit
   const members: CoffeeChatMember[] = [
     {
       name: "Mike Guerrero",
