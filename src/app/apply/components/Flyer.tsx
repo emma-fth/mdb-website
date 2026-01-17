@@ -208,7 +208,7 @@ export default function Flyer() {
               ? 'translate-y-0' 
               : 'translate-y-8'
           }`}>
-            <Link 
+            {/* <Link 
               href="https://airtable.com/appLKEFdFTOMP791d/pagX5V2U6ZzoOY12Q/form"
               target="_blank"
               rel="noopener noreferrer"
@@ -216,7 +216,7 @@ export default function Flyer() {
             >
               Apply Now
               <span className="ml-2 text-xl">→</span>
-            </Link>
+            </Link> */}
             <div className="mt-6">
               <Link
                 href="/contact"
