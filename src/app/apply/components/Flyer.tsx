@@ -68,7 +68,7 @@ export default function Flyer() {
             </p>
             {/* Apply Now Button below header */}
             <div className="mt-8">
-              <Link 
+              {/* <Link 
                 href="https://airtable.com/appLKEFdFTOMP791d/pagX5V2U6ZzoOY12Q/form"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -76,7 +76,7 @@ export default function Flyer() {
               >
                 Apply Now
                 <span className="ml-2 text-xl">→</span>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
