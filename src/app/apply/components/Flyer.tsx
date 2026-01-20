@@ -68,15 +68,15 @@ export default function Flyer() {
             </p>
             {/* Apply Now Button below header */}
             <div className="mt-8">
-              {/* <Link 
-                href="https://airtable.com/appLKEFdFTOMP791d/pagX5V2U6ZzoOY12Q/form"
+              <Link 
+                href="https://airtable.com/appVd8nUl8f9F1K5t/pagwGgQSbNncvtkV5/form"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-mdb-blue text-white px-8 md:px-12 py-4 md:py-5 rounded-xl font-raleway-semibold text-lg md:text-xl hover:bg-mdb-gold hover:text-mdb-blue hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
               >
                 Apply Now
                 <span className="ml-2 text-xl">→</span>
-              </Link> */}
+              </Link>
             </div>
           </div>
 
@@ -88,7 +88,7 @@ export default function Flyer() {
           }`}>
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
               <Image
-              src="/images/Official BACK COVER.png"
+              src="/images/spring26_cover.png"
               alt="MDB Recruitment Flyer"
               width={800}
               height={1200}
@@ -208,15 +208,15 @@ export default function Flyer() {
               ? 'translate-y-0' 
               : 'translate-y-8'
           }`}>
-            {/* <Link 
-              href="https://airtable.com/appLKEFdFTOMP791d/pagX5V2U6ZzoOY12Q/form"
+            <Link 
+              href="https://airtable.com/appVd8nUl8f9F1K5t/pagwGgQSbNncvtkV5/form"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-mdb-blue text-white px-8 md:px-12 py-4 md:py-5 rounded-xl font-raleway-semibold text-lg md:text-xl hover:bg-mdb-gold hover:text-mdb-blue hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
             >
               Apply Now
               <span className="ml-2 text-xl">→</span>
-            </Link> */}
+            </Link>
             <div className="mt-6">
               <Link
                 href="/contact"
