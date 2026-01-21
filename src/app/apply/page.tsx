@@ -17,14 +17,7 @@ export default function Apply() {
           </div>
           
           <div className="mdb-glass rounded-2xl shadow-2xl overflow-hidden">
-            <iframe 
-              className="airtable-embed" 
-              src="https://airtable.com/appq3RmOWy9QA681J/shroO2qfGNFay078x" 
-              frameBorder="0" 
-              width="100%" 
-              height="533" 
-              style={{ background: 'transparent', border: '1px solid #ccc' }}
-            />
+          <iframe className="airtable-embed" src="https://airtable.com/embed/appq3RmOWy9QA681J/shroO2qfGNFay078x?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style={{ background: 'transparent', border: '1px solid #ccc' }}></iframe>
           </div>
         </div>
       </div>
