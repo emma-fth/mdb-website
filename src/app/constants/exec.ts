@@ -39,12 +39,12 @@ export const execMembers: ExecMember[] = [
   {
     name: "Aarav Desai",
     title: "VP of Education",
-    image: "/exec/arnav.png"
+    image: "/exec/aarav.jpg"
   },
    {
     name: "Arnav Khinvasara",
     title: "VP of Education",
-    image: "/exec/aarav.jpg"
+    image: "/exec/arnav.png"
   },
   
   {

@@ -3,9 +3,9 @@ import { Member } from '../types/members'
 export const members: Member[] = [
   { name: "Alex Kim", title: "Member", image: "/favicon.svg" },
   { name: "Alp Senay", title: "Member", image: "/members/alp.jpg" },  
-  { name: "Andrew Falcom", title: "Member", image: "/members/andrew.jpeg" },  
+  { name: "Andrew Falcom", title: "Member", image: "/members/andrew.png" },  
   { name: "Angie Zhu", title: "Member", image: "/members/angie.png" },
-  { name: "Ashley Huang", title: "Member", image: "/members/ashley.jpeg" },
+  { name: "Ashley Huang", title: "Member", image: "/members/ashley.png" },
   { name: "Bonnie Wang", title: "Member", image: "/members/bonnie.png" },
   { name: "Brad Ma", title: "Member", image: "/members/brad.JPG" },
   { name: "Cathryn Chang", title: "Member", image: "/members/cathryn.jpeg" },
@@ -34,6 +34,6 @@ export const members: Member[] = [
   { name: "Shweta Surendar", title: "Member", image: "/members/shweta.jpg" },  
   { name: "Tina Ye", title: "Member", image: "/members/tina.jpg" },
   { name: "Valerie Eng", title: "Member", image: "/members/valerie.jpeg" },
-  { name: "Winston Luo", title: "Member", image: "/members/tina.jpeg" },
+  { name: "Winston Luo", title: "Member", image: "/members/winston.jpeg" },
   { name: "Yale Tsai", title: "Member", image: "/members/yale.jpeg" }
 ]
