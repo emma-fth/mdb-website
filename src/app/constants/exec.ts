@@ -1,15 +1,9 @@
 import { ExecMember } from '../types/members'
 
 export const execMembers: ExecMember[] = [
-  {
-    name: "Mike Guerrero",
+  {name: "Mike Guerrero",
     title: "President",
     image: "/exec/mike.jpeg"
-  },
-  {
-    name: "Bonnie Wang",
-    title: "VP of Operations",
-    image: "/exec/bonnie.png"
   },
   {
     name: "Pavithra Arun Anand",
@@ -17,15 +11,21 @@ export const execMembers: ExecMember[] = [
     image: "/exec/pavithra.jpg"
   },
   {
-    name: "Ria Tao",
-    title: "VP of Internal",
-    image: "/exec/ria.jpg"
+    name: "Rhea Minglani",
+    title: "VP of Operations",
+    image: "/exec/rhea.jpeg"
   },
   {
-    name: "Aarav Desai",
+    name: "Aiji Li",
     title: "VP of Internal",
-    image: "/exec/aarav.jpg"
+    image: "/exec/aiji.png"
   },
+   {
+    name: "Nitya Kuppireddy",
+    title: "VP of Internal",
+    image: "/exec/nitya.jpg"
+  },
+  
   {
     name: "Daniel Gil",
     title: "VP of Projects",
@@ -36,14 +36,25 @@ export const execMembers: ExecMember[] = [
     title: "VP of Projects",
     image: "/exec/sod.jpeg"
   },
-   {
-    name: "Riana Mistry",
+  {
+    name: "Aarav Desai",
     title: "VP of Education",
-    image: "/exec/riana.png"
+    image: "/exec/arnav.png"
+  },
+   {
+    name: "Arnav Khinvasara",
+    title: "VP of Education",
+    image: "/exec/aarav.jpg"
+  },
+  
+  {
+    name: "Emma Feth",
+    title: "VP of Marketing",
+    image: "/exec/emma.jpg"
   },
   {
-    name: "Tina Ye",
+    name: "Sophia Clancy",
     title: "VP of Marketing",
-    image: "/exec/tina.jpg"
+    image: "/exec/sophia.jpg"
   }
 ]
