@@ -33,7 +33,7 @@ export const members: Member[] = [
   { name: "Sarah Zong", title: "Member", image: "/members/sarah.jpeg" },
   { name: "Shweta Surendar", title: "Member", image: "/members/shweta.jpg" },  
   { name: "Tina Ye", title: "Member", image: "/members/tina.jpg" },
-  { name: "Valerie Eng", title: "Member", image: "/members/valerie.jpeg" },
+  { name: "Valerie Eng", title: "Member", image: "/members/valerie.JPEG" },
   { name: "Winston Luo", title: "Member", image: "/members/winston.jpeg" },
   { name: "Yale Tsai", title: "Member", image: "/members/yale.jpeg" }
 ]
