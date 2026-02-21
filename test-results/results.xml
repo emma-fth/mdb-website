@@ -1,0 +1,1142 @@
+<testsuites id="" name="" tests="70" failures="70" skipped="0" errors="0" time="11.072600999999999">
+<testsuite name="home.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="chromium" tests="9" failures="9" skipped="0" time="0.019" errors="0">
+<testcase name="Home Page Tests › should load home page successfully" classname="home.spec.ts" time="0.004">
+<failure message="home.spec.ts:8:7 should load home page successfully" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:8:7 › Home Page Tests › should load home page successfully ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should display all main sections" classname="home.spec.ts" time="0.004">
+<failure message="home.spec.ts:16:7 should display all main sections" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:16:7 › Home Page Tests › should display all main sections ──────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper meta tags" classname="home.spec.ts" time="0.003">
+<failure message="home.spec.ts:24:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:24:7 › Home Page Tests › should have proper meta tags ──────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should be responsive on different screen sizes" classname="home.spec.ts" time="0.003">
+<failure message="home.spec.ts:30:7 should be responsive on different screen sizes" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:30:7 › Home Page Tests › should be responsive on different screen sizes 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have working links in footer" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:44:7 should have working links in footer" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:44:7 › Home Page Tests › should have working links in footer ───────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should load images correctly" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:53:7 should load images correctly" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:53:7 › Home Page Tests › should load images correctly ──────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper accessibility" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:64:7 should have proper accessibility" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:64:7 › Home Page Tests › should have proper accessibility ──────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should handle JavaScript errors gracefully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:81:7 should handle JavaScript errors gracefully" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:81:7 › Home Page Tests › should handle JavaScript errors gracefully ────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have fast loading times" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:97:7 should have fast loading times" type="FAILURE">
+<![CDATA[  [chromium] › home.spec.ts:97:7 › Home Page Tests › should have fast loading times ────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="navigation.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="chromium" tests="5" failures="5" skipped="0" time="0.007" errors="0">
+<testcase name="Navigation Tests › should navigate to all main pages" classname="navigation.spec.ts" time="0.002">
+<failure message="navigation.spec.ts:8:7 should navigate to all main pages" type="FAILURE">
+<![CDATA[  [chromium] › navigation.spec.ts:8:7 › Navigation Tests › should navigate to all main pages ───────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have working mobile navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:30:7 should have working mobile navigation" type="FAILURE">
+<![CDATA[  [chromium] › navigation.spec.ts:30:7 › Navigation Tests › should have working mobile navigation ──
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should highlight active page in navigation" classname="navigation.spec.ts" time="0.002">
+<failure message="navigation.spec.ts:42:7 should highlight active page in navigation" type="FAILURE">
+<![CDATA[  [chromium] › navigation.spec.ts:42:7 › Navigation Tests › should highlight active page in navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have accessible navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:58:7 should have accessible navigation" type="FAILURE">
+<![CDATA[  [chromium] › navigation.spec.ts:58:7 › Navigation Tests › should have accessible navigation ──────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should handle keyboard navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:67:7 should handle keyboard navigation" type="FAILURE">
+<![CDATA[  [chromium] › navigation.spec.ts:67:7 › Navigation Tests › should handle keyboard navigation ──────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="firefox" tests="9" failures="9" skipped="0" time="0.011" errors="0">
+<testcase name="Home Page Tests › should load home page successfully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:8:7 should load home page successfully" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:8:7 › Home Page Tests › should load home page successfully ──────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should display all main sections" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:16:7 should display all main sections" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:16:7 › Home Page Tests › should display all main sections ───────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper meta tags" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:24:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:24:7 › Home Page Tests › should have proper meta tags ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should be responsive on different screen sizes" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:30:7 should be responsive on different screen sizes" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:30:7 › Home Page Tests › should be responsive on different screen sizes ─
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have working links in footer" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:44:7 should have working links in footer" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:44:7 › Home Page Tests › should have working links in footer ────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should load images correctly" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:53:7 should load images correctly" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:53:7 › Home Page Tests › should load images correctly ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper accessibility" classname="home.spec.ts" time="0.002">
+<failure message="home.spec.ts:64:7 should have proper accessibility" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:64:7 › Home Page Tests › should have proper accessibility ───────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should handle JavaScript errors gracefully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:81:7 should handle JavaScript errors gracefully" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:81:7 › Home Page Tests › should handle JavaScript errors gracefully ─────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have fast loading times" classname="home.spec.ts" time="0.002">
+<failure message="home.spec.ts:97:7 should have fast loading times" type="FAILURE">
+<![CDATA[  [firefox] › home.spec.ts:97:7 › Home Page Tests › should have fast loading times ─────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="navigation.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="firefox" tests="5" failures="5" skipped="0" time="0.006" errors="0">
+<testcase name="Navigation Tests › should navigate to all main pages" classname="navigation.spec.ts" time="0.002">
+<failure message="navigation.spec.ts:8:7 should navigate to all main pages" type="FAILURE">
+<![CDATA[  [firefox] › navigation.spec.ts:8:7 › Navigation Tests › should navigate to all main pages ────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have working mobile navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:30:7 should have working mobile navigation" type="FAILURE">
+<![CDATA[  [firefox] › navigation.spec.ts:30:7 › Navigation Tests › should have working mobile navigation ───
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should highlight active page in navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:42:7 should highlight active page in navigation" type="FAILURE">
+<![CDATA[  [firefox] › navigation.spec.ts:42:7 › Navigation Tests › should highlight active page in navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have accessible navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:58:7 should have accessible navigation" type="FAILURE">
+<![CDATA[  [firefox] › navigation.spec.ts:58:7 › Navigation Tests › should have accessible navigation ───────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should handle keyboard navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:67:7 should handle keyboard navigation" type="FAILURE">
+<![CDATA[  [firefox] › navigation.spec.ts:67:7 › Navigation Tests › should handle keyboard navigation ───────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/firefox-1489/firefox/Nightly.app/Contents/MacOS/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="webkit" tests="9" failures="9" skipped="0" time="0.009" errors="0">
+<testcase name="Home Page Tests › should load home page successfully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:8:7 should load home page successfully" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:8:7 › Home Page Tests › should load home page successfully ───────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should display all main sections" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:16:7 should display all main sections" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:16:7 › Home Page Tests › should display all main sections ────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper meta tags" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:24:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:24:7 › Home Page Tests › should have proper meta tags ────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should be responsive on different screen sizes" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:30:7 should be responsive on different screen sizes" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:30:7 › Home Page Tests › should be responsive on different screen sizes ──
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have working links in footer" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:44:7 should have working links in footer" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:44:7 › Home Page Tests › should have working links in footer ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should load images correctly" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:53:7 should load images correctly" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:53:7 › Home Page Tests › should load images correctly ────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper accessibility" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:64:7 should have proper accessibility" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:64:7 › Home Page Tests › should have proper accessibility ────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should handle JavaScript errors gracefully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:81:7 should handle JavaScript errors gracefully" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:81:7 › Home Page Tests › should handle JavaScript errors gracefully ──────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have fast loading times" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:97:7 should have fast loading times" type="FAILURE">
+<![CDATA[  [webkit] › home.spec.ts:97:7 › Home Page Tests › should have fast loading times ──────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="navigation.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="webkit" tests="5" failures="5" skipped="0" time="0.005" errors="0">
+<testcase name="Navigation Tests › should navigate to all main pages" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:8:7 should navigate to all main pages" type="FAILURE">
+<![CDATA[  [webkit] › navigation.spec.ts:8:7 › Navigation Tests › should navigate to all main pages ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have working mobile navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:30:7 should have working mobile navigation" type="FAILURE">
+<![CDATA[  [webkit] › navigation.spec.ts:30:7 › Navigation Tests › should have working mobile navigation ────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should highlight active page in navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:42:7 should highlight active page in navigation" type="FAILURE">
+<![CDATA[  [webkit] › navigation.spec.ts:42:7 › Navigation Tests › should highlight active page in navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have accessible navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:58:7 should have accessible navigation" type="FAILURE">
+<![CDATA[  [webkit] › navigation.spec.ts:58:7 › Navigation Tests › should have accessible navigation ────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should handle keyboard navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:67:7 should handle keyboard navigation" type="FAILURE">
+<![CDATA[  [webkit] › navigation.spec.ts:67:7 › Navigation Tests › should handle keyboard navigation ────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="Mobile Chrome" tests="9" failures="9" skipped="0" time="0.01" errors="0">
+<testcase name="Home Page Tests › should load home page successfully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:8:7 should load home page successfully" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:8:7 › Home Page Tests › should load home page successfully ────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should display all main sections" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:16:7 should display all main sections" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:16:7 › Home Page Tests › should display all main sections ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper meta tags" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:24:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:24:7 › Home Page Tests › should have proper meta tags ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should be responsive on different screen sizes" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:30:7 should be responsive on different screen sizes" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:30:7 › Home Page Tests › should be responsive on different screen sizes 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have working links in footer" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:44:7 should have working links in footer" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:44:7 › Home Page Tests › should have working links in footer ──────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should load images correctly" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:53:7 should load images correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:53:7 › Home Page Tests › should load images correctly ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper accessibility" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:64:7 should have proper accessibility" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:64:7 › Home Page Tests › should have proper accessibility ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should handle JavaScript errors gracefully" classname="home.spec.ts" time="0.002">
+<failure message="home.spec.ts:81:7 should handle JavaScript errors gracefully" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:81:7 › Home Page Tests › should handle JavaScript errors gracefully 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have fast loading times" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:97:7 should have fast loading times" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:97:7 › Home Page Tests › should have fast loading times ───────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="navigation.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="Mobile Chrome" tests="5" failures="5" skipped="0" time="0.006" errors="0">
+<testcase name="Navigation Tests › should navigate to all main pages" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:8:7 should navigate to all main pages" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › navigation.spec.ts:8:7 › Navigation Tests › should navigate to all main pages ──
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have working mobile navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:30:7 should have working mobile navigation" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › navigation.spec.ts:30:7 › Navigation Tests › should have working mobile navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should highlight active page in navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:42:7 should highlight active page in navigation" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › navigation.spec.ts:42:7 › Navigation Tests › should highlight active page in navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have accessible navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:58:7 should have accessible navigation" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › navigation.spec.ts:58:7 › Navigation Tests › should have accessible navigation ─
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should handle keyboard navigation" classname="navigation.spec.ts" time="0.002">
+<failure message="navigation.spec.ts:67:7 should handle keyboard navigation" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › navigation.spec.ts:67:7 › Navigation Tests › should handle keyboard navigation ─
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="Mobile Safari" tests="9" failures="9" skipped="0" time="0.011" errors="0">
+<testcase name="Home Page Tests › should load home page successfully" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:8:7 should load home page successfully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:8:7 › Home Page Tests › should load home page successfully ────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should display all main sections" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:16:7 should display all main sections" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:16:7 › Home Page Tests › should display all main sections ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper meta tags" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:24:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:24:7 › Home Page Tests › should have proper meta tags ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should be responsive on different screen sizes" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:30:7 should be responsive on different screen sizes" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:30:7 › Home Page Tests › should be responsive on different screen sizes 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have working links in footer" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:44:7 should have working links in footer" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:44:7 › Home Page Tests › should have working links in footer ──────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should load images correctly" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:53:7 should load images correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:53:7 › Home Page Tests › should load images correctly ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have proper accessibility" classname="home.spec.ts" time="0.001">
+<failure message="home.spec.ts:64:7 should have proper accessibility" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:64:7 › Home Page Tests › should have proper accessibility ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should handle JavaScript errors gracefully" classname="home.spec.ts" time="0.002">
+<failure message="home.spec.ts:81:7 should handle JavaScript errors gracefully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:81:7 › Home Page Tests › should handle JavaScript errors gracefully 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Home Page Tests › should have fast loading times" classname="home.spec.ts" time="0.002">
+<failure message="home.spec.ts:97:7 should have fast loading times" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:97:7 › Home Page Tests › should have fast loading times ───────────
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="navigation.spec.ts" timestamp="2026-02-11T02:28:06.026Z" hostname="Mobile Safari" tests="5" failures="5" skipped="0" time="0.006" errors="0">
+<testcase name="Navigation Tests › should navigate to all main pages" classname="navigation.spec.ts" time="0.002">
+<failure message="navigation.spec.ts:8:7 should navigate to all main pages" type="FAILURE">
+<![CDATA[  [Mobile Safari] › navigation.spec.ts:8:7 › Navigation Tests › should navigate to all main pages ──
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have working mobile navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:30:7 should have working mobile navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › navigation.spec.ts:30:7 › Navigation Tests › should have working mobile navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should highlight active page in navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:42:7 should highlight active page in navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › navigation.spec.ts:42:7 › Navigation Tests › should highlight active page in navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should have accessible navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:58:7 should have accessible navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › navigation.spec.ts:58:7 › Navigation Tests › should have accessible navigation ─
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation Tests › should handle keyboard navigation" classname="navigation.spec.ts" time="0.001">
+<failure message="navigation.spec.ts:67:7 should handle keyboard navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › navigation.spec.ts:67:7 › Navigation Tests › should handle keyboard navigation ─
+
+    Error: browserType.launch: Executable doesn't exist at /Users/emmafeth/Library/Caches/ms-playwright/webkit-2191/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>
