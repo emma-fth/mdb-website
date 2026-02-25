@@ -1,9 +1,10 @@
 import { ExecMember } from '../types/members'
 
 export const execMembers: ExecMember[] = [
-  {name: "Mike Guerrero",
+   {
+    name: "Sodbayar Ganbat",
     title: "President",
-    image: "/exec/mike.jpeg"
+    image: "/exec/sod.jpeg"
   },
   {
     name: "Pavithra Arun Anand",
@@ -30,11 +31,6 @@ export const execMembers: ExecMember[] = [
     name: "Daniel Gil",
     title: "VP of Projects",
     image: "/exec/daniel.jpg"
-  },
-  {
-    name: "Sodbayar Ganbat",
-    title: "VP of Projects",
-    image: "/exec/sod.jpeg"
   },
   {
     name: "Aarav Desai",
