@@ -7,11 +7,6 @@ export const execMembers: ExecMember[] = [
     image: "/exec/sod.jpeg"
   },
   {
-    name: "Pavithra Arun Anand",
-    title: "VP of Operations",
-    image: "/exec/pavithra.jpg"
-  },
-  {
     name: "Rhea Minglani",
     title: "VP of Operations",
     image: "/exec/rhea.jpeg"

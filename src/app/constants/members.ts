@@ -26,6 +26,7 @@ export const members: Member[] = [
   { name: "Nathan Ye", title: "Member", image: "/members/nathan.jpeg" },
   { name: "Nomin-Erdene Batchuluun", title: "Member", image: "/members/nomi.jpeg" },
   { name: "Oscar Zhang", title: "Member", image: "/members/oscar.jpeg" },
+  { name: "Pavithra Arun Anand", title: "Member", image: "/members/pavithra.jpg"},
   { name: "Renata Martinez Camargo", title: "Member", image: "/members/renata.png" },
   { name: "Ria Tao", title: "Member", image: "/members/ria.jpg" },
   { name: "Riana Mistry", title: "Member", image: "/members/riana.png" },
