@@ -1,6 +1,7 @@
 import { Member } from '../types/members'
 
 export const members: Member[] = [
+  //updated for sp26
   { name: "Alex Kim", title: "Member", image: "/favicon.svg" },
   { name: "Alp Senay", title: "Member", image: "/members/alp.jpg" },  
   { name: "Andrew Falcom", title: "Member", image: "/members/andrew.png" },  
