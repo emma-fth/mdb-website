@@ -138,8 +138,8 @@ export default function Destinations() {
           </div>
           <div className="flex items-center justify-center h-20 group">
             <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" 
-              alt="Visa" 
+              src="/logos/ycombinator.png" 
+              alt="Y Combinator" 
               className="h-12 object-contain transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-2xl group-hover:brightness-110" 
             />
           </div>
@@ -182,8 +182,8 @@ export default function Destinations() {
           </div>
           <div className="flex items-center justify-center h-20 group">
             <img 
-              src="/logos/delve.png" 
-              alt="Delve" 
+              src="/logos/point72.png" 
+              alt="Point72" 
               className="h-12 object-contain transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-2xl group-hover:brightness-110" 
             />
           </div>
