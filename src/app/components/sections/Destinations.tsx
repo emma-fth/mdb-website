@@ -138,7 +138,7 @@ export default function Destinations() {
           </div>
           <div className="flex items-center justify-center h-20 group">
             <img 
-              src="public/logos/ycombinator.png" 
+              src="/logos/ycombinator.png" 
               alt="Y Combinator" 
               className="h-12 object-contain transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-2xl group-hover:brightness-110" 
             />
