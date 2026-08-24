@@ -24,7 +24,7 @@ export default function Footer() {
               />
               <div className="ml-3">
                 <h3 className="text-md sm:text-lg lg:text-2xl font-raleway-bold text-mdb-blue drop-shadow-sm leading-tight">
-                  Mobile Developers of Berkeley
+                  MDB @ Berkeley
                 </h3>
               </div>
             </div>
@@ -111,7 +111,7 @@ export default function Footer() {
         {/* Bottom Border */}
         <div className="border-t border-blue-300 mt-6 sm:mt-8 pt-6 sm:pt-8">
           <p className="text-center text-gray-600 text-xs sm:text-sm">
-            &copy; 2025 Mobile Developers of Berkeley. All rights reserved.
+            &copy; 2025 MDB @ Berkeley. All rights reserved.
           </p>
         </div>
       </div>

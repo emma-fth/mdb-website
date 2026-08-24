@@ -81,7 +81,7 @@ export default function PurpAndComm() {
               Our Purpose
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              To foster a diverse and welcoming community driven by learning software development and building real-world applications, leaving members with bonds and memories highlighting all aspects of the college experience and lasting beyond the club.
+              To foster a diverse and welcoming community driven by learning full-stack software development, exploring AI, and building real-world products, leaving members with bonds and memories highlighting all aspects of the college experience and lasting beyond the club.
             </p>
           </div>
           <div className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${

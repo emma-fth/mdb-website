@@ -1,7 +1,7 @@
 {
-  "name": "Mobile Developers of Berkeley",
+  "name": "MDB @ Berkeley",
   "short_name": "MDB",
-  "description": "Mobile Developers of Berkeley (MDB) is a student organization at UC Berkeley focused on mobile app development.",
+  "description": "MDB is a student organization at UC Berkeley focused on full-stack software, AI, and entrepreneurship.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

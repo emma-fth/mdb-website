@@ -18,7 +18,7 @@ describe('Footer Component', () => {
 
   it('displays organization name', () => {
     render(<Footer />)
-    expect(screen.getByText('Mobile Developers of Berkeley')).toBeInTheDocument()
+    expect(screen.getByText('MDB @ Berkeley')).toBeInTheDocument()
   })
 
   it('renders navigation links', () => {
@@ -31,7 +31,7 @@ describe('Footer Component', () => {
 
   it('displays copyright information', () => {
     render(<Footer />)
-    expect(screen.getByText(/© 2025 Mobile Developers of Berkeley/i)).toBeInTheDocument()
+    expect(screen.getByText(/© 2025 MDB @ Berkeley/i)).toBeInTheDocument()
   })
 
   it('has proper accessibility attributes', () => {

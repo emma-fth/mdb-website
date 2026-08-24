@@ -16,7 +16,7 @@ const cards: CarouselCard[] = [
   {
     icon: "/assets/proj.svg",
     title: "Projects",
-    description: "We take 3 client projects each semester, ranging from Mobile to Web to ML to Game Dev, our members are passionate about many fields and ready to tackle any problem",
+    description: "We take 3 client projects each semester, ranging from full-stack software to AI/ML to Game Dev, our members are passionate about many fields and ready to tackle any problem",
     link: "/projects",
     isImage: true
   },

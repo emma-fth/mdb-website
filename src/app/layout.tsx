@@ -8,8 +8,8 @@ import { initializeSession } from '../utils/supabase'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Mobile Developers of Berkeley',
-  description: 'Mobile Developers of Berkeley (MDB) is a student organization at UC Berkeley focused on mobile app development.',
+  title: 'MDB @ Berkeley',
+  description: 'MDB is a student organization at UC Berkeley focused on full-stack software, AI, and entrepreneurship.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
