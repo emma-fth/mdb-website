@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'MDB @ Berkeley',
-  description: 'MDB @ Berkeley is a student organization focused on full-stack software, AI, and entrepreneurship.',
+  description: 'MDB is a student organization at UC Berkeley focused on full-stack software, AI, and entrepreneurship.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',

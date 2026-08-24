@@ -1,6 +1,6 @@
 # MDB Website
 
-A modern, responsive website for MDB @ Berkeley, a community focused on full-stack software, AI, and entrepreneurship.
+A modern, responsive website for MDB, a UC Berkeley community focused on full-stack software, AI, and entrepreneurship.
 
 ## ✨ Features
 

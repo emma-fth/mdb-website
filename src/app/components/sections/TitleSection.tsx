@@ -50,7 +50,7 @@ export default function TitleSection() {
               </div>
             </h1>
             <p className="text-[clamp(0.85rem,2.2vw,1.05rem)] md:text-[clamp(0.875rem,2.5vw,1.125rem)] lg:text-[clamp(1rem,3vw,1.25rem)] mb-8 text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            MDB @ Berkeley is a community of builders focused on full-stack software, AI, and entrepreneurship!
+            MDB is a community of builders at UC Berkeley focused on full-stack software, AI, and entrepreneurship!
             </p>
             
             {/* Buttons */}

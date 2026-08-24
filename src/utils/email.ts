@@ -279,7 +279,7 @@ export const emailTemplates = {
             </div>
             
             <div class="footer">
-              <p>Best regards,<br><span class="highlight">The MDB @ Berkeley Team</span></p>
+              <p>Best regards,<br><span class="highlight">The MDB Team</span></p>
               <p>Time submitted: ${new Date().toLocaleString()}</p>
             </div>
           </div>
