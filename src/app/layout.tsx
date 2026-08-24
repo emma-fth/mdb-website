@@ -8,8 +8,8 @@ import { initializeSession } from '../utils/supabase'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'MDB | Software and AI at Berkeley',
-  description: 'MDB is a student organization at UC Berkeley where developers build innovative software and AI systems.',
+  title: 'MDB @ Berkeley',
+  description: 'MDB @ Berkeley is a student organization focused on full-stack software, AI, and entrepreneurship.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -75,4 +75,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-}
+} 

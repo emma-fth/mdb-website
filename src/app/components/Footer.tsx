@@ -24,11 +24,8 @@ export default function Footer() {
               />
               <div className="ml-3">
                 <h3 className="text-md sm:text-lg lg:text-2xl font-raleway-bold text-mdb-blue drop-shadow-sm leading-tight">
-                  MDB
+                  MDB @ Berkeley
                 </h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-slate-600">
-                  Software · AI · Entrepreneurship
-                </p>
               </div>
             </div>
           </div>
@@ -114,10 +111,10 @@ export default function Footer() {
         {/* Bottom Border */}
         <div className="border-t border-blue-300 mt-6 sm:mt-8 pt-6 sm:pt-8">
           <p className="text-center text-gray-600 text-xs sm:text-sm">
-            &copy; 2025 MDB. All rights reserved.
+            &copy; 2025 MDB @ Berkeley. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   )
-}
+} 

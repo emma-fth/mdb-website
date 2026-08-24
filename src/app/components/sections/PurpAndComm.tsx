@@ -1,140 +1,179 @@
 'use client'
-
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { useSectionAnimation } from '../../hooks/useIntersectionObserver'
-
-const pillars = [
-  {
-    number: '01',
-    title: 'Software',
-    description: 'Design and ship thoughtful products across web, mobile, backend, and emerging platforms.'
-  },
-  {
-    number: '02',
-    title: 'AI',
-    description: 'Turn modern models into useful systems through hands-on experimentation and responsible engineering.'
-  },
-  {
-    number: '03',
-    title: 'Entrepreneurship',
-    description: 'Think like founders: start with real problems, move quickly, talk to users, and create lasting value.'
-  }
-]
+import { useState, useEffect, useRef } from 'react'
+import { useSectionAnimation, useMultipleIntersectionObserver } from '../../hooks/useIntersectionObserver'
 
 export default function PurpAndComm() {
-  const { isVisible, elementRef: sectionRef } = useSectionAnimation<HTMLElement>()
+  const { isVisible, elementRef: sectionRef } = useSectionAnimation()
   const [counters, setCounters] = useState({ semesters: 0, projects: 0, members: 0 })
+  
+  // Individual section visibility states
+  const [purposeVisible, setPurposeVisible] = useState(false)
+  const [statsVisible, setStatsVisible] = useState(false)
+  const [communityVisible, setCommunityVisible] = useState(false)
+  
+  const purposeRef = useRef<HTMLDivElement>(null)
+  const statsRef = useRef<HTMLDivElement>(null)
+  const communityRef = useRef<HTMLDivElement>(null)
 
+  // Individual section observers
+  const { visibilityStates } = useMultipleIntersectionObserver({
+    elements: [
+      { ref: purposeRef, threshold: 0.2 },
+      { ref: statsRef, threshold: 0.2 },
+      { ref: communityRef, threshold: 0.2 }
+    ]
+  })
+
+  // Update individual visibility states based on the hook results
   useEffect(() => {
-    if (!isVisible) return
+    if (visibilityStates['element-0']) setPurposeVisible(true)
+    if (visibilityStates['element-1']) setStatsVisible(true)
+    if (visibilityStates['element-2']) setCommunityVisible(true)
+  }, [visibilityStates])
 
-    const targets = { semesters: 20, projects: 30, members: 50 }
-    const duration = 1600
-    const start = performance.now()
+  // Counter animation
+  useEffect(() => {
+    if (isVisible) {
+      const duration = 2000 // 2 seconds
+      const steps = 60
+      const stepDuration = duration / steps
+      
+  const targets = { semesters: 20, projects: 30, members: 50 }
+      const increments = {
+        semesters: targets.semesters / steps,
+        projects: targets.projects / steps,
+        members: targets.members / steps
+      }
 
-    const animate = (time: number) => {
-      const progress = Math.min((time - start) / duration, 1)
-      setCounters({
-        semesters: Math.floor(targets.semesters * progress),
-        projects: Math.floor(targets.projects * progress),
-        members: Math.floor(targets.members * progress)
-      })
+      let currentStep = 0
+      const timer = setInterval(() => {
+        currentStep++
+        setCounters({
+          semesters: Math.min(Math.floor(increments.semesters * currentStep), targets.semesters),
+          projects: Math.min(Math.floor(increments.projects * currentStep), targets.projects),
+          members: Math.min(Math.floor(increments.members * currentStep), targets.members)
+        })
 
-      if (progress < 1) requestAnimationFrame(animate)
+        if (currentStep >= steps) {
+          clearInterval(timer)
+          setCounters(targets) // Ensure exact final values
+        }
+      }, stepDuration)
+
+      return () => clearInterval(timer)
     }
-
-    const animationFrame = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrame)
   }, [isVisible])
 
   return (
-    <section ref={sectionRef} className="relative left-1/2 w-screen -translate-x-1/2 bg-white py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className={`mx-auto max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <p className="font-raleway-semibold text-sm uppercase tracking-[0.28em] text-blue-600">What drives us</p>
-          <h2 className="mt-4 font-raleway-bold text-4xl leading-tight tracking-tight text-mdb-blue md:text-6xl">
-            Build ambitiously. Grow together.
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-slate-600 md:text-xl">
-            MDB brings together people who are curious enough to explore, practical enough to ship, and generous enough to help one another improve.
-          </p>
-        </div>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {pillars.map((pillar, index) => (
-            <article
-              key={pillar.title}
-              className={`group rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition-all duration-700 hover:-translate-y-2 hover:border-blue-200 hover:bg-white hover:shadow-xl ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-              style={{ transitionDelay: `${index * 120}ms` }}
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-raleway-bold text-sm tracking-[0.2em] text-blue-500">{pillar.number}</span>
-                <span className="h-2.5 w-2.5 rounded-full bg-mdb-gold transition-transform duration-300 group-hover:scale-[2]" />
-              </div>
-              <h3 className="mt-12 font-raleway-bold text-3xl text-mdb-blue">{pillar.title}</h3>
-              <p className="mt-4 leading-relaxed text-slate-600">{pillar.description}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-24 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="relative overflow-hidden rounded-[2rem]">
+    <section ref={sectionRef} className="w-screen bg-gradient-to-b from-white to-mdb-light-blue py-16 relative left-1/2 -translate-x-1/2">
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-mdb-light-blue z-0"></div>
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        
+        {/* Our Purpose Section */}
+        <div ref={purposeRef} className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${
+            purposeVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-12'
+          }`}>
+            <h2 className="text-4xl lg:text-5xl font-raleway-bold mb-6 text-mdb-blue">
+              Our Purpose
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              To foster a diverse and welcoming community driven by learning full-stack software development, exploring AI, and building real-world products, leaving members with bonds and memories highlighting all aspects of the college experience and lasting beyond the club.
+            </p>
+          </div>
+          <div className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
+            purposeVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 translate-x-12'
+          }`}>
             <Image
               src="/images/mdb8.jpg"
-              alt="MDB members building together"
-              width={900}
-              height={700}
-              className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+              alt="MDB Community at the beach"
+              width={600}
+              height={400}
+              className="w-full h-auto rounded-2xl shadow-lg hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center"
             />
           </div>
-          <div>
-            <p className="font-raleway-semibold text-sm uppercase tracking-[0.28em] text-blue-600">From idea to impact</p>
-            <h2 className="mt-4 font-raleway-bold text-4xl leading-tight text-mdb-blue md:text-5xl">
-              Learn by building things that matter.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-slate-600">
-              Our teams work across disciplines to take products from an open-ended problem to a polished launch. Members practice technical judgment, product thinking, leadership, and collaboration in the same room.
-            </p>
+        </div>
+
+        {/* Stats Section */}
+        <div ref={statsRef} className="relative py-16 mb-20">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className={`absolute top-10 left-10 w-32 h-32 bg-orange-300 rounded-full opacity-20 transition-all duration-1000 ${isVisible ? 'scale-100 rotate-45' : 'scale-0 rotate-0'}`}></div>
+            <div className={`absolute top-20 right-20 w-24 h-24 bg-yellow-400 rounded-full opacity-30 transition-all duration-1500 delay-300 ${isVisible ? 'scale-100 -rotate-45' : 'scale-0 rotate-0'}`}></div>
+            <div className={`absolute bottom-10 left-1/4 w-20 h-20 bg-orange-400 rounded-full opacity-25 transition-all duration-1200 delay-500 ${isVisible ? 'scale-100 rotate-90' : 'scale-0 rotate-0'}`}></div>
+            <div className={`absolute bottom-20 right-1/3 w-16 h-16 bg-yellow-300 rounded-full opacity-20 transition-all duration-1000 delay-700 ${isVisible ? 'scale-100 -rotate-90' : 'scale-0 rotate-0'}`}></div>
+          </div>
+
+          <div className={`relative grid md:grid-cols-3 gap-8 text-center transition-all duration-1000 ease-out ${
+            statsVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-12'
+          }`}>
+            {/* Semesters */}
+            <div className="relative">
+              <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
+                {counters.semesters}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Semesters of</h3>
+              <h3 className="text-xl font-semibold text-gray-800">Experience</h3>
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full opacity-60 animate-pulse"></div>
+            </div>
+
+            {/* Projects */}
+            <div className="relative">
+              <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
+                {counters.projects}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Projects Completed</h3>
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-orange-300 rounded-full opacity-50"></div>
+            </div>
+
+            {/* Members */}
+            <div className="relative">
+              <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
+                {counters.members}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Active Members</h3>
+              <div className="absolute -top-6 -left-2 w-6 h-6 bg-yellow-400 rounded-full opacity-70"></div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-24 grid gap-8 rounded-[2.5rem] bg-mdb-blue px-8 py-12 text-center text-white shadow-2xl shadow-blue-950/15 md:grid-cols-3 md:px-12">
-          <div>
-            <p className="font-raleway-bold text-5xl text-mdb-gold md:text-6xl">{counters.semesters}+</p>
-            <p className="mt-3 text-blue-100">semesters building</p>
-          </div>
-          <div className="border-y border-white/15 py-8 md:border-x md:border-y-0 md:py-0">
-            <p className="font-raleway-bold text-5xl text-mdb-gold md:text-6xl">{counters.projects}+</p>
-            <p className="mt-3 text-blue-100">projects completed</p>
-          </div>
-          <div>
-            <p className="font-raleway-bold text-5xl text-mdb-gold md:text-6xl">{counters.members}+</p>
-            <p className="mt-3 text-blue-100">active builders</p>
-          </div>
-        </div>
-
-        <div className="mt-24 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="lg:order-2">
+        {/* Our Community Section */}
+        <div ref={communityRef} className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className={`order-1 lg:order-1 transition-all duration-1000 ease-out ${
+            communityVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-12'
+          }`}>
             <Image
               src="/images/mdb-hawaii.JPG"
-              alt="MDB community gathering"
-              width={900}
-              height={700}
-              className="aspect-[4/3] w-full rounded-[2rem] object-cover"
+              alt="MDB Community gathering"
+              width={600}
+              height={400}
+              className="w-full h-auto rounded-2xl shadow-lg hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center"
             />
           </div>
-          <div className="lg:order-1">
-            <p className="font-raleway-semibold text-sm uppercase tracking-[0.28em] text-blue-600">People first</p>
-            <h2 className="mt-4 font-raleway-bold text-4xl leading-tight text-mdb-blue md:text-5xl">
-              The community lasts beyond the project.
+          <div className={`order-2 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
+            communityVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 translate-x-12'
+          }`}>
+            <h2 className="text-4xl lg:text-5xl font-raleway-bold mb-6 text-mdb-blue">
+              Our Community
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-slate-600">
-              Retreats, dinners, study sessions, and spontaneous adventures turn teammates into close friends. MDB is a place to do serious work without taking yourself too seriously.
+            <p className="text-lg text-gray-700 leading-relaxed">
+              At MDB, we prioritize and cultivate a diverse and welcoming community. Through team bonding activities, retreats, and club socials, our members form lasting bonds and unforgettable memories that enhance the college experience.
             </p>
           </div>
         </div>
+
       </div>
     </section>
   )
-}
+} 

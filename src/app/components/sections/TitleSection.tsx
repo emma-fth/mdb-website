@@ -1,73 +1,87 @@
 'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTypingAnimation } from '../../hooks/useTypingAnimation'
 import { useAnimationLoad } from '../../hooks/useAnimationLoad'
 
 export default function TitleSection() {
   const { isLoaded } = useAnimationLoad()
+  
+  const words = ['MDB.', 'a Community.', 'Chillers.', 'a Network.', 'Tight-knit.', 'Diverse.', 'Creators.', 'MDBesties.', 'Developers.', 'Brainrotted.', 'Family.']
+  const { currentText } = useTypingAnimation({ words })
 
   return (
-    <section className="relative -mt-20 min-h-screen w-screen overflow-hidden bg-mdb-blue pt-28 text-white md:pt-32 lg:pt-36">
-      <div className="absolute -left-32 top-40 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
-      <div className="absolute -right-24 bottom-12 h-96 w-96 rounded-full bg-mdb-gold/20 blur-3xl" />
-
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-9rem)] max-w-7xl items-center gap-12 px-6 pb-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20 lg:px-10">
-        <div className={`transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <p className="mb-6 font-raleway-semibold text-sm uppercase tracking-[0.28em] text-blue-100">
-            MDB · UC Berkeley
-          </p>
-          <h1 className="max-w-4xl font-raleway-bold text-[clamp(2.75rem,6.2vw,5.75rem)] leading-[0.98] tracking-[-0.04em]">
-            A community of builders passionate about
-            <span className="block text-mdb-gold">software, AI, and entrepreneurship.</span>
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100 md:text-xl">
-            We turn ambitious ideas into real products, learn by building, and support one another from Berkeley to beyond.
-          </p>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center rounded-full bg-mdb-gold px-7 py-3.5 font-raleway-semibold text-mdb-blue transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              Explore our work <span className="ml-2">→</span>
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-7 py-3.5 font-raleway-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-mdb-blue"
-            >
-              Meet the community
-            </Link>
-            <Link
-              href="https://airtable.com/appFIvvLKJj8FpDou/shrg6q9IqDVmp1ybB"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full px-5 py-3.5 font-raleway-semibold text-blue-100 transition-colors duration-300 hover:text-white"
-            >
-              Coffee chats ↗
-            </Link>
-          </div>
-        </div>
-
-        <div className={`relative transition-all delay-200 duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="relative mx-auto aspect-square max-w-[560px] rounded-[2.5rem] border border-white/30 bg-white/95 p-6 shadow-2xl shadow-blue-950/30 md:p-10">
-            <div className="absolute -left-5 top-12 z-10 rounded-full bg-mdb-gold px-4 py-2 font-raleway-bold text-xs uppercase tracking-[0.2em] text-mdb-blue shadow-lg">
-              Build boldly
-            </div>
+    <section className="min-h-screen w-screen bg-gradient-to-b from-mdb-light-blue to-white flex items-center -mt-20 relative mb-0 py-8 md:py-12 lg:py-16">
+      <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue to-white z-0"></div>
+      <div className="w-full px-4 py-8 pt-20 md:pt-24 lg:pt-28 relative z-10">
+        <div className={`max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Left Section - Image */}
+          <div className="relative flex justify-center lg:justify-start -mt-6 md:-mt-8 lg:-mt-40">
             <Image
               src="/images/mdb-logo-large.png"
-              alt="MDB logo"
-              fill
+              alt="MDB Mobile Development"
+              width={2000}
+              height={2000}
               priority
-              sizes="(max-width: 1024px) 80vw, 42vw"
-              className="object-contain p-8 md:p-12"
+              sizes="(max-width: 640px) 340px, (max-width: 768px) 400px, (max-width: 1024px) 460px, (max-width: 1280px) 600px, 720px"
+              className={`w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] md:w-[460px] md:h-[460px] lg:w-[600px] lg:h-[600px] xl:w-[720px] xl:h-[720px] object-contain transition-all duration-1000 ease-out ${
+                isLoaded 
+                  ? 'translate-y-0' 
+                  : '-translate-y-12'
+              }`}
             />
-            <div className="absolute -bottom-5 right-8 z-10 rounded-2xl border border-white/40 bg-mdb-light-blue px-5 py-3 text-sm font-raleway-semibold text-mdb-blue shadow-lg">
-              Since 2015 · Berkeley, CA
+          </div>
+
+        {/* Right Section - Content */}
+          <div className={`order-2 lg:order-2 text-center lg:text-left -mt-6 md:-mt-8 lg:-mt-40 transition-all duration-1000 ease-out delay-300 ${
+            isLoaded 
+              ? 'translate-y-0' 
+              : 'translate-y-8'
+          }`}>
+            <h1 className="text-[clamp(1.5rem,4.5vw,2.75rem)] md:text-[clamp(1.75rem,5.5vw,3.5rem)] lg:text-[clamp(2rem,6.5vw,4.5rem)] mb-6 text-mdb-blue font-raleway-bold leading-tight">
+              <div className="block">
+                We are
+              </div>
+              <div className="block min-h-[1.2em]">
+                <span className="inline-block">
+                  {currentText}
+                  <span className="animate-pulse text-mdb-blue">|</span>
+                </span>
+              </div>
+            </h1>
+            <p className="text-[clamp(0.85rem,2.2vw,1.05rem)] md:text-[clamp(0.875rem,2.5vw,1.125rem)] lg:text-[clamp(1rem,3vw,1.25rem)] mb-8 text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            MDB @ Berkeley is a community of builders focused on full-stack software, AI, and entrepreneurship!
+            </p>
+            
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              {/* Apply Button */}
+              <Link 
+                href="/apply"
+                className="bg-mdb-blue text-white px-6 md:px-8 py-3 md:py-3 rounded-xl font-semibold text-[clamp(0.6875rem,1.75vw,0.875rem)] hover:bg-mdb-gold hover:text-mdb-blue hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center flex items-center justify-center gap-2 min-w-[120px] md:min-w-[140px]"
+              >
+                Apply Now
+                <span className="text-[clamp(0.75rem,1.75vw,1rem)]">→</span>
+              </Link>
+              
+              {/* Contact Button */}
+              <Link 
+                href="/contact"
+                className="border-2 border-mdb-blue text-mdb-blue bg-white/80 backdrop-blur-sm px-6 md:px-8 py-3 md:py-3 rounded-xl font-semibold text-[clamp(0.6875rem,2.2vw,1.05rem)] hover:bg-mdb-blue hover:text-white hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center min-w-[120px] md:min-w-[140px]"
+              >
+                Contact Us
+              </Link>
+              {/* Coffee Chat Button */}
+              <Link 
+                href="https://airtable.com/appFIvvLKJj8FpDou/shrg6q9IqDVmp1ybB"
+                className="border-2 border-mdb-blue text-mdb-blue bg-white/80 backdrop-blur-sm px-6 md:px-8 py-3 md:py-3 rounded-xl font-semibold text-[clamp(0.6875rem,2.2vw,1.05rem)] hover:bg-mdb-blue hover:text-white hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center min-w-[120px] md:min-w-[140px]"
+              >
+                Coffee Chats
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </section>
   )
-}
+} 

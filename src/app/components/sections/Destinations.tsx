@@ -14,7 +14,7 @@ export default function Destinations() {
           : 'opacity-0 translate-y-12'
       }`}>
         <h2 className="text-4xl md:text-5xl font-raleway-bold text-center text-mdb-blue mb-6 drop-shadow-sm">
-          Where MDB builders go
+          Our Destinations
         </h2>
       </div>
       
@@ -25,9 +25,12 @@ export default function Destinations() {
       }`}>
         <div className="text-center mb-12">
           <p className="text-xl text-gray-700 mb-4">
-            Our members and alumni bring their builder mindset to leading companies,
+            At MDB, our members and alumni have a track record of success,
             <br />
-            innovative startups, and ventures of their own.
+            moving on to positions in leading companies and innovative startups.
+          </p>
+          <p className="text-xl text-gray-700">
+            Here&apos;s a glimpse of the companies where our members make an impact.
           </p>
         </div>
 
@@ -188,4 +191,4 @@ export default function Destinations() {
       </div>
     </section>
   )
-}
+} 

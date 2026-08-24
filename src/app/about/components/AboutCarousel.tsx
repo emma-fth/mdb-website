@@ -16,14 +16,14 @@ const cards: CarouselCard[] = [
   {
     icon: "/assets/proj.svg",
     title: "Projects",
-    description: "We take on three client projects each semester across software, AI, and emerging technologies. Our members are passionate about many fields and ready to tackle any problem.",
+    description: "We take 3 client projects each semester, ranging from full-stack software to AI/ML to Game Dev, our members are passionate about many fields and ready to tackle any problem",
     link: "/projects",
     isImage: true
   },
   {
     icon: "/assets/tp.svg",
     title: "Training Program",
-    description: "A 13-week intensive program covering modern software engineering and applied AI, culminating in a product fully ideated and built by the new member class.",
+    description: "A 13 week intensive program, we teach you the basics of full-stack development, culminating in a newbie app fully ideated and created by the new member class, which is published on the App Store",
     link: "/training-program",
     isImage: true
   },
@@ -97,4 +97,4 @@ export default function AboutCarousel() {
       </div>
     </section>
   )
-}
+} 

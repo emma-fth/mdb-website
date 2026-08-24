@@ -22,12 +22,12 @@ export default function Calendly() {
       image: "/exec/mike.jpeg",
       calendly: "https://calendly.com/mikxvii",
       major: "Computer Science & Business Administration",
-      interests: ["Software & AI", "Startups", "Leadership", "Coffee"],
+      interests: ["Full-Stack Development", "AI", "Startups", "Leadership"],
       email: "mike@mdb.berkeley.edu",
       funFacts: [
         "Started coding in high school",
         "Loves trying new coffee shops",
-        "Has built 3 production products from scratch"
+        "Has built 3 full-stack projects from scratch"
       ]
     },
     {
@@ -36,7 +36,7 @@ export default function Calendly() {
       image: "/logos/mdb.png",
       calendly: "https://calendly.com/mdb-member/30min",
       major: "Computer Science",
-      interests: ["Project Management", "Software Development", "Team Leadership", "Innovation"],
+      interests: ["Project Management", "Full-Stack Development", "Team Leadership", "Innovation"],
       email: "member@mdb.berkeley.edu",
       funFacts: [
         "Passionate about building impactful solutions",

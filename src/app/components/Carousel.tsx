@@ -1,12 +1,23 @@
 'use client'
 import { useRef, useEffect } from 'react'
 import Image from 'next/image'
+import { useTypingAnimation } from '../hooks/useTypingAnimation'
 
 export default function Carousel() {
   const carouselRef = useRef<HTMLDivElement>(null)
   const carouselRef2 = useRef<HTMLDivElement>(null)
   const carouselRef3 = useRef<HTMLDivElement>(null)
   
+  const { currentText } = useTypingAnimation({
+    words: ['Baddies.', 'Boomers.', 'Bots.', 'Bruzz.', 'Ballers.', 'Beasts.', 'Baddies.', 'Boomers.', 'Bots.', 'Bruzz.', 'Ballers.', 'Beasts.'],
+    typeSpeed: 150,
+    deleteSpeed: 100,
+    pauseDuration: 2000,
+    loop: true
+  })
+
+
+
   // First carousel media and captions (top strip) - mixed images and videos
   const media1 = [
     { type: 'image', src: "/images/lafayette5.jpg" },
@@ -60,7 +71,7 @@ export default function Carousel() {
     "MDB Banquet Dinner",
     "MDB HAWAII RETREAT SPRING 2025",
     "MDB in Hawaii, Preston's Car",
-    "MDB",
+    "Mobile Developers of Berkeley",
     "Project Manager Team Spring 2025",
     "MDB Selfie @The Joker"
   ]
@@ -168,14 +179,11 @@ export default function Carousel() {
   return (
     <section className="w-screen bg-gradient-to-b from-mdb-light-blue to-white py-8 sm:py-12 md:py-16 relative left-1/2 -translate-x-1/2 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue to-white z-0"></div>
-      <div className="relative z-10 mx-auto mb-10 max-w-3xl px-6 text-center sm:mb-14 md:mb-16">
-        <p className="font-raleway-semibold text-sm uppercase tracking-[0.28em] text-blue-600">Life at MDB</p>
-        <h2 className="mt-4 font-raleway-bold text-4xl leading-tight text-mdb-blue md:text-6xl">
-          A community beyond the build.
+      <div className="mb-8 sm:mb-12 md:mb-16 relative z-10">
+        <h2 className="text-5xl font-raleway-bold text-center text-mdb-blue">
+          MD{currentText}
+          <span className="animate-pulse text-mdb-blue">|</span>
         </h2>
-        <p className="mt-5 text-lg leading-relaxed text-slate-600">
-          The best projects start with people who trust each other. Here are a few moments that make MDB feel like home.
-        </p>
       </div>
       
       {/* Full-width continuous sliding strip with alternating heights */}
@@ -421,4 +429,4 @@ export default function Carousel() {
       </div>
     </section>
   )
-}
+} 

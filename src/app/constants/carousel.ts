@@ -23,7 +23,7 @@ export const CAROUSEL_ITEMS: CarouselItem[] = [
   { type: 'image', src: "/images/table3.JPEG", caption: "MDB Banquet Dinner", strip: 2, order: 6 },
   { type: 'image', src: "/images/mdb-hawaii.JPG", caption: "MDB HAWAII RETREAT SPRING 2025", strip: 2, order: 7 },
   { type: 'image', src: "/images/car1.JPEG", caption: "MDB in Hawaii, Preston's Car", strip: 2, order: 8 },
-  { type: 'image', src: "/images/mdb5 2.jpg", caption: "MDB", strip: 2, order: 9 },
+  { type: 'image', src: "/images/mdb5 2.jpg", caption: "Mobile Developers of Berkeley", strip: 2, order: 9 },
   { type: 'image', src: "/images/pms2.jpg", caption: "Project Manager Team Spring 2025", strip: 2, order: 10 },
   { type: 'image', src: "/images/6flags-selfie.jpg", caption: "MDB Selfie @The Joker", strip: 2, order: 11 },
 

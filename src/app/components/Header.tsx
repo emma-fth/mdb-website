@@ -126,7 +126,7 @@ export default function Header() {
   }, [activeItem])
 
   return (
-    <header className="fixed left-4 right-4 top-4 z-50 rounded-2xl border border-slate-200/80 bg-white/95 text-mdb-blue shadow-lg shadow-slate-900/5 backdrop-blur-md">
+    <header className="fixed top-4 left-4 right-4 z-50 bg-white/20 backdrop-blur-md text-mdb-blue shadow-lg border border-white/20 rounded-2xl">
       <nav className="font-raleway-semibold container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -271,4 +271,4 @@ export default function Header() {
       </nav>
     </header>
   )
-}
+} 

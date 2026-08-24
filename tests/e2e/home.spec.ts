@@ -103,4 +103,4 @@ test.describe('Home Page Tests', () => {
     // Page should load within 5 seconds
     expect(loadTime).toBeLessThan(5000)
   })
-})
+}) 

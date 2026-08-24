@@ -18,11 +18,11 @@ export default function ProjectHeader() {
             PROJECTS
           </h1>
           <p className={`text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 ${animationClass}`} style={{ animationDelay: delay2 }}>
-            Discover innovative software and AI systems built by our talented developers. From ideation to deployment,
+            Discover innovative full-stack software and AI projects built by our talented developers. From ideation to deployment,
             our projects showcase real-world problem-solving and modern engineering technologies.
           </p>
         </div>
       </div>
     </section>
   )
-}
+} 

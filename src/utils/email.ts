@@ -279,7 +279,7 @@ export const emailTemplates = {
             </div>
             
             <div class="footer">
-              <p>Best regards,<br><span class="highlight">The MDB Team</span></p>
+              <p>Best regards,<br><span class="highlight">The MDB @ Berkeley Team</span></p>
               <p>Time submitted: ${new Date().toLocaleString()}</p>
             </div>
           </div>
@@ -296,7 +296,7 @@ export const sendEmail = async (to: string, template: { subject: string; html: s
     const transporter = createTransporter()
     
     const mailOptions = {
-      from: `"MDB" <${process.env.SMTP_USER || 'noreply@mdb.dev'}>`,
+      from: `"MDB @ Berkeley" <${process.env.SMTP_USER || 'noreply@mdb.dev'}>`,
       to,
       subject: template.subject,
       html: template.html

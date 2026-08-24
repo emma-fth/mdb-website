@@ -53,7 +53,7 @@ export const clientProjects: Client[] = [
     link: "",
     type: "RV Rental App",
     image: "/images/sur-logo.png", // Update with actual logo path if available
-    description: "An iOS marketplace where users can rent RVs and off-road vehicles directly from owners. Our MDB team designed and developed the app using Swift and Firebase, building features like real-time search, booking, and payment integration. Our developers got hands-on experience with end-to-end product development, backend integration, and shipping a production-ready product.",
+    description: "An iOS marketplace where users can rent RVs and off-road vehicles directly from owners. Our MDB team designed and developed the app using Swift and Firebase, building features like real-time search, booking, and payment integration. Our developers got hands-on experience with mobile development, backend integration, and shipping a production-ready product.",
     techStack: ["Swift", "Supabase", "Firebase"],
     purpose: "Accessible vehicle rentals",
     date: "Fall 2025",

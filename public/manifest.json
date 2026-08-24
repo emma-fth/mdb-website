@@ -1,7 +1,7 @@
 {
-  "name": "MDB",
+  "name": "MDB @ Berkeley",
   "short_name": "MDB",
-  "description": "MDB is a student organization at UC Berkeley where developers build innovative software and AI systems.",
+  "description": "MDB @ Berkeley is a student organization focused on full-stack software, AI, and entrepreneurship.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
