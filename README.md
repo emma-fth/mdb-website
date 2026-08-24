@@ -1,6 +1,6 @@
 # MDB Website
 
-A modern, responsive website for MDB (Mobile Development Berkeley) showcasing our community, projects, and training programs.
+A modern, responsive website for MDB, UC Berkeley's community for building software and AI systems, showcasing our members, projects, and training programs.
 
 ## ✨ Features
 

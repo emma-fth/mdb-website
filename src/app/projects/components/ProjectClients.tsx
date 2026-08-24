@@ -44,7 +44,7 @@ export default function ProjectClients() {
         }`}>
           <div className="mdb-glass-lg p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-4 sm:mb-6">
-              Need an Innovative App or Web Solution?
+              Need an Innovative Software or AI Solution?
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-4">
               Let Berkeley&apos;s Brightest Build It for You.
@@ -61,4 +61,4 @@ export default function ProjectClients() {
       </div>
     </section>
   )
-} 
+}

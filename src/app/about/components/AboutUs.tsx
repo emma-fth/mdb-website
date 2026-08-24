@@ -33,13 +33,13 @@ export default function AboutUs() {
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-raleway-bold text-blue-900 mb-8">About Us</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              Mobile Developers of Berkeley is a dynamic tech club at UC Berkeley, founded in 2015, 
-              dedicated to mobile/full-stack development and fostering a vibrant community. We bring together 
-              passionate developers, designers, and innovators to create impactful projects for startups and learn 
-              from each other through club hackshops, training programs, and collaborative events.
+              MDB is a dynamic tech club at UC Berkeley, founded in 2015, where students build software and AI
+              systems while fostering a vibrant community. We bring together passionate developers, designers,
+              and innovators to create impactful projects for startups and learn from each other through club
+              hackshops, training programs, and collaborative events.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Our mission is to provide hands-on experience in mobile and web development while building 
+              Our mission is to provide hands-on experience in software engineering and applied AI while building
               lasting friendships and professional connections. Whether you&apos;re a seasoned developer or 
               just starting your coding journey, MDB offers a supportive environment to grow your skills 
               and make meaningful contributions to real-world projects.
@@ -49,4 +49,4 @@ export default function AboutUs() {
       </div>
     </section>
   )
-} 
+}

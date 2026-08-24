@@ -7,7 +7,7 @@ test.describe('Home Page Tests', () => {
 
   test('should load home page successfully', async ({ page }) => {
     // Check page title
-    await expect(page).toHaveTitle(/MDB|Mobile Developers of Berkeley/i)
+    await expect(page).toHaveTitle(/MDB/i)
     
     // Check for main content
     await expect(page.locator('main')).toBeVisible()
@@ -103,4 +103,4 @@ test.describe('Home Page Tests', () => {
     // Page should load within 5 seconds
     expect(loadTime).toBeLessThan(5000)
   })
-}) 
+})

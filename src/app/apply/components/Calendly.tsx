@@ -22,12 +22,12 @@ export default function Calendly() {
       image: "/exec/mike.jpeg",
       calendly: "https://calendly.com/mikxvii",
       major: "Computer Science & Business Administration",
-      interests: ["Mobile Development", "Startups", "Leadership", "Coffee"],
+      interests: ["Software & AI", "Startups", "Leadership", "Coffee"],
       email: "mike@mdb.berkeley.edu",
       funFacts: [
         "Started coding in high school",
         "Loves trying new coffee shops",
-        "Has built 3 mobile apps from scratch"
+        "Has built 3 production products from scratch"
       ]
     },
     {

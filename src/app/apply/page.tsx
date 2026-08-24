@@ -19,7 +19,7 @@ export default function Apply() {
           <div className="mdb-glass rounded-2xl shadow-2xl overflow-hidden">
           <iframe 
           className="airtable-embed" 
-          src="https://airtable.com/embed/appq3RmOWy9QA681J/shroO2qfGNFay078x?viewControls=on" 
+          src="https://airtable.com/embed/appFIvvLKJj8FpDou/shrg6q9IqDVmp1ybB?viewControls=on"
           frameBorder="0" 
           width="100%" 
           height="533" 
@@ -30,4 +30,4 @@ export default function Apply() {
       </div>
     </div>
   )
-} 
+}

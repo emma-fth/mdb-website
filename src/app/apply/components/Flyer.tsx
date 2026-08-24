@@ -63,7 +63,7 @@ export default function Flyer() {
               Join MDB
             </h1>
             <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Become part of UC Berkeley&apos;s premier mobile development community. 
+              Become part of UC Berkeley&apos;s premier software and AI community.
               Learn, build, and grow with passionate developers who share your vision.
             </p>
             {/* Apply Now Button below header */}
@@ -109,7 +109,7 @@ export default function Flyer() {
               <div className="text-3xl mb-4">🎯</div>
               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What We Do</h3>
               <p className="text-gray-700 leading-relaxed">
-                We build mobile applications, learn cutting-edge technologies, and create innovative solutions 
+                We build production software and AI systems, learn cutting-edge technologies, and create innovative solutions
                 that make a real impact in the world.
               </p>
             </div>
@@ -127,8 +127,8 @@ export default function Flyer() {
               <div className="text-3xl mb-4">💡</div>
                               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What You&apos;ll Learn</h3>
               <p className="text-gray-700 leading-relaxed">
-                iOS/Android development, UI/UX design, backend integration, project management, and the 
-                latest mobile development frameworks and tools.
+                Full-stack engineering, applied AI, UI/UX design, backend integration, project management, and
+                the latest development frameworks and tools.
               </p>
             </div>
           </div>
@@ -148,7 +148,7 @@ export default function Flyer() {
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
-                    <span>Passion for mobile development and technology</span>
+                    <span>Passion for software, AI, and technology</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
@@ -173,7 +173,7 @@ export default function Flyer() {
                 <ul className="space-y-3 text-gray-700 mb-6">
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
-                    <span>Hands-on mobile development experience</span>
+                    <span>Hands-on software and AI development experience</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
@@ -185,7 +185,7 @@ export default function Flyer() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
-                    <span>Portfolio of real mobile applications</span>
+                    <span>Portfolio of real-world software and AI projects</span>
                   </li>
                 </ul>
                 
@@ -195,7 +195,7 @@ export default function Flyer() {
                     Training Program
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
-                    All of our new members undergo a semester-long training program where they will be introduced to mobile development using React Native and Swift, exposed to useful tools in machine learning / edge computing, and expected to curate a final project.
+                    All new members complete a semester-long training program in modern software development and applied AI, explore tools across full-stack engineering, machine learning, and edge computing, and build a final project.
                   </p>
                 </div>
               </div>
@@ -231,4 +231,4 @@ export default function Flyer() {
       </div>
     </section>
   )
-} 
+}

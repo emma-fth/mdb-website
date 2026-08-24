@@ -10,28 +10,28 @@ interface CurriculumModule {
 const curriculumModules: CurriculumModule[] = [
   {
     week: "Week 1",
-    title: "Intro to Mobile Development",
-    description: "Kick off the semester with an introduction to mobile development, MDB's tech stack, and essential software engineering concepts."
+    title: "Intro to Software Engineering",
+    description: "Kick off the semester with an introduction to MDB's tech stack and essential software engineering concepts."
   },
   {
     week: "Week 2-3",
-    title: "General Mobile Dev with React Native",
-    description: "Learn the fundamentals of building cross-platform mobile apps using React Native, including hands-on mini projects."
+    title: "Full-Stack Development",
+    description: "Learn the fundamentals of building modern products across frontend, backend, and cross-platform technologies through hands-on mini projects."
   },
   {
     week: "Week 3-4",
-    title: "General Mobile Dev with Swift",
-    description: "Dive into native iOS development with Swift, exploring hardware integration and app development best practices."
+    title: "Product Engineering",
+    description: "Turn ideas into polished products while exploring architecture, hardware integration, and software development best practices."
   },
   {
     week: "Week 4-5",
-    title: "Applied Mobile Dev, Machine Learning, and Edge Computing",
-    description: "Explore the intersection of mobile development with machine learning and edge computing using tools like TensorFlow Lite and Apple's CreateML."
+    title: "Applied AI and Edge Computing",
+    description: "Build intelligent features with machine learning and edge computing using modern AI frameworks and tools."
   },
   {
     week: "Week 6-10",
     title: "Newbie Project",
-    description: "Work in teams to build and launch a real mobile app, applying everything you've learned throughout the training program."
+    description: "Work in teams to build and launch a real software or AI product, applying everything you've learned throughout the training program."
   }
 ]
 
@@ -114,4 +114,4 @@ export default function TrainingCurriculum() {
       </div>
     </section>
   )
-} 
+}

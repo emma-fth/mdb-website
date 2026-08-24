@@ -71,7 +71,7 @@ export default function Carousel() {
     "MDB Banquet Dinner",
     "MDB HAWAII RETREAT SPRING 2025",
     "MDB in Hawaii, Preston's Car",
-    "Mobile Developers of Berkeley",
+    "MDB",
     "Project Manager Team Spring 2025",
     "MDB Selfie @The Joker"
   ]
@@ -429,4 +429,4 @@ export default function Carousel() {
       </div>
     </section>
   )
-} 
+}

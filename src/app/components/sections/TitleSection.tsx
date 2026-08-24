@@ -19,7 +19,7 @@ export default function TitleSection() {
           <div className="relative flex justify-center lg:justify-start -mt-6 md:-mt-8 lg:-mt-40">
             <Image
               src="/images/mdb-logo-large.png"
-              alt="MDB Mobile Development"
+              alt="MDB logo"
               width={2000}
               height={2000}
               priority
@@ -50,7 +50,7 @@ export default function TitleSection() {
               </div>
             </h1>
             <p className="text-[clamp(0.85rem,2.2vw,1.05rem)] md:text-[clamp(0.875rem,2.5vw,1.125rem)] lg:text-[clamp(1rem,3vw,1.25rem)] mb-8 text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            MDB is a community of passionate and innovative mobile developers at UC Berkeley!
+            MDB is a community of developers building innovative software and AI systems at UC Berkeley!
             </p>
             
             {/* Buttons */}
@@ -73,7 +73,7 @@ export default function TitleSection() {
               </Link>
               {/* Coffee Chat Button */}
               <Link 
-                href="https://airtable.com/appq3RmOWy9QA681J/shroO2qfGNFay078x"
+                href="https://airtable.com/appFIvvLKJj8FpDou/shrg6q9IqDVmp1ybB"
                 className="border-2 border-mdb-blue text-mdb-blue bg-white/80 backdrop-blur-sm px-6 md:px-8 py-3 md:py-3 rounded-xl font-semibold text-[clamp(0.6875rem,2.2vw,1.05rem)] hover:bg-mdb-blue hover:text-white hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center min-w-[120px] md:min-w-[140px]"
               >
                 Coffee Chats
@@ -84,4 +84,4 @@ export default function TitleSection() {
       </div>
     </section>
   )
-} 
+}

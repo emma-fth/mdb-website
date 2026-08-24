@@ -68,7 +68,7 @@ export default function TrainingTools() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-blue-900 mb-4">Technologies</h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Master the industry-standard tools and technologies used by professional mobile developers.
+            Master the industry-standard tools and technologies used by software and AI engineers.
           </p>
         </div>
         
@@ -99,4 +99,4 @@ export default function TrainingTools() {
       </div>
     </section>
   )
-} 
+}
