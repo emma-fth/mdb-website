@@ -11,11 +11,11 @@ export default function TrainingHeader() {
             EDUCATION
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            Learn to build software and AI systems from the ground up. Explore full-stack engineering, applied AI,
-            and product development in our comprehensive 12-week program.
+            Master mobile app development from the ground up. Learn React Native, iOS, and Android development 
+            in our comprehensive 12-week program designed for beginners and career changers.
           </p>
         </div>
       </div>
     </section>
   )
-}
+} 
