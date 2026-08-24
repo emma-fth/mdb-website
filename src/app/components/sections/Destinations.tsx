@@ -14,7 +14,7 @@ export default function Destinations() {
           : 'opacity-0 translate-y-12'
       }`}>
         <h2 className="text-4xl md:text-5xl font-raleway-bold text-center text-mdb-blue mb-6 drop-shadow-sm">
-          Where MDB builders go
+          Our Destinations
         </h2>
       </div>
       
