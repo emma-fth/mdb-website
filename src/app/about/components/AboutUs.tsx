@@ -39,7 +39,7 @@ export default function AboutUs() {
               hackshops, training programs, and collaborative events.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Our mission is to provide hands-on experience in software engineering and applied AI while building
+              Our mission is to provide hands-on experience in full-stack development and applied AI while building
               lasting friendships and professional connections. Whether you&apos;re a seasoned developer or 
               just starting your coding journey, MDB offers a supportive environment to grow your skills 
               and make meaningful contributions to real-world projects.
