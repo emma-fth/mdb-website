@@ -33,8 +33,8 @@ export default function AboutUs() {
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-raleway-bold text-blue-900 mb-8">About Us</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              MDB is a dynamic tech club at UC Berkeley, founded in 2015, where students build software and AI
-              systems while fostering a vibrant community. We bring together passionate developers, designers,
+              MDB is a community of builders passionate about software, AI, and entrepreneurship at UC Berkeley.
+              Founded in 2015, we bring together passionate developers, designers,
               and innovators to create impactful projects for startups and learn from each other through club
               hackshops, training programs, and collaborative events.
             </p>

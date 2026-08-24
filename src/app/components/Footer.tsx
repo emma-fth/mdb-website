@@ -26,6 +26,9 @@ export default function Footer() {
                 <h3 className="text-md sm:text-lg lg:text-2xl font-raleway-bold text-mdb-blue drop-shadow-sm leading-tight">
                   MDB
                 </h3>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-slate-600">
+                  Software · AI · Entrepreneurship
+                </p>
               </div>
             </div>
           </div>

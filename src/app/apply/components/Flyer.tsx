@@ -63,7 +63,7 @@ export default function Flyer() {
               Join MDB
             </h1>
             <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Become part of UC Berkeley&apos;s premier software and AI community.
+              Join a community of builders passionate about software, AI, and entrepreneurship.
               Learn, build, and grow with passionate developers who share your vision.
             </p>
             {/* Apply Now Button below header */}
