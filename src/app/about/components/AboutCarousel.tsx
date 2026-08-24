@@ -23,7 +23,7 @@ const cards: CarouselCard[] = [
   {
     icon: "/assets/tp.svg",
     title: "Training Program",
-    description: "A 13 week intensive program, we teach you the basics of full-stack development, culminating in a newbie app fully ideated and created by the new member class, which is published on the App Store",
+    description: "A 13 week intensive program, we teach you the basics of full-stack and AI development, culminating in a newbie project fully ideated and created by the new member class, which is then made public.",
     link: "/training-program",
     isImage: true
   },
