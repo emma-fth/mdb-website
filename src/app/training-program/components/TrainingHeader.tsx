@@ -17,7 +17,7 @@ export default function TrainingHeader() {
               className="text-lg md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed animate-fade-in-up"
               style={{ animationDelay: '0.25s' }}
             >
-              A practical program covering AI-assisted development, full stack fundamentals,
+              A practical program covering AI development, full stack fundamentals,
               product thinking, and team project work.
             </p>
 

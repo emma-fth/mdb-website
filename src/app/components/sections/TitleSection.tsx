@@ -18,8 +18,8 @@ export default function TitleSection() {
         {/* Left Section - Image */}
           <div className="relative flex justify-center lg:justify-start -mt-6 md:-mt-8 lg:-mt-40">
             <Image
-              src="/images/mdb-logo-large.png"
-              alt="MDB Mobile Development"
+              src="/images/mdb-at-berkeley.png"
+              alt="MDB @ Berkeley"
               width={2000}
               height={2000}
               priority

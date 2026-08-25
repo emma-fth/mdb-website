@@ -28,8 +28,8 @@ const pillars: Pillar[] = [
     description: 'Frontend, backend, APIs, data, and how the pieces work together.'
   },
   {
-    title: 'Machine Learning',
-    description: 'Core ML ideas, practical use cases, and how ML shows up in real products.'
+    title: 'Machine Learning/AI',
+    description: 'Core ML ideas, practical use cases, and how ML/AI show up in real products.'
   },
   {
     title: 'Debugging And Review',
@@ -176,7 +176,7 @@ const topics: Topic[] = [
   { name: 'UI Flows', icon: <WindowIcon className={topicIconClassName} />, iconClassName: 'text-[#253C7D]' },
   { name: 'APIs', icon: <LayersIcon className={topicIconClassName} />, iconClassName: 'text-[#22A07A]' },
   { name: 'Data Models', icon: <DatabaseIcon className={topicIconClassName} />, iconClassName: 'text-[#5C6BDB]' },
-  { name: 'Debugging', icon: <BugIcon className={topicIconClassName} />, iconClassName: 'text-[#EF5B2A]' },
+  { name: 'Full-Stack', icon: <BugIcon className={topicIconClassName} />, iconClassName: 'text-[#EF5B2A]' },
   { name: 'Shipping', icon: <RocketIcon className={topicIconClassName} />, iconClassName: 'text-[#253C7D]' },
   { name: 'Interviews', icon: <BriefcaseIcon className={topicIconClassName} />, iconClassName: 'text-[#0F766E]' }
 ]
