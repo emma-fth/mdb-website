@@ -8,14 +8,23 @@ export default function AboutUs() {
         <div className="container mx-auto">
           {/* Hero Image */}
           <div className="relative mb-12 animate-fade-in-up flex justify-center" style={{ animationDelay: '0.2s' }}>
-            <div className="w-full max-w-4xl mx-auto h-72 md:h-80 lg:h-[28rem] relative overflow-hidden rounded-lg transition-all duration-300 transform hover:scale-110 hover:translate-x-1 hover:drop-shadow-xl origin-center group">
+            <div className="w-full max-w-4xl mx-auto h-72 md:h-80 lg:h-96 relative overflow-hidden rounded-lg transition-all duration-300 transform hover:scale-110 hover:translate-x-1 hover:drop-shadow-xl origin-center group">
+              {/* First image (default) */}
               <Image
-                src="/images/main-group-photo.jpg"
-                alt="MDB members group photo"
+                src="/images/mdb2 2.jpg"
+                alt="MDB member"
                 fill
-                className="object-cover object-[50%_15%]"
+                className="object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
                 priority
-                sizes="(max-width: 768px) 100vw, 896px"
+                sizes="(max-width: 768px) 100vw, 672px"
+              />
+              {/* Second image (on hover) */}
+              <Image
+                src="/images/mdb5 2.jpg"
+                alt="MDB members"
+                fill
+                className="object-cover absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100"
+                sizes="(max-width: 768px) 100vw, 672px"
               />
             </div>
           </div>
