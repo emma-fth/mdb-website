@@ -88,10 +88,10 @@ export default function Flyer() {
           }`}>
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
               <Image
-              src="/images/spring26_cover.png"
+              src="/images/fall26-recruitment.png"
               alt="MDB Recruitment Flyer"
-              width={800}
-              height={1200}
+              width={2410}
+              height={1600}
               className="w-full h-auto object-contain"
               priority
               />

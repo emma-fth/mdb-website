@@ -90,8 +90,8 @@ export default function PurpAndComm() {
               : 'opacity-0 translate-x-12'
           }`}>
             <Image
-              src="/images/main-group-photo.jpg"
-              alt="MDB members group photo"
+              src="/images/mdb8.jpg"
+              alt="MDB community at the beach"
               width={600}
               height={400}
               className="w-full h-auto rounded-2xl shadow-lg hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center"
