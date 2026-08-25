@@ -42,23 +42,28 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#1e40af" />
         <meta name="theme-color" content="#1e40af" />
         
-        {/* Preload critical images for better performance */}
-        <link rel="preload" as="image" href="/images/mdb-logo-large.png" />
-        <link rel="preload" as="image" href="/images/mdb-logo.png" />
-        
-        {/* Service Worker for advanced caching */}
+        {/* Service Worker for advanced caching (production only; in dev it would serve stale pages) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js')
+                  ${
+                    process.env.NODE_ENV === 'production'
+                      ? `navigator.serviceWorker.register('/sw.js')
                     .then(function(registration) {
                       console.log('SW registered: ', registration);
                     })
                     .catch(function(registrationError) {
                       console.log('SW registration failed: ', registrationError);
-                    });
+                    });`
+                      : `navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    registrations.forEach(function(registration) { registration.unregister(); });
+                  });
+                  if (window.caches) {
+                    caches.keys().then(function(keys) { keys.forEach(function(key) { caches.delete(key); }); });
+                  }`
+                  }
                 });
               }
             `,

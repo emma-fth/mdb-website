@@ -31,7 +31,7 @@ describe('Footer Component', () => {
 
   it('displays copyright information', () => {
     render(<Footer />)
-    expect(screen.getByText(/© 2025 MDB @ Berkeley/i)).toBeInTheDocument()
+    expect(screen.getByText(/© 2026 MDB @ Berkeley/i)).toBeInTheDocument()
   })
 
   it('has proper accessibility attributes', () => {
@@ -41,13 +41,12 @@ describe('Footer Component', () => {
     expect(footer).toBeInTheDocument()
   })
 
-  it('renders contact information', () => {
+  it('does not render the email or admin links', () => {
     render(<Footer />)
-    
-    // Should have contact email
-    const emailLink = screen.getByText('Email')
-    expect(emailLink).toBeInTheDocument()
-    expect(emailLink).toHaveAttribute('href', 'mailto:contact@mdb.berkeley.edu')
+
+    expect(screen.queryByText('Email')).not.toBeInTheDocument()
+    expect(screen.queryByText('Admin')).not.toBeInTheDocument()
+    expect(screen.queryByText('Log in')).not.toBeInTheDocument()
   })
 
   it('displays all page links', () => {
