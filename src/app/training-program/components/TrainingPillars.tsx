@@ -28,8 +28,8 @@ const pillars: Pillar[] = [
     description: 'Frontend, backend, APIs, data, and how the pieces work together.'
   },
   {
-    title: 'Machine Learning',
-    description: 'Core ML ideas, practical use cases, and how ML shows up in real products.'
+    title: 'Machine Learning/AI',
+    description: 'Core ML ideas, practical use cases, and how ML/AI show up in real products.'
   },
   {
     title: 'Debugging And Review',
@@ -168,6 +168,16 @@ function BriefcaseIcon({ className }: { className?: string }) {
   )
 }
 
+function StackIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+      <rect x="10" y="9" width="28" height="8" rx="3" fill="currentColor" />
+      <rect x="10" y="20" width="28" height="8" rx="3" fill="currentColor" opacity="0.75" />
+      <rect x="10" y="31" width="28" height="8" rx="3" fill="currentColor" opacity="0.5" />
+    </svg>
+  )
+}
+
 const topics: Topic[] = [
   { name: 'Prompting', icon: <SparkIcon className={topicIconClassName} />, iconClassName: 'text-[#253C7D]' },
   { name: 'AI Agents', icon: <NodesIcon className={topicIconClassName} />, iconClassName: 'text-[#4A8CF4]' },
@@ -176,7 +186,7 @@ const topics: Topic[] = [
   { name: 'UI Flows', icon: <WindowIcon className={topicIconClassName} />, iconClassName: 'text-[#253C7D]' },
   { name: 'APIs', icon: <LayersIcon className={topicIconClassName} />, iconClassName: 'text-[#22A07A]' },
   { name: 'Data Models', icon: <DatabaseIcon className={topicIconClassName} />, iconClassName: 'text-[#5C6BDB]' },
-  { name: 'Debugging', icon: <BugIcon className={topicIconClassName} />, iconClassName: 'text-[#EF5B2A]' },
+  { name: 'Full-Stack', icon: <StackIcon className={topicIconClassName} />, iconClassName: 'text-[#EF5B2A]' },
   { name: 'Shipping', icon: <RocketIcon className={topicIconClassName} />, iconClassName: 'text-[#253C7D]' },
   { name: 'Interviews', icon: <BriefcaseIcon className={topicIconClassName} />, iconClassName: 'text-[#0F766E]' }
 ]

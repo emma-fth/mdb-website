@@ -69,7 +69,7 @@ export default function Flyer() {
             {/* Apply Now Button below header */}
             <div className="mt-8">
               <Link 
-                href="https://airtable.com/appVd8nUl8f9F1K5t/pagwGgQSbNncvtkV5/form"
+                href="https://airtable.com/appFIOUBsGeFZQVDK/pagwGgQSbNncvtkV5/form"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-mdb-blue text-white px-8 md:px-12 py-4 md:py-5 rounded-xl font-raleway-semibold text-lg md:text-xl hover:bg-mdb-gold hover:text-mdb-blue hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
@@ -195,7 +195,7 @@ export default function Flyer() {
                     Training Program
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
-                    All new members go through a semester-long training program focused on AI-assisted development, full-stack fundamentals, machine learning, and building a final project with a team.
+                    All of our new members undergo a semester-long training program where they will be introduced to full-stack and AI development using tools like React Native, Python, Supabase, PostgreSQL, and PyTorch, and expected to build a final project.
                   </p>
                 </div>
               </div>
@@ -209,7 +209,7 @@ export default function Flyer() {
               : 'translate-y-8'
           }`}>
             <Link 
-              href="https://airtable.com/appVd8nUl8f9F1K5t/pagwGgQSbNncvtkV5/form"
+              href="https://airtable.com/appFIOUBsGeFZQVDK/pagwGgQSbNncvtkV5/form"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-mdb-blue text-white px-8 md:px-12 py-4 md:py-5 rounded-xl font-raleway-semibold text-lg md:text-xl hover:bg-mdb-gold hover:text-mdb-blue hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
