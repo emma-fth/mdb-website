@@ -1,86 +1,114 @@
 'use client'
-// import Image from 'next/image'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Client } from '../../constants/projects'
+import Lightbox from './Lightbox'
 
 interface ClientsProps {
   client: Client
   className?: string
 }
 
-export default function Clients({ client, className = '' }: ClientsProps) {
+function ArrowIcon() {
   return (
-    <div className={`mdb-glass mdb-glass-hover p-4 sm:p-6 md:p-8 ${className}`}>
-      {/* Header with App Info (Logo removed) */}
-      <div className="flex flex-col space-y-3 mb-6">
-        <div className="flex items-center space-x-3 sm:space-x-4">
-          <div className="flex-1 min-w-0">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-raleway-bold text-gray-800 truncate">{client.name}</h3>
-            <p className="text-sm sm:text-base text-gray-600 truncate">{client.type}</p>
-          </div>
-        </div>
-        {(!client.disableViewProject && client.link) && (
-          <div className="flex justify-end">
-            <Link 
-              href={client.link}
-              className="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded-full font-semibold hover:bg-mdb-gold hover:text-mdb-blue transition-colors text-sm sm:text-base"
-            >
-              View Project
-            </Link>
-          </div>
-        )}
-      </div>
-
-      {/* Project Details Grid */}
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6">
-        <div className="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-          <div className="text-xl sm:text-2xl mb-2">🐍</div>
-          <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-1">TECH STACK</p>
-          <p className="text-xs text-gray-600 leading-tight">{client.techStack.join(', ')}</p>
-        </div>
-        
-        <div className="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-          <div className="text-xl sm:text-2xl mb-2">🏆</div>
-          <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-1">PURPOSE</p>
-          <p className="text-xs text-gray-600 leading-tight">{client.purpose}</p>
-        </div>
-        
-        <div className="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-          <div className="text-xl sm:text-2xl mb-2">📅</div>
-          <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-1">DATE</p>
-          <p className="text-xs text-gray-600 leading-tight">{client.date}</p>
-        </div>
-        
-        <div className="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-          <div className="text-xl sm:text-2xl mb-2">👥</div>
-          <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-1">PM&apos;S</p>
-          <p className="text-xs text-gray-600 leading-tight">{client.pms.join(' & ')}</p>
-        </div>
-      </div>
-
-      {/* Description */}
-      <div className="mb-6">
-        <h4 className="font-semibold text-gray-800 mb-3 text-sm sm:text-base">Description</h4>
-        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{client.description}</p>
-      </div>
-
-  {/* Screenshots */}
-  {client.screenshots.length > 0 && (
-    <div>
-      <h4 className="font-semibold text-gray-800 mb-3 text-sm sm:text-base">Screenshots</h4>
-      <div className="flex space-x-3 overflow-x-auto pb-2 scrollbar-hide touch-scroll">
-        {client.screenshots.map((screenshot, index) => (
-          <div key={index} className="relative w-28 h-48 sm:w-32 sm:h-56 flex-shrink-0 rounded-lg overflow-hidden border-2 border-gray-200">
-            <img
-              src={screenshot}
-              alt={`${client.name} screenshot ${index + 1}`}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  )}
-    </div>
+    <svg
+      aria-hidden="true"
+      className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 17 17 7M9 7h8v8"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   )
-} 
+}
+
+export default function Clients({ client, className = '' }: ClientsProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const showLink = Boolean(client.link) && !client.disableViewProject
+  const isSet = (value: string) => Boolean(value) && value.trim().toUpperCase() !== 'N/A'
+  const date = isSet(client.date) ? client.date : ''
+  const pmList = client.pms.filter(isSet)
+  const meta = [date, pmList.length > 0 ? `${pmList.length > 1 ? 'PMs' : 'PM'} ${pmList.join(', ')}` : '']
+    .filter(Boolean)
+    .join(' · ')
+
+  return (
+    <article className={`mdb-glass mdb-glass-hover p-6 sm:p-7 md:p-8 flex flex-col h-full ${className}`}>
+      <header>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h3 className="text-xl sm:text-2xl font-raleway-bold text-blue-900 leading-tight">
+              {client.name}
+            </h3>
+            <p className="mt-1 text-sm sm:text-base text-gray-600">{client.type}</p>
+          </div>
+          {showLink && (
+            <Link
+              href={client.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link inline-flex flex-shrink-0 items-center gap-1 text-sm font-raleway-semibold text-mdb-blue hover:text-mdb-gold transition-colors"
+            >
+              Visit
+              <ArrowIcon />
+            </Link>
+          )}
+        </div>
+
+        {meta && <p className="mt-3 text-xs sm:text-sm text-gray-500">{meta}</p>}
+      </header>
+
+      {client.techStack.length > 0 && (
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Tech stack">
+          {client.techStack.map((tech) => (
+            <li
+              key={tech}
+              className="rounded-full border border-mdb-blue/15 bg-white/70 px-2.5 py-1 text-xs font-medium text-mdb-blue"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <p className="mt-5 text-sm text-gray-600 leading-relaxed">{client.description}</p>
+
+      {client.screenshots.length > 0 && (
+        <div className="mt-6 flex gap-3 overflow-x-auto pb-2 scrollbar-hide touch-scroll">
+          {client.screenshots.map((screenshot, index) => (
+            <button
+              key={screenshot}
+              type="button"
+              onClick={() => setOpenIndex(index)}
+              aria-label={`Open ${client.name} screenshot ${index + 1}`}
+              className="group/shot relative w-28 h-48 sm:w-32 sm:h-56 flex-shrink-0 rounded-lg overflow-hidden ring-1 ring-black/10 transition-all duration-200 hover:ring-mdb-blue/40 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-mdb-blue"
+            >
+              <img
+                src={screenshot}
+                alt={`${client.name} screenshot ${index + 1}`}
+                className="object-cover w-full h-full transition-transform duration-300 group-hover/shot:scale-[1.03]"
+              />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {openIndex !== null && (
+        <Lightbox
+          images={client.screenshots}
+          index={openIndex}
+          alt={client.name}
+          onClose={() => setOpenIndex(null)}
+          onNavigate={setOpenIndex}
+        />
+      )}
+    </article>
+  )
+}

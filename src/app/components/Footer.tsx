@@ -1,14 +1,18 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
-import { useAuth } from '../hooks/useAuth'
 
 export default function Footer() {
-  const { isAuthenticated, user } = useAuth()
-
   return (
-    <footer className="w-full bg-mdb-light-blue/80 backdrop-blur-md border-t border-mdb-light-blue shadow-lg py-8 md:py-12">
+    <footer className="relative w-full bg-mdb-light-blue py-8 md:py-12">
+      {/* Soft lead-in: sits on top of the bottom of the preceding section so the page fades into the
+          footer instead of hitting a hard edge. The footer is solid #D1DFF2 (no alpha) so a section that
+          already ends on that blue meets it seamlessly, and a white-ending section fades white -> blue.
+          Inline gradient so it can't be lost to Tailwind gradient-variable ordering. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 -top-24 h-24"
+        style={{ backgroundImage: 'linear-gradient(to bottom, rgba(209, 223, 242, 0), rgba(209, 223, 242, 1))' }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8 lg:gap-12">
           
@@ -79,30 +83,6 @@ export default function Footer() {
                 >
                   Contact Us
                 </Link>
-                <a 
-                  href="mailto:contact@mdb.berkeley.edu" 
-                  className="block text-gray-700 hover:text-mdb-blue transition-colors duration-200 text-sm sm:text-base"
-                >
-                  Email
-                </a>
-              </div>
-            </div>
-
-            {/* Admin Section */}
-            <div className="text-center sm:text-left">
-              <h4 className="text-base sm:text-lg font-raleway-bold text-mdb-blue mb-3 sm:mb-4">Admin</h4>
-              <div className="space-y-1 sm:space-y-2">
-                <Link 
-                  href="/admin-login" 
-                  className="block text-gray-700 hover:text-mdb-blue transition-all duration-200 text-sm sm:text-base hover:scale-110"
-                >
-                  {isAuthenticated ? 'Dashboard' : 'Log in'}
-                </Link>
-                {isAuthenticated && (
-                  <div className="text-xs text-green-600 font-medium">
-                    ✓ {user?.email}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -111,7 +91,7 @@ export default function Footer() {
         {/* Bottom Border */}
         <div className="border-t border-blue-300 mt-6 sm:mt-8 pt-6 sm:pt-8">
           <p className="text-center text-gray-600 text-xs sm:text-sm">
-            &copy; 2025 MDB @ Berkeley. All rights reserved.
+            &copy; 2026 MDB @ Berkeley. All rights reserved.
           </p>
         </div>
       </div>

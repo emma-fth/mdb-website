@@ -1,7 +1,6 @@
 import AboutUs from './components/AboutUs'
 import AboutCarousel from './components/AboutCarousel'
 import Exec from './components/Exec'
-import ProjectManagers from './components/ProjectManagers'
 import Members from './components/Members'
 import Carousel from '../components/Carousel'
 
@@ -12,7 +11,6 @@ export default function About() {
       <AboutCarousel />
       <Carousel />
       <Exec />
-      <ProjectManagers />
       <Members />
     </div>
   )

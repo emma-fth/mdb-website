@@ -106,7 +106,7 @@ export default function Flyer() {
               : 'translate-y-8'
           }`}>
             <div className="mdb-glass mdb-glass-hover p-6">
-              <div className="text-3xl mb-4">🎯</div>
+              <div className="text-3xl mb-4">⚙️</div>
               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What We Do</h3>
               <p className="text-gray-700 leading-relaxed">
                 We build full-stack software and AI products, learn cutting-edge technologies, and create innovative solutions
@@ -115,7 +115,7 @@ export default function Flyer() {
             </div>
 
             <div className="mdb-glass mdb-glass-hover p-6">
-              <div className="text-3xl mb-4">🚀</div>
+              <div className="text-3xl mb-4">🤝</div>
               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">Why Join Us</h3>
               <p className="text-gray-700 leading-relaxed">
                 Access to industry mentors, real-world projects, networking opportunities, and a supportive 
@@ -124,7 +124,7 @@ export default function Flyer() {
             </div>
 
             <div className="mdb-glass mdb-glass-hover p-6 md:col-span-2 lg:col-span-1">
-              <div className="text-3xl mb-4">💡</div>
+              <div className="text-3xl mb-4">📘</div>
                               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What You&apos;ll Learn</h3>
               <p className="text-gray-700 leading-relaxed">
                 Full-stack engineering, applied AI, UI/UX design, backend integration, project management, and

@@ -1,181 +1,144 @@
 'use client'
-import { useState } from 'react'
+import Image from 'next/image'
+import type { ReactNode } from 'react'
 import { useAnimationLoad } from '../hooks/useAnimationLoad'
-import { submitContactForm } from '../../utils/supabase'
+
+function MailIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-8 w-8"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3.75 7.5A2.25 2.25 0 0 1 6 5.25h12A2.25 2.25 0 0 1 20.25 7.5v9A2.25 2.25 0 0 1 18 18.75H6A2.25 2.25 0 0 1 3.75 16.5v-9Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="m4.5 7.5 6.63 5.3a1.5 1.5 0 0 0 1.74 0l6.63-5.3"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 17 17 7M9 7h8v8"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+interface Channel {
+  label: string
+  href: string
+  external: boolean
+  icon: ReactNode
+}
+
+const channels: Channel[] = [
+  {
+    label: '@mdbdev',
+    href: 'https://instagram.com/mdbdev',
+    external: true,
+    icon: (
+      <Image
+        src="/logos/instagram.svg"
+        alt="Instagram"
+        width={32}
+        height={32}
+        className="h-8 w-8 object-contain"
+      />
+    ),
+  },
+  {
+    label: 'contact@mdb.dev',
+    href: 'mailto:contact@mdb.dev',
+    external: false,
+    icon: <MailIcon />,
+  },
+  {
+    label: 'MDB on LinkedIn',
+    href: 'https://www.linkedin.com/company/mobile-developers-of-berkeley/',
+    external: true,
+    icon: (
+      <Image
+        src="/logos/linkedin-icon.svg"
+        alt="LinkedIn"
+        width={32}
+        height={32}
+        className="h-8 w-8 object-contain"
+      />
+    ),
+  },
+]
 
 export default function Contact() {
   const { isLoaded } = useAnimationLoad()
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error' | null
-    message: string
-  }>({ type: null, message: '' })
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus({ type: null, message: '' })
-    
-    try {
-      await submitContactForm(formData)
-      setSubmitStatus({ 
-        type: 'success', 
-        message: 'Thank you! Your message has been sent successfully.' 
-      })
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    } catch (error) {
-      setSubmitStatus({ 
-        type: 'error', 
-        message: error instanceof Error ? error.message : 'Failed to send message. Please try again.' 
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
 
   return (
     <section className="min-h-screen w-screen bg-gradient-to-b from-mdb-light-blue via-white to-white flex items-center justify-center py-8 md:py-12 lg:py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue via-white to-white z-0"></div>
-      
-      <div className="w-full max-w-2xl mx-auto px-4 relative z-10">
-        <div className={`mdb-glass-lg p-8 md:p-12 transition-all duration-1000 ease-out ${
-          isLoaded 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-8'
-        }`}>
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-raleway-bold text-mdb-blue mb-4">
+
+      <div className="w-full max-w-5xl mx-auto px-4 relative z-10">
+        <div
+          className={`mdb-glass-lg p-8 md:p-12 lg:p-14 transition-all duration-1000 ease-out ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+            <h1 className="text-[clamp(2rem,5vw,3.75rem)] font-raleway-bold text-mdb-blue mb-4">
               Contact Us
             </h1>
-            <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-gray-700 leading-relaxed">
-              Have questions about MDB? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
+            <p className="text-[clamp(1rem,2.5vw,1.2rem)] text-gray-700 leading-relaxed">
+              Questions about MDB, recruiting, projects, or partnerships? Reach out by email or say hi on Instagram.
             </p>
           </div>
 
-          {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-raleway-semibold text-mdb-blue mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-mdb-blue focus:border-mdb-blue focus:bg-white/30 transition-all duration-300 placeholder-gray-600"
-                placeholder="Your full name"
-                required
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-raleway-semibold text-mdb-blue mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-mdb-blue focus:border-mdb-blue focus:bg-white/30 transition-all duration-300 placeholder-gray-600"
-                placeholder="your.email@example.com"
-                required
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="subject" className="block text-sm font-raleway-semibold text-mdb-blue mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-mdb-blue focus:border-mdb-blue focus:bg-white/30 transition-all duration-300 placeholder-gray-600"
-                placeholder="What&apos;s this about?"
-                required
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="message" className="block text-sm font-raleway-semibold text-mdb-blue mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-mdb-blue focus:border-mdb-blue focus:bg-white/30 transition-all duration-300 placeholder-gray-600 resize-vertical"
-                placeholder="Tell us more about your inquiry..."
-                required
-              ></textarea>
-            </div>
-            
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-mdb-blue text-white px-8 py-4 rounded-xl font-raleway-semibold text-lg hover:bg-mdb-gold hover:text-mdb-blue hover:scale-105 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-              <span className="ml-2 text-xl">{isSubmitting ? '⏳' : '→'}</span>
-            </button>
-          </form>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {channels.map((channel) => (
+              <a
+                key={channel.label}
+                href={channel.href}
+                target={channel.external ? '_blank' : undefined}
+                rel={channel.external ? 'noopener noreferrer' : undefined}
+                className="group relative flex flex-col items-center justify-center gap-5 rounded-[28px] border border-white/60 bg-white/70 backdrop-blur-md px-5 py-9 md:py-11 text-center shadow-lg shadow-mdb-blue/5 transition-all duration-300 hover:-translate-y-1 hover:bg-white/90 hover:shadow-xl hover:shadow-mdb-blue/15"
+              >
+                <span className="absolute right-4 top-4 text-mdb-blue/30 transition-all duration-300 group-hover:text-mdb-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowIcon />
+                </span>
 
-          {/* Status Messages */}
-          {submitStatus.type && (
-            <div className={`mt-4 p-4 rounded-lg ${
-              submitStatus.type === 'success' 
-                ? 'bg-green-100 border border-green-400 text-green-700' 
-                : 'bg-red-100 border border-red-400 text-red-700'
-            }`}>
-              {submitStatus.message}
-            </div>
-          )}
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-mdb-blue ring-1 ring-black/5 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                  {channel.icon}
+                </div>
 
-          {/* Contact Info */}
-          <div className="mt-8 pt-6 border-t border-white/30">
-            <div className="text-center">
-              <h3 className="text-lg font-raleway-semibold text-mdb-blue mb-3">
-                Other Ways to Reach Us
-              </h3>
-              <div className="space-y-2 text-gray-700">
-                <p> <a href="mailto:contact@mdb.dev" className="hover:text-mdb-blue transition-colors">contact@mdb.dev</a></p>
-                <p>
-                  <a
-                    href="https://instagram.com/mdbdev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-mdb-blue transition-colors"
-                  >
-                    @mdbdev
-                  </a>
-                </p>
-              </div>
-            </div>
+                <span className="text-lg lg:text-xl font-raleway-bold text-mdb-blue break-words">
+                  {channel.label}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
     </section>
   )
-} 
+}
