@@ -90,8 +90,8 @@ export default function Flyer() {
               <Image
               src="/images/fall26-recruitment.png"
               alt="MDB Recruitment Flyer"
-              width={2410}
-              height={1600}
+              width={2384}
+              height={1662}
               className="w-full h-auto object-contain"
               priority
               />
