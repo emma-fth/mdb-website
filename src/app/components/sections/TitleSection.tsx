@@ -18,10 +18,11 @@ export default function TitleSection() {
         {/* Left Section - Image */}
           <div className="relative flex justify-center lg:justify-start -mt-6 md:-mt-8 lg:-mt-40">
             <Image
-              src="/images/mdb-logo-large.png"
-              alt="MDB Mobile Development"
-              width={2000}
-              height={2000}
+              src="/images/mdb-logo-hero.png"
+              alt="MDB logo"
+              width={1267}
+              height={1287}
+              quality={90}
               priority
               sizes="(max-width: 640px) 340px, (max-width: 768px) 400px, (max-width: 1024px) 460px, (max-width: 1280px) 600px, 720px"
               className={`w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] md:w-[460px] md:h-[460px] lg:w-[600px] lg:h-[600px] xl:w-[720px] xl:h-[720px] object-contain transition-all duration-1000 ease-out ${
@@ -50,7 +51,7 @@ export default function TitleSection() {
               </div>
             </h1>
             <p className="text-[clamp(0.85rem,2.2vw,1.05rem)] md:text-[clamp(0.875rem,2.5vw,1.125rem)] lg:text-[clamp(1rem,3vw,1.25rem)] mb-8 text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            MDB is a community of builders at UC Berkeley focused on full-stack software, AI, and entrepreneurship!
+            MDB is a community of builders, developers, and creators at UC Berkeley working across full-stack software, AI/ML, design, data, and entrepreneurship.
             </p>
             
             {/* Buttons */}

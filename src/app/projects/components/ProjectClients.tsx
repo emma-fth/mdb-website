@@ -14,10 +14,9 @@ export default function ProjectClients() {
     <section ref={elementRef} className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-[#D1DFF2] to-white">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-raleway-bold text-blue-900 mb-3 sm:mb-4">Our Projects</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-raleway-bold text-blue-900 mb-3 sm:mb-4">Recent work</h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-2 sm:px-4">
-            Explore our portfolio of innovative projects that showcase our expertise in building 
-            cutting-edge solutions for real-world problems.
+            A selection of what MDB teams have shipped for clients over the last few semesters.
           </p>
         </div>
         
@@ -44,17 +43,16 @@ export default function ProjectClients() {
         }`}>
           <div className="mdb-glass-lg p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-4 sm:mb-6">
-              Need an Innovative Full-Stack or AI Solution?
+              Have a project in mind?
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-4">
-              Let Berkeley&apos;s Brightest Build It for You.
+              MDB takes on a small number of client projects each semester. Tell us what you&apos;re building.
             </p>
-            <Link 
+            <Link
               href="/contact"
-              className="inline-block bg-mdb-blue text-white px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-xl font-raleway-semibold text-base sm:text-lg md:text-xl hover:bg-mdb-gold hover:text-mdb-blue hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
+              className="inline-block bg-mdb-blue text-white px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-xl font-raleway-semibold text-base sm:text-lg md:text-xl hover:bg-mdb-gold hover:text-mdb-blue hover:scale-105 transition-all duration-300 transform hover:drop-shadow-lg origin-center shadow-xl"
             >
-              Schedule a Meeting Now
-              <span className="ml-2 text-lg sm:text-xl">→</span>
+              Get in touch
             </Link>
           </div>
         </div>

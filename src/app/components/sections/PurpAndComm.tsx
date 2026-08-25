@@ -39,7 +39,7 @@ export default function PurpAndComm() {
       const steps = 60
       const stepDuration = duration / steps
       
-  const targets = { semesters: 20, projects: 30, members: 50 }
+  const targets = { semesters: 11, projects: 30, members: 50 }
       const increments = {
         semesters: targets.semesters / steps,
         projects: targets.projects / steps,
@@ -90,8 +90,8 @@ export default function PurpAndComm() {
               : 'opacity-0 translate-x-12'
           }`}>
             <Image
-              src="/images/mdb8.jpg"
-              alt="MDB Community at the beach"
+              src="/images/main-group-photo.jpg"
+              alt="MDB members group photo"
               width={600}
               height={400}
               className="w-full h-auto rounded-2xl shadow-lg hover:scale-110 hover:translate-x-1 transition-all duration-300 transform hover:drop-shadow-xl origin-center"
@@ -116,18 +116,18 @@ export default function PurpAndComm() {
           }`}>
             {/* Semesters */}
             <div className="relative">
-              <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
-                {counters.semesters}
+              <div className="text-6xl lg:text-7xl font-raleway-bold text-mdb-blue mb-2">
+                {counters.semesters}+
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Semesters of</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Years of</h3>
               <h3 className="text-xl font-semibold text-gray-800">Experience</h3>
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full opacity-60 animate-pulse"></div>
             </div>
 
             {/* Projects */}
             <div className="relative">
-              <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
-                {counters.projects}
+              <div className="text-6xl lg:text-7xl font-raleway-bold text-mdb-blue mb-2">
+                {counters.projects}+
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Projects Completed</h3>
               <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-orange-300 rounded-full opacity-50"></div>
@@ -135,8 +135,8 @@ export default function PurpAndComm() {
 
             {/* Members */}
             <div className="relative">
-              <div className="text-6xl lg:text-7xl font-bold text-orange-500 mb-2">
-                {counters.members}
+              <div className="text-6xl lg:text-7xl font-raleway-bold text-mdb-blue mb-2">
+                {counters.members}+
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Active Members</h3>
               <div className="absolute -top-6 -left-2 w-6 h-6 bg-yellow-400 rounded-full opacity-70"></div>
