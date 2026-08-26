@@ -106,7 +106,12 @@ export default function Flyer() {
               : 'translate-y-8'
           }`}>
             <div className="mdb-glass mdb-glass-hover p-6">
-              <div className="text-3xl mb-4">⚙️</div>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#D1DFF2] text-mdb-blue">
+                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What We Do</h3>
               <p className="text-gray-700 leading-relaxed">
                 We build full-stack software and AI products, learn cutting-edge technologies, and create innovative solutions
@@ -115,7 +120,14 @@ export default function Flyer() {
             </div>
 
             <div className="mdb-glass mdb-glass-hover p-6">
-              <div className="text-3xl mb-4">🤝</div>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#D1DFF2] text-mdb-blue">
+                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
               <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">Why Join Us</h3>
               <p className="text-gray-700 leading-relaxed">
                 Access to industry mentors, real-world projects, networking opportunities, and a supportive 
@@ -124,8 +136,13 @@ export default function Flyer() {
             </div>
 
             <div className="mdb-glass mdb-glass-hover p-6 md:col-span-2 lg:col-span-1">
-              <div className="text-3xl mb-4">📘</div>
-                              <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What You&apos;ll Learn</h3>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#D1DFF2] text-mdb-blue">
+                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-raleway-semibold text-mdb-blue mb-3">What You&apos;ll Learn</h3>
               <p className="text-gray-700 leading-relaxed">
                 Full-stack engineering, applied AI, UI/UX design, backend integration, project management, and
                 the latest development frameworks and tools.
@@ -133,18 +150,17 @@ export default function Flyer() {
             </div>
           </div>
 
-          {/* Requirements */}
-          <div className={`mdb-glass-lg p-8 mb-12 transition-all ${transitionDuration} ease-out ${delay} ${
-            isLoaded 
-              ? 'translate-y-0' 
+          {/* Requirements + what membership offers */}
+          <div className={`mb-12 transition-all ${transitionDuration} ease-out ${delay} ${
+            isLoaded
+              ? 'translate-y-0'
               : 'translate-y-8'
           }`}>
-            <h2 className="text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-6 text-center">
-              Application Requirements
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-lg font-raleway-semibold text-mdb-blue mb-4">What We&apos;re Looking For</h3>
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="mdb-glass-lg p-8">
+                <h2 className="text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-6">
+                  Application Requirements
+                </h2>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
@@ -168,9 +184,11 @@ export default function Flyer() {
                   </li>
                 </ul>
               </div>
-              <div>
-                <h3 className="text-lg font-raleway-semibold text-mdb-blue mb-4">What You&apos;ll Get</h3>
-                <ul className="space-y-3 text-gray-700 mb-6">
+              <div className="mdb-glass-lg p-8">
+                <h2 className="text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-6">
+                  What You&apos;ll Get
+                </h2>
+                <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-3">
                     <span className="text-mdb-blue font-bold">•</span>
                     <span>Hands-on full-stack and AI development experience</span>
@@ -188,17 +206,17 @@ export default function Flyer() {
                     <span>Portfolio of real-world full-stack and AI projects</span>
                   </li>
                 </ul>
-                
-                {/* Training Program Information - now part of the same column */}
-                <div className="pt-4 border-t border-gray-200">
-                  <h3 className="text-lg font-raleway-semibold text-mdb-blue mb-3">
-                    Training Program
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    All of our new members undergo a semester-long training program where they will be introduced to full-stack and AI development using tools like React Native, Python, Supabase, PostgreSQL, and PyTorch, and expected to build a final project.
-                  </p>
-                </div>
               </div>
+            </div>
+
+            {/* Training Program */}
+            <div className="mdb-glass-lg p-8">
+              <h2 className="text-2xl md:text-3xl font-raleway-bold text-mdb-blue mb-4">
+                Training Program
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                All of our new members undergo a semester-long training program where they will be introduced to full-stack and AI development using tools like React Native, Python, Supabase, PostgreSQL, and PyTorch, and are expected to build a final project.
+              </p>
             </div>
           </div>
 

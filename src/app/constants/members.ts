@@ -4,7 +4,7 @@ export const members: Member[] = [
   //updated for fa26
   { name: "Aiji Li", title: "Member", image: "/exec/aiji.png" },
   { name: "Alp Senay", title: "Member", image: "/members/alp.jpg" },
-  { name: "Andrew Falcom", title: "Member", image: "/members/andrew.png" },
+  { name: "Andrew Falcon", title: "Member", image: "/members/andrew.png" },
   { name: "Angad Singh Josan", title: "Member", image: "/members/angad.jpg" },
   { name: "Angie Wibowo", title: "Member", image: "/members/angie-wibowo.jpg" },
   { name: "Angie Zhu", title: "Member", image: "/members/angie.png" },

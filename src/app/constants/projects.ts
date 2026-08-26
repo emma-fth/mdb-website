@@ -28,7 +28,8 @@ export const clientProjects: Client[] = [
       "/screenshots/circuit1.png",
       "/screenshots/circuit2.png",
       "/screenshots/circuit3.png"
-    ]
+    ],
+    disableViewProject: true
   },
   {
     name: "Lafayette Square",
@@ -80,7 +81,8 @@ export const clientProjects: Client[] = [
       "/screenshots/salamati4.png",
       "/screenshots/salamati3.png",
       "/screenshots/salamati5.png"
-    ]
+    ],
+    disableViewProject: true
   },
   {
     name: "Joy",
@@ -98,7 +100,8 @@ export const clientProjects: Client[] = [
       "/screenshots/joy2.png",
       "/screenshots/joy3.png",
       "/screenshots/joy4.png"
-    ]
+    ],
+    disableViewProject: true
   },
   {
     name: "GreekLine",

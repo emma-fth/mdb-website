@@ -188,7 +188,7 @@ export default function Carousel() {
       
       {/* Full-width continuous sliding strip with alternating heights */}
       <div className="w-screen relative left-1/2 -translate-x-1/2 z-10">
-        <div className="overflow-hidden h-[800px] sm:h-[900px] md:h-[1000px] lg:h-[1200px]">
+        <div className="overflow-hidden h-[720px] sm:h-[800px] md:h-[920px] lg:h-[920px]">
           {/* First carousel strip - moves right to left */}
           <div 
             ref={carouselRef}

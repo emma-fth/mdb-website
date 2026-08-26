@@ -9,7 +9,6 @@ interface CarouselCard {
   title: string
   description: string
   link: string
-  isImage?: boolean
 }
 
 const cards: CarouselCard[] = [
@@ -17,22 +16,19 @@ const cards: CarouselCard[] = [
     icon: "/assets/proj.svg",
     title: "Projects",
     description: "We take 3 client projects each semester, ranging from full-stack software to AI/ML to Game Dev, our members are passionate about many fields and ready to tackle any problem",
-    link: "/projects",
-    isImage: true
+    link: "/projects"
   },
   {
     icon: "/assets/tp.svg",
     title: "Training Program",
     description: "A 13 week intensive program, we teach you the basics of full-stack and AI development, culminating in a newbie project fully ideated and created by the new member class, which is then made public.",
-    link: "/training-program",
-    isImage: true
+    link: "/training-program"
   },
   {
     icon: "/assets/comm.svg",
     title: "Community",
     description: "We love our MDB Community!! It is the most important part of the club, and is essential to who we are. From social, to study sessions, to retreat, we truly believe in creating a welcoming and supportive community for our members to suit all their needs.",
-    link: "/about",
-    isImage: true
+    link: "/about"
   }
 ]
 
@@ -53,20 +49,16 @@ export default function AboutCarousel() {
                 key={index}
                 className="mdb-glass mdb-glass-hover p-8 flex flex-col h-full"
               >
-                <div className="text-4xl mb-4 text-center">
-                  {card.isImage ? (
-                    <div className="flex justify-center">
-                      <Image
-                        src={card.icon}
-                        alt={card.title}
-                        width={64}
-                        height={64}
-                        className="w-16 h-16 object-contain"
-                      />
-                    </div>
-                  ) : (
-                    card.icon
-                  )}
+                <div className="mb-4 flex justify-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-[12px_6px_22px_6px] bg-[#D1DFF2]">
+                    <Image
+                      src={card.icon}
+                      alt={card.title}
+                      width={44}
+                      height={44}
+                      className="h-11 w-11 object-contain"
+                    />
+                  </div>
                 </div>
                 <h3 className="text-2xl font-raleway-bold text-gray-800 mb-4 text-center">
                   {card.title}

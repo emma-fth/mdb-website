@@ -10,7 +10,7 @@ export default function ProjectHeader() {
   const delay2 = shouldReduceAnimations ? '0.3s' : '0.6s'
 
   return (
-    <section className="min-h-screen w-screen bg-gradient-to-b from-[#D1DFF2] to-white flex items-center -mt-20 relative mb-0 py-4 sm:py-6 md:py-8 lg:py-12 xl:py-16">
+    <section className="w-screen bg-gradient-to-b from-[#D1DFF2] to-white -mt-20 relative mb-0 py-4 sm:py-6 md:py-8 lg:py-12 xl:py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-[#D1DFF2] to-white z-0"></div>
       <div className="w-full px-3 sm:px-4 py-4 sm:py-6 md:py-8 pt-16 sm:pt-20 md:pt-24 lg:pt-28 relative z-10">
         <div className="container mx-auto text-center">

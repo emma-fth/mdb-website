@@ -11,12 +11,12 @@ export default function TitleSection() {
   const { currentText } = useTypingAnimation({ words })
 
   return (
-    <section className="min-h-screen w-screen bg-gradient-to-b from-mdb-light-blue to-white flex items-center -mt-20 relative mb-0 py-8 md:py-12 lg:py-16">
+    <section className="w-screen bg-gradient-to-b from-mdb-light-blue to-white -mt-20 relative mb-0 py-8 md:py-12 lg:py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue to-white z-0"></div>
       <div className="w-full px-4 py-8 pt-20 md:pt-24 lg:pt-28 relative z-10">
-        <div className={`max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         {/* Left Section - Image */}
-          <div className="relative flex justify-center lg:justify-start -mt-6 md:-mt-8 lg:-mt-40">
+          <div className="relative flex justify-center lg:justify-start -mt-6 md:-mt-8">
             <Image
               src="/images/mdb-home-logo.png"
               alt="MDB @ Berkeley logo"
@@ -33,7 +33,7 @@ export default function TitleSection() {
           </div>
 
         {/* Right Section - Content */}
-          <div className={`order-2 lg:order-2 text-center lg:text-left -mt-6 md:-mt-8 lg:-mt-40 transition-all duration-1000 ease-out delay-300 ${
+          <div className={`order-2 lg:order-2 text-center lg:text-left -mt-6 md:-mt-8 transition-all duration-1000 ease-out delay-300 ${
             isLoaded 
               ? 'translate-y-0' 
               : 'translate-y-8'

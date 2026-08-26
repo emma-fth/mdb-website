@@ -14,9 +14,9 @@ export default function ProjectClients() {
     <section ref={elementRef} className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-[#D1DFF2] to-white">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-raleway-bold text-blue-900 mb-3 sm:mb-4">Recent work</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-raleway-bold text-blue-900 mb-3 sm:mb-4">Recent Client Projects</h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-2 sm:px-4">
-            A selection of what MDB teams have shipped for clients over the last few semesters.
+            We partner with companies to design, build, and ship production software, from full-stack web and mobile platforms to AI and ML systems. Here&apos;s a look at what our teams have delivered recently.
           </p>
         </div>
         
