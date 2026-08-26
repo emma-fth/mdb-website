@@ -96,7 +96,7 @@ export default function Contact() {
   const { isLoaded } = useAnimationLoad()
 
   return (
-    <section className="min-h-screen w-screen bg-gradient-to-b from-mdb-light-blue via-white to-white flex items-center justify-center py-8 md:py-12 lg:py-16">
+    <section className="min-h-[calc(100vh-5rem)] w-screen bg-gradient-to-b from-mdb-light-blue via-white to-white flex items-center justify-center pt-8 pb-24 md:pt-10 md:pb-32 lg:pt-12 lg:pb-36">
       <div className="absolute inset-0 bg-gradient-to-b from-mdb-light-blue via-white to-white z-0"></div>
 
       <div className="w-full max-w-5xl mx-auto px-4 relative z-10">

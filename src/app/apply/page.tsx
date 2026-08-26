@@ -9,7 +9,7 @@ export default function Apply() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-raleway-bold text-mdb-blue mb-4">
-              Sign up for a Coffee Chat!
+              Schedule a Coffee Chat!
             </h2>
             {/* <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               
@@ -17,12 +17,13 @@ export default function Apply() {
           </div>
           
           <div className="mdb-glass rounded-2xl shadow-2xl overflow-hidden">
-          <iframe 
-          className="airtable-embed" 
+          {/* Tall enough on desktop to show both gallery rows without inner scrolling;
+              phones fall back to a short frame since the gallery stacks to one long column there. */}
+          <iframe
+          className="airtable-embed h-[533px] lg:h-[1200px]"
           src="https://airtable.com/embed/appFIvvLKJj8FpDou/shrg6q9IqDVmp1ybB?viewControls=on"
-          frameBorder="0" 
-          width="100%" 
-          height="533" 
+          frameBorder="0"
+          width="100%"
           style={{ background: 'transparent', border: '1px solid #ccc' }}
           ></iframe>
           </div>
